@@ -31,6 +31,7 @@ main figure {
   flex: 1 0 350px;
   align-items: center;
   text-align: center;
+  margin-bottom: 0 !important;
 }
 
 /* font */
@@ -50,11 +51,14 @@ h1 {
   color: var(--bordeau);
 }
 h2 {
+  margin: 10px;
+}
+h2 a {
   font-size: 36px;
   line-height: 47px;
   font-weight: 200;
-  margin: 0;
   color: var(--bordeau);
+  text-decoration: none;
 }
 h3, h4, h5, h6, p { 
   margin: 0 !important;
@@ -143,9 +147,6 @@ main {
   right: 100px;
   top: 58px;
 } 
-main figure:hover {
-  cursor: pointer;
-}
 main figure img {
   object-fit: cover;
   position: relative;
@@ -153,7 +154,6 @@ main figure img {
   height: 200px;
   width: 200px;
   border-radius: 100px;
-  margin: 10px;
 }
 main img {
   height: auto;
