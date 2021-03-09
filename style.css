@@ -4,7 +4,44 @@ body {
   font-family: 'DM Sans', sans-serif;
   margin: 0px;
   font-weight: 200;
+  display: flex;
+  flex-wrap: wrap;
+  /*justify-content: space-around;*/
+  flex-direction: row;
+  flex: 3;
 }
+
+header {
+  display:flex;
+  flex: 2;
+  /*flex: 1 1 50px;*/
+  max-width: 60%;
+}
+nav {
+  display:flex;
+  padding: 5px 25px;
+}
+.nophoto {
+  flex: 1;
+  max-width: 150px;
+} 
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-direction: row;*/
+}
+
+.main figure {
+  display: flex;
+  flex-flow: column;
+  flex: 1 0 350px;
+  align-items: center;
+  text-align: center;
+}
+
+
+
 
 :root {
   /*--blue: #0065FC; le bleu*/
@@ -46,18 +83,16 @@ li {
   list-style: none;
 }
 
-header, section { 
+/*header, section { 
   max-width: 1800px;
   margin: 0 auto !important; 
   padding: 12px 35px;
-}
+}*/
 
 /* vvv nav vvv */
 
-nav {
-  display:flex;
-  padding: 5px 25px;
-}
+
+
 
 nav ul {
   margin:0;
@@ -68,12 +103,10 @@ nav li{
   list-style:none;
 }
 
-.nophoto {
-  margin-left: auto;
-}
+
 
 .logo {
-  width:auto;
+  width:100px;
   padding: 5px 50px;
 }
 
@@ -86,7 +119,7 @@ nav a {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 100%;
+  /*width: 50%;*/
 }
 
 .lemenu .acti a:hover {
@@ -97,35 +130,16 @@ nav a {
   display:flex;
 }
 
-.lehead {
-  margin-left: auto;
-}
-
 
 /* vvv main vvv */
 
-.main {
-  display: flex;
-  flex-wrap: wrap;
-  flex: 3;
-  justify-content: space-around;
-  flex-direction: row;
-  padding: 20px;
-  margin-right: 35px;
-}
 
 
 .main figure:hover {
   cursor: pointer;
 }
 
-.main figure {
-  display: flex;
-  flex-flow: column;
-  flex: 0 0 350px;
-  align-items: center;
-  text-align: center;
-}
+
 
 .main figure img {
   object-fit: cover;
