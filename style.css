@@ -4,35 +4,26 @@ body {
   font-family: 'DM Sans', sans-serif;
   margin: 0px;
   font-weight: 200;
-  display: flex;
-  flex-wrap: wrap;
-  /*justify-content: space-around;*/
-  flex-direction: row;
-  flex: 3;
 }
 
+/* flex */
 header {
   display:flex;
   flex: 2;
-  /*flex: 1 1 50px;*/
   max-width: 60%;
 }
 nav {
   display:flex;
   padding: 5px 25px;
 }
-.nophoto {
-  flex: 1;
-  max-width: 150px;
-} 
-.main {
+
+.lesphoto {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  flex-direction: row;*/
-}
+  justify-content: space-between;
 
-.main figure {
+}
+main figure {
   display: flex;
   flex-flow: column;
   flex: 1 0 350px;
@@ -40,27 +31,22 @@ nav {
   text-align: center;
 }
 
-
-
-
+/* font */
 :root {
-  /*--blue: #0065FC; le bleu*/
   --bordeau: #D3573C;
   --claire: #DEEBFF;
   --gris: #F2F2F2;
 }
-
 a { 
   color: #000; 
 }
-
 h1 {
   font-size: 36px;
   line-height: 47px;
   margin: 0;
   font-weight: 200 !important;
+  color: var(--bordeau);
 }
-
 h2 {
   font-size: 36px;
   line-height: 47px;
@@ -68,80 +54,51 @@ h2 {
   margin: 0;
   color: var(--bordeau);
 }
-
-
 h3, h4, h5, h6, p { 
   margin: 0 !important;
 }
 
-li a {
-  outline: none;
-  text-decoration: none;
-}  
-
-li {
-  list-style: none;
-}
-
-/*header, section { 
-  max-width: 1800px;
-  margin: 0 auto !important; 
-  padding: 12px 35px;
-}*/
-
 /* vvv nav vvv */
-
-
-
-
 nav ul {
   margin:0;
   padding:0;
 }
-
 nav li{
   list-style:none;
 }
-
-
-
-.logo {
-  width:100px;
-  padding: 5px 50px;
-}
-
 nav a {
   text-decoration:none;
   padding: 10px 5px;
 }
-
+nav li a {
+  outline: none;
+  text-decoration: none;
+}  
+nav li {
+  list-style: none;
+}
 .lemenu {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /*width: 50%;*/
 }
-
 .lemenu .acti a:hover {
   border-top: 3px solid var(--blue);
 }
-
 .hebeacti {
   display:flex;
 }
 
-
 /* vvv main vvv */
-
-
-
-.main figure:hover {
+.nophoto {
+  position: absolute;
+  right: 50px;
+  top: 10px;
+} 
+main figure:hover {
   cursor: pointer;
 }
-
-
-
-.main figure img {
+main figure img {
   object-fit: cover;
   position: relative;
   overflow: hidden;
@@ -149,8 +106,7 @@ nav a {
   width: 200px;
   border-radius: 100px;
 }
-
-.main img {
+main img {
   height: auto;
   width: 100%;
   max-width: 100%;
