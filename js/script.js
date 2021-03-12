@@ -1,9 +1,9 @@
 var count = document.querySelector(".out");
 //const url = "https://choisirsontheme.com/formation/ocr/p6-fisheye/fisheyedatafr.json";
 //https://github.com/antoinelaly/p6-fisheye/blob/main/js/fisheyedatafr.json
+// 
 
-
-fetch('https://choisirsontheme.com/formation/ocr/p6-fisheye/fisheyedatafr.json')
+fetch('https://raw.githubusercontent.com/aZolo77/citiesBase/master/cities.json')
 .then(response => {
   return response.json();
 }).then(data => {
