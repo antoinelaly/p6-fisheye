@@ -1,6 +1,6 @@
 var count = document.querySelector(".out");
 
-fetch('https://choisirsontheme.com/formation/ocr/p6-fisheye-fetch/js/fisheyedatafr.json')
+fetch('https://raw.githubusercontent.com/aZolo77/citiesBase/master/cities.json')
 .then(response => {
   return response.json();
 }).then(data => {
