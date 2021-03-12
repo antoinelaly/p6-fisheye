@@ -1,6 +1,6 @@
 var count = document.querySelector(".out");
 
-fetch('https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Front-End+V2/P5+Javascript+%26+Accessibility/FishEyeDataFR.json')
+fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyename.json')
 .then(response => {
   return response.json();
 }).then(data => {
