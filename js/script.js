@@ -1,6 +1,6 @@
 var count = document.querySelector(".out");
-//const url = "https://raw.githubusercontent.com/aZolo77/citiesBase/master/cities.json";
-const url = "https://choisirsontheme.com/formation/ocr/p6-fisheye-fetch/js/fisheyedatafr.json";
+const url = "https://raw.githubusercontent.com/aZolo77/citiesBase/master/cities.json";
+//const url = "https://choisirsontheme.com/formation/ocr/p6-fisheye-fetch/js/fisheyedatafr.json";
 
 fetch(url)
 .then(response => {
