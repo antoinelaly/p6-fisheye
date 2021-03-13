@@ -7,6 +7,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyen
 }).then(data => {
 
   let out="";
+  let liens="";
   for(key in data){
     data[key].forEach(function (el){
       out+=`    
@@ -17,15 +18,19 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyen
         <div class="city">city${el.city}</div>
         <div class="brand">${el.tagline}</div>
         <div class="price">${el.price}€/jour</div>
-        <ul class="lestags">
+        <ul class="lestags">` 
+            liens+=`    
             <li class="petitsb"><a href="#">#${el.tags}</a></li>
-        </ul>
+            ` +
+            `</ul>
       </figcaption>
     </figure>   
       `
     })
   } 
  count.innerHTML = out;
+ lestags.innerHTML = liens;
+
 
 }).catch(err => {
   console.log('Fetch Error :-S', err);
