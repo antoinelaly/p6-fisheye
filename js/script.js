@@ -18,7 +18,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyen
         <div class="brand">${el.tagline}</div>
         <div class="price">${el.price}€/jour</div>
         <ul class="lestags">
-
+          <li class="petitsb"><a href="#">#${el.tags}</a></li>
         </ul>
       </figcaption>
     </figure>   
@@ -26,25 +26,6 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyen
     })
   } 
  count.innerHTML = out;
-}).catch(err => {
-  console.log('Fetch Error :-S', err);
-});
-
-var lestags = document.querySelector(".lestags");
-fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyename.json')
-.then(response => {
-  return response.json();
-}).then(data => {
-
-  let liens="";
-  for(key in data){
-    data[key].forEach(function (el){
-      liens+=`    
-          <li class="petitsb"><a href="#">#${el.tags}</a></li>
-      `
-    })
-  } 
-  lestags.innerHTML = liens;
 }).catch(err => {
   console.log('Fetch Error :-S', err);
 });
