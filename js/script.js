@@ -16,9 +16,9 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyen
         <div class="city">city${el.city}</div>
         <div class="brand">${el.tagline}</div>
         <div class="price">${el.price}€/jour</div>
-        <ul class="lestags">`
-        + `<li class="petitsb"><a href="#">#${el.tags}</a></li>` +
-        `</ul>
+        <ul class="lestags">
+          <li class="petitsb"><a href="#">#${el.tags}</a></li>
+        </ul>
       </figcaption>
     </figure>   
       `
