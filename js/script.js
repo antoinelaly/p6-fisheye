@@ -1,5 +1,5 @@
 var count = document.querySelector(".out");
-var lestags = document.querySelector(".lestags");
+
 
 fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyename.json')
 .then(response => {
@@ -27,6 +27,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyen
   } 
  count.innerHTML = out;
 
+ let lestags = document.querySelector(".lestags");
  let liens="";
  for(key in data){
    data[key].forEach(function (el){
