@@ -1,5 +1,5 @@
 var count = document.querySelector(".out");
-var lestags = document.querySelector(".lestags");
+
 
 fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyename.json')
 .then(response => {
@@ -30,6 +30,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyen
   console.log('Fetch Error :-S', err);
 });
 
+var lestags = document.querySelector(".lestags");
 fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyename.json')
 .then(response => {
   return response.json();
