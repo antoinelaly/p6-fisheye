@@ -1,7 +1,7 @@
 var count = document.querySelector(".out");
+//fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyename.json')
 
-
-fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyename.json')
+fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json')
 .then(response => {
   return response.json();
 }).then(data => {
