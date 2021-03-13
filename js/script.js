@@ -21,7 +21,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyen
         <ul class="lestags">` 
             liens+=`    
             <li class="petitsb"><a href="#">#${el.tags}</a></li>
-            ` 
+            ` +
             `</ul>
       </figcaption>
     </figure>   
