@@ -23,7 +23,6 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyen
     </figure>   
       `
     })
-
   } 
  count.innerHTML = out;
 }).catch(err => {
