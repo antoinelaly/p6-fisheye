@@ -1,15 +1,12 @@
 var count = document.querySelector(".out");
-//https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json
-//https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyename.json
 
-fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json')
+fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyename.json')
 .then(response => {
   return response.json();
 }).then(data => {
-  let 
+
   let out="";
   for(key in data){
-    if(key == "photographers") {
     data[key].forEach(function (el){
       out+=`    
       <figure>
@@ -27,7 +24,6 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       `
     })
   } 
-}
  count.innerHTML = out;
 
 }).catch(err => {
