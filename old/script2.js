@@ -3,6 +3,7 @@ var count = document.querySelector(".out");
 // const url = "https://choisirsontheme.com/formation/ocr/p6-fisheye-fetch/js/fisheyedatafr.json";
 //const url = "https://github.com/antoinelaly/p6-fisheye/blob/main/js/fisheyedatafr.json";
 //const url = "https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Front-End+V2/P5+Javascript+%26+Accessibility/FishEyeDataFR.json";
+//fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyename.json')
 const url = "https://choisirsontheme.com/formation/ocr/p6-fisheye-fetch/js/cities.json";
 
 fetch(url)
