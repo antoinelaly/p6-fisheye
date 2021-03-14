@@ -6,7 +6,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyen
 }).then(data => {
   var photographersArray = data.photographers;
   let out="";
-  for(key in data){
+  for(key in photographersArray){
     photographersArray[key].forEach(function (el){
       out+=`    
       <figure>
