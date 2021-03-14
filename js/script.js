@@ -14,7 +14,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         <a href="#"><img src="img/${el.illustration}" alt="${el.name}"></a>
         <figcaption>
           <h2><a href="#">${el.name}</a></h2>  
-          <div class="city">city${el.city}</div>
+          <div class="city">${el.city}</div>
           <div class="brand">${el.tagline}</div>
           <div class="price">${el.price}€/jour</div>
           <ul class="lestags">
