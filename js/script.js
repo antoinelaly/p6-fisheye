@@ -10,14 +10,14 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyen
     data[key].forEach(function (el){
       out+=`    
       <figure>
-      <a href="#"><img src="img/${el.photographers.portrait}" alt="${el.photographers.name}"></a>
+      <a href="#"><img src="img/${el.portrait}" alt="${el.name}"></a>
       <figcaption>
-        <h2><a href="#">${el.photographers.name}</a></h2>  
-        <div class="city">city${el.photographers.city}</div>
-        <div class="brand">${el.photographers.tagline}</div>
-        <div class="price">${el.photographers.price}€/jour</div>
+        <h2><a href="#">${el.name}</a></h2>  
+        <div class="city">city${el.city}</div>
+        <div class="brand">${el.tagline}</div>
+        <div class="price">${el.price}€/jour</div>
         <ul class="lestags">
-            <li class="petitsb"><a href="#">#${el.photographers.tags}</a></li>
+            <li class="petitsb"><a href="#">#${el.tags}</a></li>
         </ul>
       </figcaption>
     </figure>   
