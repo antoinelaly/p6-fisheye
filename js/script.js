@@ -4,9 +4,10 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyen
 .then(response => {
   return response.json();
 }).then(data => {
-
+  let 
   let out="";
   for(key in data){
+    if(key == "photographers") {
     data[key].forEach(function (el){
       out+=`    
       <figure>
@@ -24,6 +25,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyen
       `
     })
   } 
+}
  count.innerHTML = out;
 
 }).catch(err => {
