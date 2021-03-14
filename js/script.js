@@ -4,10 +4,10 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyen
 .then(response => {
   return response.json();
 }).then(data => {
-  //var photographersArray = data.photographers;
+  var photographersArray = data.photographers;
   let out="";
-  for(key in data.photographers){
-    photographers[key].forEach(function (el){
+  for(key in photographersArray){
+    data[key].forEach(function (el){
       out+=`    
       <figure>
       <a href="#"><img src="img/${el.portrait}" alt="${el.name}"></a>
