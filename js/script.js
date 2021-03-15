@@ -19,6 +19,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           <div class="price">${el.price}€/jour</div>
           <ul class="lestags">
               <li class="petitsb"><a href="#">#${el.tags}</a></li>
+              <li class="petitsb"><a href="#">#${el.tags}</a></li>
           </ul>
         </figcaption>
       </figure>   
