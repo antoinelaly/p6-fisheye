@@ -30,9 +30,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
  count.innerHTML = out;
 
  let photo="";
- let mimi = _.find(data, ["photographerId", "243"]);
  for(key in data){
-   if(key == mimi) {
+  if (key.match("photographerId"|"243")) {
      data[key].forEach(function (el){
       photo+=`    
        <figure>
