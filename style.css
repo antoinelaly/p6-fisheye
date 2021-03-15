@@ -162,3 +162,8 @@ main .petitsb a {
   font-size: 12px;
   font-weight: 500;
 }
+
+/* photos */
+.presentation {
+  display: flex;
+}
