@@ -34,10 +34,10 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
  //if (media.photographerId == 243) {
  for(key in data){
   if ( photographerId == 243) {
-     data[key].forEach(function (el){
+     data[key].forEach(function (ele){
       photo+=`    
        <figure>
-       <img src="img/${el.image}" alt="${el.name}">
+       <img src="img/${ele.image}" alt="${ele.name}">
      </figure>   
        `
      })
