@@ -6,7 +6,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   return response.json();
 }).then(data => {
 
-  /*let out="";
+  let out="";
   for(key in data){
     if(key == "photographers") {
       data[key].forEach(function (el){
@@ -27,7 +27,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       })
     } 
   } 
- count.innerHTML = out;*/
+ count.innerHTML = out;
 
  let photo="";
  let mimi = _.find(data, ["photographerId", "243"]);
