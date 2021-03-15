@@ -166,4 +166,5 @@ main .petitsb a {
 /* photos */
 .presentation {
   display: flex;
+  justify-content: space-between;
 }
