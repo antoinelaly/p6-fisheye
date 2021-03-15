@@ -1,4 +1,5 @@
 var count = document.querySelector(".out");
+var lesphotos = document.querySelector(".lesphotos");
 
 fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json')
 .then(response => {
@@ -27,6 +28,21 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     } 
   } 
  count.innerHTML = out;
+
+ let photo="";
+ for(key in data){
+   if(photographerId == 243) {
+     data[key].forEach(function (el){
+      photo+=`    
+       <figure>
+       <img src="img/${el.image}" alt="${el.name}">
+     </figure>   
+       `
+     })
+   } 
+ } 
+ lesphotos.innerHTML = photo;
+
 
 }).catch(err => {
   console.log('Fetch Error :-S', err);
