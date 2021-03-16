@@ -28,16 +28,17 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       })
     } 
     count.innerHTML = out;
-  } ;
+  }
 
-  let tag = data[i].tags;
-  for (let j = 0; j < tag.length; j++) {
+  for (key in data) {
+    data[key].forEach(function (el){
     let buttonWrap = document.createElement('li');
     buttonWrap.className = 'petitsb';
 
     let link = document.createElement('a');
-    link.innerHTML = tag[j].tags;
-    document.getElementsByClassName('lestags')[i].appendChild(buttonWrap).appendChild(link);
+    link.innerHTML = el.tags;
+    document.getElementsByClassName('lestags')[key].appendChild(buttonWrap).appendChild(link);
+    })
   };
 
  let photo="";
