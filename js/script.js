@@ -30,27 +30,15 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     count.innerHTML = out;
   } ;
 
-  let bTags="";
-  //let mimi = _.find(data, ["photographerId", "243"]);
-  //if (media.photographerId == 243) {
- for(key in data){
-   if (petitsb) {
-      data[key].forEach(function (ele){
-        bTags+=`    
-        <li class="petitsb"><a href="#">#${el.tags}</a></li>
-        `
-      })
-    } 
-  } 
-  petitsb.innerHTML = bTags;
+  let tag = data[i].tags;
+  for (let j = 0; j < tag.length; j++) {
+    let buttonWrap = document.createElement('li');
+    buttonWrap.className = 'petitsb';
 
- /*for(key in data){
-  if(media.photographerId.indexOf("243") !== -1){
-    console.log("La valeur existe!")
-  } else{
-    console.log("La valeur n'existe pas!!")
-  }
- };*/
+    let link = document.createElement('a');
+    link.innerHTML = tag[j].tags;
+    document.getElementsByClassName('lestags')[i].appendChild(buttonWrap).appendChild(link);
+  };
 
  let photo="";
  //let mimi = _.find(data, ["photographerId", "243"]);
