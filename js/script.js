@@ -8,6 +8,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 }).then(data => {
 
   let out="";
+  let lin="";
   for(key in data){
     if(count && key == "photographers") {
       data[key].forEach(function (el){
@@ -20,7 +21,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           <div class="brand">${el.tagline}</div>
           <div class="price">${el.price}€/jour</div>
           <ul class="lestags">`
-          out+=`<li class="petitsb"><a href="#">#${el.tags}</a></li>`
+          lin+=`<li class="petitsb"><a href="#">#${el.tags}</a></li>`
           out+=`</ul>
         </figcaption>
       </figure>   
