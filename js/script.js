@@ -8,7 +8,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
   let out="";
   for(key in data){
-    if(bob && key == "photographers") {
+    if(count && key == "photographers") {
       data[key].forEach(function (el){
         out+=`    
         <figure>
