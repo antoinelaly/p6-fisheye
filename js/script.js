@@ -1,5 +1,6 @@
 var count = document.querySelector(".out");
 var lesphotos = document.querySelector(".lesphotos");
+const body = document.querySelector("body");
 
 fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json')
 .then(response => {
@@ -8,7 +9,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
   let out="";
   for(key in data){
-    if(body.classList.contains(count)) {
+    if(body.classList.contains("out")) {
     if(key == "photographers") {
       data[key].forEach(function (el){
         out+=`    
