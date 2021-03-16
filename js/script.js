@@ -1,5 +1,6 @@
 var count = document.querySelector(".out");
 var lesphotos = document.querySelector(".lesphotos");
+var petitsb = document.querySelector(".petitsb");
 
 fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json')
 .then(response => {
@@ -19,7 +20,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           <div class="brand">${el.tagline}</div>
           <div class="price">${el.price}€/jour</div>
           <ul class="lestags">
-              <li class="petitsb"><a href="#">#${el.tags}</a></li>
+              
           </ul>
         </figcaption>
       </figure>   
@@ -29,14 +30,27 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     count.innerHTML = out;
   } ;
 
-
+  let bTags="";
+  //let mimi = _.find(data, ["photographerId", "243"]);
+  //if (media.photographerId == 243) {
  for(key in data){
+   if (petitsb) {
+      data[key].forEach(function (ele){
+        bTags+=`    
+        <li class="petitsb"><a href="#">#${el.tags}</a></li>
+        `
+      })
+    } 
+  } 
+  petitsb.innerHTML = bTags;
+
+ /*for(key in data){
   if(media.photographerId.indexOf("243") !== -1){
     console.log("La valeur existe!")
   } else{
     console.log("La valeur n'existe pas!!")
   }
- };
+ };*/
 
  let photo="";
  //let mimi = _.find(data, ["photographerId", "243"]);
