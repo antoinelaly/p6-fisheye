@@ -27,7 +27,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       })
     } 
   }
-  count.innerHTML = out;
+ 
 
   let med="";
   for(key in data){
@@ -39,6 +39,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         `
       })
   }
+  count.innerHTML = out;
   lesphotos.innerHTML = med;
 
 
