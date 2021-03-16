@@ -28,8 +28,6 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   }
   count.innerHTML = out;
 
-  const key = 'photographerId';
-console.log( data[key] );
 
 }).catch(err => {
   console.log('Fetch Error :-S', err);
