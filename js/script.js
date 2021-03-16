@@ -32,9 +32,9 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
  for(key in data){
   if(media.photographerId.indexOf("243") !== -1){
-    alert("La valeur existe!")
+    console.log("La valeur existe!")
   } else{
-    alert("La valeur n'existe pas!")
+    console.log("La valeur n'existe pas!!")
   }
  };
 
