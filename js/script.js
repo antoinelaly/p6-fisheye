@@ -31,13 +31,11 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
  count.innerHTML = out;
   }
 
-  
+  if(lesphotos) {
   let med="";
-  var data_filter = data.filter( element => element.photographerId == 243);
-
-  if(data_filter) {
-    for(key in data){
-        data[key].forEach(function (el){
+    for(key in data) {
+        data[key].forEach(function (el, index){
+          if(el['photographerId'] === 243)
           med+=`    
           <figure>
             <a href="#"><img src="img/${el.image}" alt="${el.name}"></a>
