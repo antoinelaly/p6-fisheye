@@ -26,6 +26,12 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         </figcaption>
       </figure>   
         `
+        let buttonWrap = document.createElement('li');
+        buttonWrap.className = 'petitsb';
+
+        let link = document.createElement('a');
+        link.innerHTML = el.tags;
+        document.getElementsByClassName('lestags')[key].appendChild(buttonWrap).appendChild(link);
         lin+=`<li class="petitsb"><a href="#">#${el.tags}</a></li>`
       })
     } 
