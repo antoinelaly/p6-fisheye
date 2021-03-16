@@ -38,7 +38,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
  let photo="";
  //let mimi = _.find(data, ["photographerId", "243"]);
  //if (media.photographerId == 243) {
- for(key in data){
+ /*for(key in data){
   if ( photographerId == 243) {
      data[key].forEach(function (ele){
       photo+=`    
@@ -48,7 +48,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
        `
      })
    } 
- } 
+ } */
  lesphotos.innerHTML = photo;
 
 
