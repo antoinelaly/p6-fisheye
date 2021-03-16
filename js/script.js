@@ -31,7 +31,6 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
   let med="";
   for(key in data){
-    if(key == "media") {
       data[key].forEach(function (el){
         med+=`    
         <figure>
@@ -39,7 +38,6 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         </figure>   
         `
       })
-    } 
   }
   lesphotos.innerHTML = med;
 
