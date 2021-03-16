@@ -39,9 +39,9 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         `
       })
   }
-  count.innerHTML = out;
-  lesphotos.innerHTML = med;
 
+  lesphotos.innerHTML = med;
+  count.innerHTML = out;
 
 }).catch(err => {
   console.log('Fetch Error :-S', err);
