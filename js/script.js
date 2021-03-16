@@ -25,30 +25,21 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         </figcaption>
       </figure>   
         `
-
-        let buttonWrap = document.createElement('li');
-        buttonWrap.className = 'petitsb';
-    
-        let link = document.createElement('a');
-        link.innerHTML = el.tags;
-        document.getElementsByClassName('lestags')[key].appendChild(buttonWrap).appendChild(link);
-
-        
       })
     } 
     count.innerHTML = out;
-  }
+  /*}
 
-  /*for (key in data) {
-    data[key].forEach(function (el){
+  for (key in data) {
+    data[key].forEach(function (el){*/
     let buttonWrap = document.createElement('li');
     buttonWrap.className = 'petitsb';
 
     let link = document.createElement('a');
     link.innerHTML = el.tags;
     document.getElementsByClassName('lestags')[key].appendChild(buttonWrap).appendChild(link);
-    })
-  };*/
+    /*})*/
+  };
 
  let photo="";
  //let mimi = _.find(data, ["photographerId", "243"]);
