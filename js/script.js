@@ -20,15 +20,17 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           <div class="city">${el.city}</div>
           <div class="brand">${el.tagline}</div>
           <div class="price">${el.price}€/jour</div>
-          <ul class="lestags">`
-          lin+=`<li class="petitsb"><a href="#">#${el.tags}</a></li>`
-          out+=`</ul>
+          <ul class="lestags">
+          
+          </ul>
         </figcaption>
       </figure>   
         `
       })
     } 
     count.innerHTML = out;
+
+    lin+=`<li class="petitsb"><a href="#">#${el.tags}</a></li>`
     lestags.innerHTML = lin;
   /*}
 
