@@ -8,6 +8,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 }).then(data => {
 
   let out="";
+  let lin="";
   for(key in data){
     if(count && key == "photographers") {
       data[key].forEach(function (el){
@@ -20,16 +21,50 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           <div class="brand">${el.tagline}</div>
           <div class="price">${el.price}€/jour</div>
           <ul class="lestags">
-          <li class="petitsb"><a href="#">#${el.tags}</a></li>
+          
           </ul>
         </figcaption>
       </figure>   
         `
+        let buttonWrap = document.createElement('li');
+        buttonWrap.className = 'petitsb';
+
+        let link = document.createElement('a');
+        link.innerHTML = el.tags;
+        document.getElementsByClassName('lestags')[key].appendChild(buttonWrap).appendChild(link);
+        lin+=`<li class="petitsb"><a href="#">#${el.tags}</a></li>`
       })
     } 
     count.innerHTML = out;
+    lestags.innerHTML = lin;
+  /*}
 
+  for (key in data) {
+    data[key].forEach(function (el){
+    let buttonWrap = document.createElement('li');
+    buttonWrap.className = 'petitsb';
+
+    let link = document.createElement('a');
+    link.innerHTML = el.tags;
+    document.getElementsByClassName('lestags')[key].appendChild(buttonWrap).appendChild(link);
+    })*/
   };
+
+ let photo="";
+ //let mimi = _.find(data, ["photographerId", "243"]);
+ //if (media.photographerId == 243) {
+for(key in data){
+  if (media.photographerId.indexOf("243")) {
+     data[key].forEach(function (ele){
+      photo+=`    
+       <figure>
+       <img src="img/${ele.image}" alt="${ele.name}">
+     </figure>   
+       `
+     })
+   } 
+ } 
+ lesphotos.innerHTML = photo;
 
 
 }).catch(err => {
