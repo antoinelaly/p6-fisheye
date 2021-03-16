@@ -31,11 +31,12 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
  count.innerHTML = out;
   }
 
-  if(lesphotos) {
+  
   let med="";
-  var data_filter = data.filter( element => element.photographerId == 243)
+  var data_filter = data.filter( element => element.photographerId == 243);
+
+  if(data_filter) {
     for(key in data){
-      if(data_filter) { 
         data[key].forEach(function (el){
           med+=`    
           <figure>
@@ -44,7 +45,6 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           `
         })
       }
-    }
     lesphotos.innerHTML = med;
   } 
 
