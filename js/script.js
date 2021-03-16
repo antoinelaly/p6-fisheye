@@ -29,21 +29,22 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     } 
   }
  count.innerHTML = out;
-}
-
-if(lesphotos) {
- let med="";
-  for(key in data){
-      data[key].forEach(function (el){
-        med+=`    
-        <figure>
-          <a href="#"><img src="img/${el.image}" alt="${el.name}"></a>
-        </figure>   
-        `
-      })
   }
-  lesphotos.innerHTML = med;
-} 
+
+  if(lesphotos) {
+  let med="";
+    for(key in data){
+      if(value == 243) {
+        data[key].forEach(function (el){
+          med+=`    
+          <figure>
+            <a href="#"><img src="img/${el.image}" alt="${el.name}"></a>
+          </figure>   
+          `
+        })
+    }
+    lesphotos.innerHTML = med;
+  } 
 
 }).catch(err => {
   console.log('Fetch Error :-S', err);
