@@ -1,6 +1,6 @@
 var count = document.querySelector(".out");
 var lesphotos = document.querySelector(".lesphotos");
-var petitsb = document.querySelector(".petitsb");
+var lestags = document.querySelector(".lestags");
 
 fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json')
 .then(response => {
@@ -29,6 +29,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       })
     } 
     count.innerHTML = out;
+    lestags.innerHTML = lin;
   /*}
 
   for (key in data) {
