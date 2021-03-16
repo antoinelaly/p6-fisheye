@@ -8,7 +8,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
   let out="";
   for(key in data){
-    if(key == "photographers") {
+    if(count === true && key == "photographers") {
       data[key].forEach(function (el){
         out+=`    
         <figure>
@@ -36,7 +36,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     alert("La valeur n'existe pas!")
   }
  };
- 
+
  let photo="";
  //let mimi = _.find(data, ["photographerId", "243"]);
  //if (media.photographerId == 243) {
