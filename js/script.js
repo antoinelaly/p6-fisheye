@@ -38,7 +38,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           if(el['photographerId'] === 243)
           med+=`    
           <figure>
-            <a href="#"><img src="img/${el.name}/${el.image}" alt="${el.name}"></a>
+            <a href="#"><img src="img/${el.photographerId}/${el.image}" alt="${el.name}"></a>
           </figure>   
           `
         })
