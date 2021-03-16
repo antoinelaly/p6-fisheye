@@ -29,6 +29,12 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   } 
  count.innerHTML = out;
 
+ if(photographerId.indexOf(243) !== -1){
+  alert("La valeur existe!")
+} else{
+  alert("La valeur n'existe pas!")
+}
+
  let photo="";
  //let mimi = _.find(data, ["photographerId", "243"]);
  //if (media.photographerId == 243) {
