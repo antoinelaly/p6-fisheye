@@ -8,7 +8,6 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 }).then(data => {
 
   let out="";
-  let lin="";
   for(key in data){
     if(count && key == "photographers") {
       data[key].forEach(function (el){
@@ -28,24 +27,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         `
       })
     } 
-    count.innerHTML = out;
-
-  };
-
- let photo="";
-for(key in data){
-  if (media.photographerId.indexOf("243")) {
-     data[key].forEach(function (ele){
-      photo+=`    
-       <figure>
-       <img src="img/${ele.image}" alt="${ele.name}">
-     </figure>   
-       `
-     })
-   } 
- } 
- lesphotos.innerHTML = photo;
-
+  }
+  count.innerHTML = out;
 
 }).catch(err => {
   console.log('Fetch Error :-S', err);
