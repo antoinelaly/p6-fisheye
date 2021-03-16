@@ -20,7 +20,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           <div class="brand">${el.tagline}</div>
           <div class="price">${el.price}€/jour</div>
           <ul class="lestags">
-              
+          <li class="petitsb"><a href="#">#${el.tags}</a></li>
           </ul>
         </figcaption>
       </figure>   
@@ -31,14 +31,14 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   /*}
 
   for (key in data) {
-    data[key].forEach(function (el){*/
+    data[key].forEach(function (el){
     let buttonWrap = document.createElement('li');
     buttonWrap.className = 'petitsb';
 
     let link = document.createElement('a');
     link.innerHTML = el.tags;
     document.getElementsByClassName('lestags')[key].appendChild(buttonWrap).appendChild(link);
-    /*})*/
+    })*/
   };
 
  let photo="";
