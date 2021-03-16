@@ -8,6 +8,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
   let out="";
   for(key in data){
+
     if(key == "photographers") {
       data[key].forEach(function (el){
         out+=`    
@@ -26,11 +27,20 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         `
       })
     } 
+    if(key == "media") {
+      data[key].forEach(function (el){
+        out+=`    
+        <figure>
+          <a href="#"><img src="img/${el.image}" alt="${el.name}"></a>
+        </figure>   
+        `
+      })
+    }
   }
- 
+  count.innerHTML = out;
 
-  let med="";
-  for(key in data){
+  
+  /*for(key in data){
       data[key].forEach(function (el){
         med+=`    
         <figure>
@@ -39,9 +49,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         `
       })
   }
-
-  lesphotos.innerHTML = med;
-  count.innerHTML = out;
+  lesphotos.innerHTML = med;*/
+ 
 
 }).catch(err => {
   console.log('Fetch Error :-S', err);
