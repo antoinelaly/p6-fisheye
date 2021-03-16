@@ -26,11 +26,10 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         </figcaption>
       </figure>   
         `
+        lin+=`<li class="petitsb"><a href="#">#${el.tags}</a></li>`
       })
     } 
     count.innerHTML = out;
-
-    lin+=`<li class="petitsb"><a href="#">#${el.tags}</a></li>`
     lestags.innerHTML = lin;
   /*}
 
