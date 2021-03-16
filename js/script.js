@@ -34,7 +34,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   if(lesphotos) {
   let med="";
     for(key in data){
-      if(photographerId == 243) {
+      if(key == "media") {
         data[key].forEach(function (el){
           med+=`    
           <figure>
