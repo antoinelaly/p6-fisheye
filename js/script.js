@@ -27,7 +27,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       })
     } 
     count.innerHTML = out;
-  } 
+  } ;
 
 
  for(key in data){
