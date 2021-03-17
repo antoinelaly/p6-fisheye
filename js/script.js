@@ -9,8 +9,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   if(count) {
   let out="";
   for(key in data){
-    if(key == "photographers") {
-      data[key].forEach(function (el){
+    //if(key == "photographers") {
+      data["photographers"].forEach(function (el){
         out+=`    
         <figure>
         <a href="#"><img src="img/${el.illustration}" alt="${el.name}"></a>
@@ -26,7 +26,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       </figure>   
         `
       })
-    } 
+    //} 
   }
  count.innerHTML = out;
   }
