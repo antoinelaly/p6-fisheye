@@ -6,7 +6,7 @@ body {
   font-weight: 200;
 }
 
-/* flex */
+/* header */
 header {
   display:flex;
   max-width: 78%;
@@ -59,22 +59,7 @@ h2 a {
 h3, h4, h5, h6, p { 
   margin: 0 !important;
 }
-figcaption .city {
-  font-size: 13px;
-  line-height: 17px;
-  color: #D3573C;
-  font-weight: 400;
-}
-figcaption .brand {
-  font-size: 13px;
-  line-height: 17px;
-  font-weight: 400;
-}
-figcaption .price {
-  font-size: 9px;
-  line-height: 12px;
-  color: #757575;
-}
+
 /* vvv nav vvv */
 h3.boutontop {
   font-size: 18px;
@@ -131,7 +116,7 @@ nav .petitsb a {
   font-weight: 500;
 }
 
-/* vvv main vvv */
+/* vvv photographes vvv */
 main {
   padding-top: 60px;
 }
@@ -165,8 +150,24 @@ main {
   font-size: 12px;
   font-weight: 500;
 }
+figcaption .city {
+  font-size: 13px;
+  line-height: 17px;
+  color: #D3573C;
+  font-weight: 400;
+}
+figcaption .brand {
+  font-size: 13px;
+  line-height: 17px;
+  font-weight: 400;
+}
+figcaption .price {
+  font-size: 9px;
+  line-height: 12px;
+  color: #757575;
+}
 
-/* photographes */
+/* galeries */
 .presentation {
   display: flex;
   justify-content: space-around;
