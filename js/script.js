@@ -45,9 +45,10 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           </figcaption>
           </figure>   
           `
+          med.reverse();
         })
       }     
-    lesphotos.innerHTML = med.reverse();
+    lesphotos.innerHTML = med;
     
   } 
 
