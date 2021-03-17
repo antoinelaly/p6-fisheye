@@ -21,12 +21,12 @@ nav {
   padding: 5px 25px;
   margin-left: 20px;
 }
-.lesphoto {
+.photographes {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-main figure {
+photographes figure {
   display: flex;
   flex-flow: column;
   flex: 1 0 350px;
@@ -140,7 +140,7 @@ main {
   right: 100px;
   top: 58px;
 } 
-main figure img {
+.photographes figure img {
   object-fit: cover;
   position: relative;
   overflow: hidden;
@@ -148,29 +148,33 @@ main figure img {
   width: 200px;
   border-radius: 100px;
 }
-main img {
+.photographes img {
   height: auto;
   width: 100%;
   max-width: 100%;
   vertical-align: middle;
 }
-main .petitsb {
+.photographes .petitsb {
   border: 0.5px solid #C4C4C4;
   border-radius: 11px;
   margin: 2px;
   padding: 1px 4px 3px 4px;
 }
-main .petitsb a {
+.photographes .petitsb a {
   color: #D3573C;
   font-size: 12px;
   font-weight: 500;
 }
 
-/* photographes */
+/* galeries */
 .presentation {
   display: flex;
   justify-content: space-around;
 }
 .lespetitsb {
   display: flex;
+}
+
+.galerie figure img {
+
 }
