@@ -39,6 +39,10 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           med+=`    
           <figure>
             <a href="#"><img src="img/${el.photographerId}/${el.image}" alt="${el.name}"></a>
+            <figcaption> 
+            <div class="city">${el.price}€</div>
+            <div class="brand">${el.likes}</div>
+          </figcaption>
           </figure>   
           `
         })

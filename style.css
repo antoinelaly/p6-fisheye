@@ -200,8 +200,9 @@ figcaption .price {
   object-fit: cover;
   position: relative;
   overflow: hidden;
-  height: 200px;
-  width: 200px;
+  height: 300px;
+  width: 350px;
+  border-radius: 5px;
 }
 .lesphotos img {
   height: auto;
