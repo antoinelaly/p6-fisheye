@@ -166,7 +166,7 @@ main {
   font-weight: 500;
 }
 
-/* galeries */
+/* lesphotos */
 .presentation {
   display: flex;
   justify-content: space-around;
@@ -175,14 +175,14 @@ main {
   display: flex;
 }
 
-.galerie figure img {
+.galelesphotosrie figure img {
   object-fit: cover;
   position: relative;
   overflow: hidden;
   height: 200px;
   width: 200px;
 }
-.galerie figure {
+.lesphotos figure {
   display: flex;
   flex-flow: column;
   flex: 1 0 350px;
