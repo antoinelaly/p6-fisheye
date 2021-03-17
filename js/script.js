@@ -31,7 +31,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
  count.innerHTML = out;
   }
 
-  function custom_sort(a, b) {
+  function date_sort(a, b) {
     return new Date(a.date).getTime() - new Date(b.date).getTime();
 }
 
@@ -51,7 +51,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           `
         })
       }     
-      med.sort(custom_sort)
+      
     lesphotos.innerHTML = med;
 
   } 
