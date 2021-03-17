@@ -5,6 +5,11 @@ body {
   margin: 0px;
   font-weight: 200;
 }
+header, main, footer {
+  max-width: 1800px;
+  margin: 0 auto !important;
+  padding: 12px 35px;
+}
 
 /* header */
 header {
