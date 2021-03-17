@@ -211,3 +211,6 @@ figcaption .price {
   max-width: 100%;
   vertical-align: middle;
 }
+.lesphotos .figcaption {
+  display: flex;
+}
