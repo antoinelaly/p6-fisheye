@@ -51,7 +51,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           `
         })
       }     
-    lesphotos.innerHTML = med.sort(custom_sort);
+      med.sort(custom_sort)
+    lesphotos.innerHTML = med;
 
   } 
 
