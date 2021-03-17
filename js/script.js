@@ -34,7 +34,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   if(lesphotos) {
   let med="";
     for(key in data) {
-        data[key].forEach(function (el, index){
+        data[key].forEach.reverse()(function (el, index){
           if(el['photographerId'] === 243)
           med+=`    
           <figure>
@@ -45,7 +45,6 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           </figcaption>
           </figure>   
           `
-          med.reverse();
         })
       }     
     lesphotos.innerHTML = med;
