@@ -175,6 +175,14 @@ figcaption .price {
 .lespetitsb {
   display: flex;
 }
+.portrait figure img {
+  object-fit: cover;
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+}
 .lesphotos {
   display: flex;
   flex-wrap: wrap;
