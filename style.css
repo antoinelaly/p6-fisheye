@@ -21,19 +21,6 @@ nav {
   padding: 5px 25px;
   margin-left: 20px;
 }
-.photographes {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-.photographes figure {
-  display: flex;
-  flex-flow: column;
-  flex: 1 0 350px;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 10px !important;
-}
 
 /* font */
 a { 
@@ -125,6 +112,19 @@ main {
   right: 100px;
   top: 58px;
 } 
+.photographes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.photographes figure {
+  display: flex;
+  flex-flow: column;
+  flex: 1 0 350px;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 10px !important;
+}
 .photographes figure img {
   object-fit: cover;
   position: relative;
@@ -175,7 +175,29 @@ figcaption .price {
 .lespetitsb {
   display: flex;
 }
-
+.lesphotos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.lesphotos figure {
+  display: flex;
+  flex-flow: column;
+  flex: 1 0 350px;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 10px !important;
+}
 .lesphotos figure img {
-
+  object-fit: cover;
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  width: 200px;
+}
+.lesphotos img {
+  height: auto;
+  width: 100%;
+  max-width: 100%;
+  vertical-align: middle;
 }
