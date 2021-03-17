@@ -36,6 +36,9 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     for(key in data) {
         data[key].forEach(function (el, index){
           if(el['photographerId'] === 243)
+          el.sort((a,b) => {
+            return new Date(a.date) - new Date(b.date);
+          })
           med+=`    
           <figure>
             <a href="#"><img src="img/${el.photographerId}/${el.image}" alt="${el.name}"></a>
@@ -48,7 +51,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         })
       }     
     lesphotos.innerHTML = med;
-    //med.reverse();
+
   } 
 
 }).catch(err => {
