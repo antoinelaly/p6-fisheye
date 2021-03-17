@@ -176,5 +176,17 @@ main {
 }
 
 .galerie figure img {
-
+  object-fit: cover;
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  width: 200px;
+}
+.galerie figure {
+  display: flex;
+  flex-flow: column;
+  flex: 1 0 350px;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 10px !important;
 }
