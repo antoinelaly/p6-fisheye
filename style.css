@@ -166,7 +166,7 @@ main {
   font-weight: 500;
 }
 
-/* lesphotos */
+/* photographes */
 .presentation {
   display: flex;
   justify-content: space-around;
@@ -175,18 +175,6 @@ main {
   display: flex;
 }
 
-.galelesphotosrie figure img {
-  object-fit: cover;
-  position: relative;
-  overflow: hidden;
-  height: 200px;
-  width: 200px;
-}
-.lesphotos figure {
-  display: flex;
-  flex-flow: column;
-  flex: 1 0 350px;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 10px !important;
+.lesphotos figure img {
+
 }
