@@ -16,7 +16,6 @@ header {
   display:flex;
   max-width: 78%;
   margin-top: 15px;
-  justify-content: center;
 }
 header.photographes {
   max-width: 28%;
