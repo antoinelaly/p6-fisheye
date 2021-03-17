@@ -17,9 +17,6 @@ header {
   max-width: 78%;
   margin-top: 15px;
 }
-header.photographes {
-  max-width: 28%;
-}
 nav {
   display:flex;
   padding: 5px 25px;
