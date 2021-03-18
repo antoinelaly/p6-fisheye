@@ -12,15 +12,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     //if(key == "photographers") {
       data["photographers"].forEach(function (el){
         out += "<figure>";
-        out += "<a href=\"https://antoinelaly.github.io/p6-fisheye/\"" + el.id + "\"><img src=\"img/\"" + el.illustration + "\" alt=\"" + el.name + "\"></a>" ;
         out += "<figcaption>";
-        out += "<h2><a href=\"https://antoinelaly.github.io/p6-fisheye/\"" + el.id + "\">" + el.name + "</a></h2>";
-        out += "<div class=\"city\">" + el.city + "</div>";
-        out += "<div class=\"brand\">" + el.tagline + "</div>";
-        out += "<div class=\"price\">" + el.price + "€/jour </div>";
-        out += "<ul class=\"lestags\">";
-        out += "<li class=\"petitsb\"><a href=\"#\">" + [el.tags] + "</a></li>";
-        out += "</ul>";
+        out += "<div>" + el.city + "</div>";
         out += "</figcaption>";
         out += "</figure>";
       })
