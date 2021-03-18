@@ -16,9 +16,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   for(key in data){
       data["photographers"].forEach(function (el){
 
-        let li = createNode("li"),
-        ul = createNode("ul"),
-        figure = createNode("figure"),
+        let figure = createNode("figure"),
         figcaption = createNode("figcaption");
         (img = createNode("img")),
         (h2 = createNode("h2")),
@@ -32,16 +30,18 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
         let menu = el.tags;
         for (let j = 0; j < menu.length; j++) {
+          let li = createNode("li"),
+          ul = createNode("ul");
           li.className = "petitsb"; 
           li.innerHTML = `${menu}`;
+          append(figcaption, ul);
+          append(ul, li);
         };
 
         append(figure, img);
         append(figure, figcaption);
         append(figcaption, h2);
         append(figcaption, p);
-        append(figcaption, ul);
-        append(ul, li);
         append(home, figure);
       })
     }
