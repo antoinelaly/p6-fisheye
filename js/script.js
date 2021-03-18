@@ -11,11 +11,11 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   for(key in data){
     //if(key == "photographers") {
       data["photographers"].forEach(function (el){
-        out += "<figure>";
-        out += "<figcaption>";
-        out += "<div>" + el.city + "</div>";
-        out += "</figcaption>";
-        out += "</figure>";
+        out += `<figure>`;
+        out += `<figcaption>`;
+        out += `<div>${el.city}</div>`;
+        out += `</figcaption>`;
+        out += `</figure>`;
       })
     }
     count.append(out);
