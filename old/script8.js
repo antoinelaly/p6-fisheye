@@ -16,17 +16,17 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   for(key in data){
       data["photographers"].forEach(function (el){
 
-        let figure = createNode("figure"),
-        figcaption = createNode("figcaption");
-        (img = createNode("img")),
-        (h2 = createNode("h2")),
-        (span = createNode("span"));
-        address = createNode("address");
-        a = createNode("a");
-        aImg = createNode("a");
-        h2.innerHTML = `${el.name}`;
-        append(figure, figcaption);
-        append(figcaption, h2);
+        let
+
+        var figure = document.createElement("figure");
+        var figcaption = document.createElement("figcaption");
+        figure.appendChild(figcaption);
+        var cityDiv = document.createElement("div");
+        figcaption.appendChild(cityDiv);
+        var city = document.createTextNode(city[key]);
+        cityDiv.appendChild(city);
+
+        home.appendChild(figure);
       })
     }
 
