@@ -15,7 +15,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         figure.appendChild(figcaption);
         var cityDiv = document.createElement("div");
         figcaption.appendChild(cityDiv);
-        var city = document.createTextNode(data[city]);
+        var city = document.createTextNode(el[city]);
         cityDiv.appendChild(city);
 
         home.appendChild(figure);
