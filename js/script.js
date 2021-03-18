@@ -1,4 +1,4 @@
-var count = document.querySelector(".out");
+var home = document.querySelector(".out");
 var lesphotos = document.querySelector(".lesphotos");
 
 fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json')
@@ -6,7 +6,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   return response.json();
 }).then(data => {
 
-  if(count) {
+  if(home) {
   let out="";
   for(key in data){
     //if(key == "photographers") {
@@ -18,8 +18,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         out += `</figure>`;
       })
     }
-    count.innerHTML = "";
-    count.appendChild(out);
+    out.innerHTML = "";
+    home.appendChild(out);
   }
 
   function date_sort(a, b) {
