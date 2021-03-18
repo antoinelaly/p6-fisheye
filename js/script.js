@@ -27,6 +27,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         h2.innerHTML = `${el.name}`;
         append(figure, figcaption);
         append(figcaption, h2);
+        append(home, figure);
       })
     }
 
