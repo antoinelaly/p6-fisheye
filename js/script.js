@@ -20,15 +20,17 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         figcaption = createNode("figcaption");
         (img = createNode("img")),
         (h2 = createNode("h2")),
-        (span = createNode("span"));
+        (p = createNode("p"));
         address = createNode("address");
         a = createNode("a");
         aImg = createNode("a");
         h2.innerHTML = `${el.name}`;
         img.src = `img/${el.illustration}`;
+        p.innerHTML = `${el.city} ${el.tagline} ${el.price}€/jour`;
         append(figure, img);
         append(figure, figcaption);
         append(figcaption, h2);
+        append(figcaption, p);
         append(home, figure);
       })
     }
