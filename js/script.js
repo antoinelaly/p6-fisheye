@@ -29,14 +29,6 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         img.src = `img/${el.illustration}`;
         p.innerHTML = `${el.city} <br>${el.tagline} <br>${el.price}€/jour`;
 
-        let menu = el.tags;
-        for (let j = 0; j < menu.length; j++) {
-          let li = createNode("li");
-          li.className = "petitsb"; 
-          li.innerHTML = `${menu}`;
-          
-          append(ul, li);
-        };
 
         append(figure, img);
         append(figure, figcaption);
@@ -45,6 +37,14 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         append(figcaption, ul);
         append(home, figure);
       })
+      let menu = el.tags;
+      for (let j = 0; j < menu.length; j++) {
+        let li = createNode("li");
+        li.className = "petitsb"; 
+        li.innerHTML = `${el.tags}`;
+        
+        append(ul, li);
+      };
     }
 
     
