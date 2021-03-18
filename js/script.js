@@ -30,7 +30,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         img.src = `img/${el.illustration}`;
         p.innerHTML = `${el.city} <br>${el.tagline} <br>${el.price}€/jour`;
         li.className = "petitsb"; 
-        li.innerHTML = `${el.tags}`;
+        li.innerHTML = `${el[data].tags}`;
         append(figure, img);
         append(figure, figcaption);
         append(figcaption, h2);
