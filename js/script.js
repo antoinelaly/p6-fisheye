@@ -7,24 +7,27 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 }).then(data => {
 
   if(home) {
-  let out="";
   for(key in data){
-    //if(key == "photographers") {
       data["photographers"].forEach(function (el){
-        out += `<figure>`;
-        out += `<figcaption>`;
-        out += `<div>${el.city}</div>`;
-        out += `</figcaption>`;
-        out += `</figure>`;
+        var figure = document.createElement("figure");
+
+        var figcaption = document.createElement("figcaption");
+        figure.appendChild(figcaption);
+        var cityDiv = document.createElement("div");
+        figcaption.appendChild(cityDiv);
+        var city = document.createTextNode(city[key]);
+        cityDiv.appendChild(city);
+
+        home.appendChild(figure);
       })
     }
-    out.innerHTML = "";
-    home.appendChild(out);
+
+    
   }
 
-  function date_sort(a, b) {
+/* function date_sort(a, b) {
     return new Date(a.date).getTime() - new Date(b.date).getTime();
-}
+}*/
 
   if(lesphotos) {
   let med="";
