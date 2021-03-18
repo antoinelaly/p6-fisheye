@@ -18,7 +18,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         out += `</figure>`;
       })
     }
-    count.append(out);
+    count.appendChild(out);
   }
 
   function date_sort(a, b) {
