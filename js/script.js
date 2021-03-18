@@ -10,12 +10,11 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   for(key in data){
       data["photographers"].forEach(function (el){
         var figure = document.createElement("figure");
-
         var figcaption = document.createElement("figcaption");
         figure.appendChild(figcaption);
         var cityDiv = document.createElement("div");
         figcaption.appendChild(cityDiv);
-        var city = document.createTextNode(city[el]);
+        var city = document.createTextNode(el[city]);
         cityDiv.appendChild(city);
 
         home.appendChild(figure);
