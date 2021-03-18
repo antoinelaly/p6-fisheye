@@ -33,7 +33,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         let menu = el.tags;
         for (let j = 0; j < menu.length; j++) {
           li.className = "petitsb"; 
-          li.innerHTML = `${el.tags}`;
+          li.innerHTML = `${menu}`;
         };
 
         append(figure, img);
