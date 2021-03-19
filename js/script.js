@@ -1,3 +1,15 @@
+window.onload = function() {
+  try {
+    var url_string = (window.location.href).toLowerCase();
+    var url = new URL(url_string);
+    var q = url.searchParams.get("q");
+    return q;
+  } catch (err) {
+    console.log("Issues with Parsing URL Parameter's - " + err);
+  }
+}
+
+
 var home = document.querySelector(".out");
 var lesphotos = document.querySelector(".lesphotos");
 function createNode(element) {

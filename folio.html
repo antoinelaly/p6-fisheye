@@ -1,9 +1,3 @@
-<script>
-  let params = new URLSearchParams(queryString);
-let q = parseInt(params.get("q"));
-return q;
-</script>
-
 <!DOCTYPE html>
 <html lang="fr" >
 <head>
@@ -16,6 +10,11 @@ return q;
 
 </head>
 <body>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+  let q = parseInt(params.get("q"));
+  return q;
+  </script>
 <header class="photographes">
   <div class="logo lehead">
     <img src="img/logo.svg" alt="Fisheye Home page">
