@@ -26,8 +26,10 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         a = createNode("a");
         aImg = createNode("a");
         h2.innerHTML = `${el.name}`;
+        aImg.href = `folio?id=${el.id}`;
         img.src = `img/${el.illustration}`;
         p.innerHTML = `${el.city} <br>${el.tagline} <br>${el.price}€/jour`;
+        ul.setAttribute("aria-label", "Secondary navigation");
 
         for (let j = 0; j < el.tags.length; j++) {
           let liTags = createNode("li");
@@ -36,7 +38,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           append(ul, liTags);
         }
 
-        append(figure, img);
+        append(figure, aImg);
+        append(aImg, img);
         append(figure, figcaption);
         append(figcaption, h2);
         append(figcaption, p);
@@ -56,7 +59,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   let med="";
     for(key in data) {
         data[key].forEach(function (el, index){
-          if(el['photographerId'] === 243)
+          if(el['photographerId'] === id)
           
           med+=`    
           <figure>
