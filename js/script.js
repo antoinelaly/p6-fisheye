@@ -31,10 +31,10 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
         let menu = el.tags;
         for (let j = 0; j < menu.length; j++) {
-          let li = createNode("li");
-          li.className = "petitsb"; 
-          li.innerHTML = menu.j;
-          append(ul, li);
+          let liTags = createNode("li");
+          liTags.className = "petitsb"; 
+          liTags.innerHTML = el.tags[j];
+          append(ul, liTags);
         }
 
         append(figure, img);
