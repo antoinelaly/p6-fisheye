@@ -26,7 +26,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         a = createNode("a");
         aImg = createNode("a");
         h2.innerHTML = `${el.name}`;
-        aImg.href = `folio?id=${el.id}`;
+        aImg.href = `folio?q=${el.id}`;
         img.src = `img/${el.illustration}`;
         p.innerHTML = `${el.city} <br>${el.tagline} <br>${el.price}€/jour`;
         ul.setAttribute("aria-label", "Secondary navigation");
@@ -54,12 +54,14 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 /* function date_sort(a, b) {
     return new Date(a.date).getTime() - new Date(b.date).getTime();
 }*/
+// 243
+
 
   if(lesphotos) {
   let med="";
     for(key in data) {
         data[key].forEach(function (el, index){
-          if(el['photographerId'] === id)
+          if(el['photographerId'] === q)
           
           med+=`    
           <figure>
