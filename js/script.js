@@ -58,13 +58,13 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   let searchParams = new URLSearchParams(window.location.search);
 
   if(searchParams.has('id')) {
-    let folioId = searchParams.get('id');
+    var folioId = searchParams.get('id');
     //console.log(folioId);
 
   let med="";
     for(key in data) {
         data[key].forEach(function (el){
-          if(el['photographerId'] === 243)
+          if(el['photographerId'] === folioId)
           
           med+=`    
           <figure>
