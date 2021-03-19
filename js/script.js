@@ -30,7 +30,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         p.innerHTML = `${el.city} <br>${el.tagline} <br>${el.price}€/jour`;
         let li = createNode("li");
         li.className = "petitsb"; 
-        li.innerHTML = el.tags;
+        li[el.tags].innerHTML = el.tags;
 
         /*let menu = el.tags;
         for (let j = 0; j < menu.length; j++) {
