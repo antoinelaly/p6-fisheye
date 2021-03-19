@@ -63,8 +63,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
   let med="";
     for(key in data) {
-        data[key].forEach(function (el, q){
-          if(el['photographerId'] === q)
+        data[key].forEach(function (el){
+          if(el['photographerId'] === id)
           
           med+=`    
           <figure>
