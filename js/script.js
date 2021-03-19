@@ -1,14 +1,3 @@
-window.onload = function() {
-  try {
-    var url_string = (window.location.href).toLowerCase();
-    var url = new URL(url_string);
-    var q = url.searchParams.get("q");
-    return q;
-  } catch (err) {
-    console.log("Issues with Parsing URL Parameter's - " + err);
-  }
-}
-
 
 var home = document.querySelector(".out");
 var lesphotos = document.querySelector(".lesphotos");
@@ -18,6 +7,9 @@ function createNode(element) {
 function append(parent, el) {
 	return parent.appendChild(el);
 }
+
+window.addEventListener('load', () => {
+
 
 fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json')
 .then(response => {
@@ -38,7 +30,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         a = createNode("a");
         aImg = createNode("a");
         h2.innerHTML = `${el.name}`;
-        aImg.href = `folio?q=${el.id}`;
+        aImg.href = `folio?id=${el.id}`;
         img.src = `img/${el.illustration}`;
         p.innerHTML = `${el.city} <br>${el.tagline} <br>${el.price}€/jour`;
         ul.setAttribute("aria-label", "Secondary navigation");
@@ -63,13 +55,12 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     
   }
 
-/* function date_sort(a, b) {
-    return new Date(a.date).getTime() - new Date(b.date).getTime();
-}*/
-// 243
+  let searchParams = new URLSearchParams(window.location.search);
 
+  if(searchParams.has('id')) {
+    let folioId = searchParams.get('id');
+    console.log(folioId);
 
-  if(lesphotos) {
   let med="";
     for(key in data) {
         data[key].forEach(function (el, q){
@@ -87,9 +78,12 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         })
       }     
     lesphotos.innerHTML = med;
+  }     else {
+      //window.location.pathname = 'folio';
+  }
 
-  } 
 
 }).catch(err => {
   console.log('Fetch Error :-S', err);
+});
 });
