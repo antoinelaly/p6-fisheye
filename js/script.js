@@ -25,7 +25,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         address = createNode("address");
         a = createNode("a");
         aImg = createNode("a");
-        h2.innerHTML = `${el.name}`;
+        h2.innerHTML = el.name;
         img.src = `img/${el.illustration}`;
         p.innerHTML = `${el.city} <br>${el.tagline} <br>${el.price}€/jour`;
 
