@@ -52,7 +52,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         append(home, figure);
       })
     }
-  }
+  };
 
   var searchParams = new URLSearchParams(window.location.search);
 
@@ -62,8 +62,13 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
   let med="";
     for(key in data) {
-        data["media"].forEach(function (el, index){
+        data["media"].forEach(function (el){
           if(el['photographerId'] === folioIdNum) {
+
+            /*let figure = createNode("figure"),
+            figcaption = createNode("figcaption");
+            (img = createNode("img")),*/
+
             med+=`    
           <figure>
             <a href="#"><img src="img/${el.photographerId}/${el.image}" alt="${el.name}"></a>
@@ -74,7 +79,6 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           </figure>   
           `
           }
-          
         })
       }     
     lesphotos.innerHTML = med;
