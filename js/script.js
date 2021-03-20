@@ -1,6 +1,7 @@
 
 var home = document.querySelector(".out");
 var lesphotos = document.querySelector(".lesphotos");
+
 function createNode(element) {
 	return document.createElement(element);
 }
