@@ -66,10 +66,10 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     for(key in data) {
         data["media"].forEach(function (el){
           //var folioId = searchParams.get('id');
-          if(el['photographerId'] === 243)
+          if(el['photographerId'] === folioId)
           console.log(folioGallery);
           let folioId = searchParams.get('id');
-          let folioGallery = data[folioId];
+          //let folioGallery = data[folioId];
           med+=`    
           <figure>
             <a href="#"><img src="img/${el.photographerId}/${el.image}" alt="${el.name}"></a>
