@@ -121,7 +121,7 @@ main {
 .photographes figure {
   display: flex;
   flex-flow: column;
-  flex: 1 0 350px;
+  flex: 1 0 300px;
   align-items: center;
   text-align: center;
   margin-bottom: 10px !important;
