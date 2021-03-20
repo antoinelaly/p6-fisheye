@@ -65,9 +65,9 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   let med="";
     for(key in data) {
         data["media"].forEach(function (el){
-          //var folioId = searchParams.get('id');
-          if(el['photographerId'] === 243)
-          //console.log(folioGallery);
+          if(el['photographerId'] === 243 && folioId)
+          let folioId = searchParams.get('id');
+          console.log(folioId);
           //let folioId = searchParams.get('id');
           //let folioGallery = data[folioId];
           med+=`    
