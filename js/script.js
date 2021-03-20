@@ -51,10 +51,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         append(home, figure);
       })
     }
-
-    
   }
-
+/*
   var searchParams = new URLSearchParams(window.location.search);
 
   if(searchParams.has('id')) {
@@ -79,7 +77,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     lesphotos.innerHTML = med;
   }     else {
       //window.location.pathname = 'folio';
-  }
+  }*/
 
 
 }).catch(err => {
