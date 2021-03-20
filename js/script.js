@@ -59,7 +59,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
   if(searchParams.has('id')) {
     const folioId = searchParams.get('id');
-
+    console.log(folioId);
   let med="";
     for(key in data) {
         data["media"].forEach(function (el, index){
