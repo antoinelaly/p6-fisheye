@@ -66,7 +66,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     for(key in data) {
         data[key].forEach(function (el){
           if(el['photographerId'] === folioId)
-          //console.log(folioId);
+          console.log(folioId);
           med+=`    
           <figure>
             <a href="#"><img src="img/${el.photographerId}/${el.image}" alt="${el.name}"></a>
