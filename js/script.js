@@ -2,6 +2,7 @@
 var home = document.querySelector(".out");
 var lesphotos = document.querySelector(".lesphotos");
 
+
 function createNode(element) {
 	return document.createElement(element);
 }
@@ -59,13 +60,40 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     var folioIdNum = parseInt(folioId);
 
   let med="";
-    /*for(key in data) {*/
         data["media"].forEach(function (el){
           if(el['photographerId'] === folioIdNum) {
 
-            /*let figure = createNode("figure"),
-            figcaption = createNode("figcaption");
-            (img = createNode("img")),*/
+          /*
+        let ul = createNode("ul"),
+        figure = createNode("figure"),
+        figcaption = createNode("figcaption");
+        (img = createNode("img")),
+        (h1 = createNode("h1")),
+        (p = createNode("p"));
+        a = createNode("a");
+        aImg = createNode("a");
+        h1.innerHTML = `${el.name}`;
+        aImg.href = `folio?id=${el.id}`;
+        img.src = `img/${el.illustration}`;
+        p.innerHTML = `${el.city} <br>${el.tagline} <br>${el.price}€/jour`;
+        ul.setAttribute("aria-label", "Secondary navigation");
+
+        for (let j = 0; j < el.tags.length; j++) {
+          let liTags = createNode("li");
+          liTags.className = "petitsb"; 
+          liTags.innerHTML = el.tags[j];
+          append(ul, liTags);
+        }
+
+        append(figure, aImg);
+        append(aImg, img);
+        append(figure, figcaption);
+        append(figcaption, h2);
+        append(figcaption, p);
+        append(figcaption, ul);
+        append(home, figure);
+          
+          */
 
             med+=`    
           <figure>
@@ -78,7 +106,6 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           `
           }
         })
-      /*} */    
     lesphotos.innerHTML = med;
   }     else {
       //window.location.pathname = 'folio';
