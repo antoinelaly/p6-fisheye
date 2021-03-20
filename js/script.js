@@ -58,7 +58,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   var searchParams = new URLSearchParams(window.location.search);
 
   if(searchParams.has('id')) {
-    var folioId = searchParams.get('id');
+    //var folioId = searchParams.get('id');
     let folioGallery = data[folioId];
     
 
@@ -68,7 +68,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           var folioId = searchParams.get('id');
           if(el['photographerId'] === folioId)
           //console.log(folioId);
-          var folioId = searchParams.get('id');
+          //var folioId = searchParams.get('id');
           med+=`    
           <figure>
             <a href="#"><img src="img/${el.photographerId}/${el.image}" alt="${el.name}"></a>
