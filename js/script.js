@@ -63,8 +63,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   let med="";
     for(key in data) {
         data["media"].forEach(function (el, index){
-          if(el['photographerId'] === folioIdNum)
-          med+=`    
+          if(el['photographerId'] === folioIdNum) {
+            med+=`    
           <figure>
             <a href="#"><img src="img/${el.photographerId}/${el.image}" alt="${el.name}"></a>
             <figcaption> 
@@ -73,6 +73,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           </figcaption>
           </figure>   
           `
+          }
+          
         })
       }     
     lesphotos.innerHTML = med;
