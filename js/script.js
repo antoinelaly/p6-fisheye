@@ -66,7 +66,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         data["media"].forEach(function (el){
           if(el['photographerId'] === folioIdNum) {
 
-
+          /*
         let ul = createNode("ul"),
         figure = createNode("figure"),
         figcaption = createNode("figcaption");
@@ -94,9 +94,9 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         append(figcaption, h2);
         append(figcaption, p);
         append(figcaption, ul);
-        append(presentation, figure);
+        append(home, figure);
           
-
+          */
 
             med+=`    
           <figure>
