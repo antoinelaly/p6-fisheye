@@ -9,6 +9,9 @@ function createNode(element) {
 function append(parent, el) {
 	return parent.appendChild(el);
 }
+function profilGenerator(el) {
+  
+}
 
 window.addEventListener('load', () => {
 
@@ -18,7 +21,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   return response.json();
 }).then(data => {
 
-  if(home) {
+  /*if(home) {*/
       data["photographers"].forEach(function (el){
 
         let ul = createNode("ul"),
@@ -50,8 +53,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         append(figcaption, p);
         append(figcaption, ul);
         append(home, figure);
-      })
-  };
+      });
+  /*};*/
 
   var searchParams = new URLSearchParams(window.location.search);
 
