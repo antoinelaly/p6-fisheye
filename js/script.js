@@ -62,43 +62,14 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     var folioId = searchParams.get('id');
     var folioIdNum = parseInt(folioId);
 
-  let med="";
+  /*let med="";*/
         data["media"].forEach(function (el){
           if(el['photographerId'] === folioIdNum) {
 
-          /*
-        let ul = createNode("ul"),
-        figure = createNode("figure"),
-        figcaption = createNode("figcaption");
-        (img = createNode("img")),
-        (h1 = createNode("h1")),
-        (p = createNode("p"));
-        a = createNode("a");
-        aImg = createNode("a");
-        h1.innerHTML = `${el.name}`;
-        aImg.href = `folio?id=${el.id}`;
-        img.src = `img/${el.illustration}`;
-        p.innerHTML = `${el.city} <br>${el.tagline} <br>${el.price}€/jour`;
-        ul.setAttribute("aria-label", "Secondary navigation");
 
-        for (let j = 0; j < el.tags.length; j++) {
-          let liTags = createNode("li");
-          liTags.className = "petitsb"; 
-          liTags.innerHTML = el.tags[j];
-          append(ul, liTags);
-        }
+            /*append(figure, img);*/
 
-        append(figure, aImg);
-        append(aImg, img);
-        append(figure, figcaption);
-        append(figcaption, h2);
-        append(figcaption, p);
-        append(figcaption, ul);
-        append(home, figure);
-          
-          */
-
-            med+=`    
+            /*med+=`           
           <figure>
             <a href="#"><img src="img/${el.photographerId}/${el.image}" alt="${el.name}"></a>
             <figcaption> 
@@ -106,10 +77,12 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
             <div class="brand">${el.likes}</div>
           </figcaption>
           </figure>   
-          `
+          `*/
           }
         })
-    lesphotos.innerHTML = med;
+    /*lesphotos.innerHTML = med;*/
+
+
   }     else {
       //window.location.pathname = 'folio';
   }
