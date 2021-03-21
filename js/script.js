@@ -63,8 +63,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     var folioIdNum = parseInt(folioId);
 
   /*let med="";*/
-        data["key"].forEach(function (el){
-
+        data["media"].forEach(function (el){
           if(el['photographerId'] === folioIdNum) {
 
             let figure = createNode("figure");
