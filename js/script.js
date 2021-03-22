@@ -96,6 +96,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
             img.src = `img/${el.illustration}`;
             button.innerHTML = "Contactez-moi";
+            button.className = "push-right";
             append(figure, figcaption);
             append(figcaption, h1);
             append(figcaption, p);
