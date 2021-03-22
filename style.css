@@ -236,3 +236,9 @@ figcaption .price {
   max-width: 100%;
   vertical-align: middle;
 }
+.presentation .petitsb {
+  border: 0.5px solid #C4C4C4;
+  border-radius: 11px;
+  margin: 2px;
+  padding: 1px 4px 3px 4px;
+}
