@@ -5,7 +5,13 @@ body {
   margin: 0px;
   font-weight: 200;
 }
-header, main, footer {
+header {
+  max-width: 1800px;
+  margin: 0 auto !important;
+  padding: 35px;
+}
+
+main, footer {
   max-width: 1800px;
   margin: 0 auto !important;
   padding: 12px 35px;
@@ -14,7 +20,7 @@ header, main, footer {
 /* header */
 header {
   display:flex;
-  max-width: 78%;
+  max-width: 88%;
   margin-top: 15px;
 }
 nav {
