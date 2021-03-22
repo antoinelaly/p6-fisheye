@@ -246,3 +246,6 @@ figcaption .price {
   display: flex;
   text-align: left;
 }
+.presentation figcaption ul {
+  display: flex;
+}
