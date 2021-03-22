@@ -91,7 +91,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
             append(figure, figcaption);
             append(figcaption, h1);
             append(figcaption, p);
-            append(figcaption, ul);
+
             append(figure, button);
             append(figure, img);
             append(presentation, figure);
