@@ -83,12 +83,23 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
             (h1 = createNode("h1")),
             (p = createNode("p"));
             h1.innerHTML = `${el.name}`;
-            p.innerHTML = `${el.price}`;
-            img.src = `img/${el.illustration}`;
+            p.innerHTML = `${el.city}, ${el.country}<br> ${el.tagline}`;
+            ul.setAttribute("aria-label", "Secondary navigation");
+
+            for (let j = 0; j < el.tags.length; j++) {
+              let liTags = createNode("li");
+              liTags.className = "petitsb"; 
+              liTags.innerHTML = el.tags[j];
+              append(ul, liTags);
+            }
+
             button.innerHTML = "Contactez-moi";
+            img.src = `img/${el.illustration}`;
+
             append(figure, figcaption);
             append(figcaption, h1);
             append(figcaption, p);
+            append(figcaption, ul);
             append(figure, button);
             append(figure, img);
             append(presentation, figure);
