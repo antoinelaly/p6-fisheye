@@ -77,12 +77,16 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           if(el['id'] === folioIdNum) {
 
             let figure = createNode("figure"),
-            button = createNode("button");
-            (img = createNode("img"));
+            button = createNode("button"),
+            figcaption = createNode("figcaption");
+            (img = createNode("img")),
+            (h1 = createNode("h1"));
             img.src = `img/${el.illustration}`;
             button.innerHTML = "Contactez-moi";
-            append(figure, img);
+            append(figure, figcaption);
+            append(figcaption, h1);
             append(figure, button);
+            append(figure, img);
             append(presentation, figure);
           }
         })
