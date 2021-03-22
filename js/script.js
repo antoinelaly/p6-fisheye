@@ -85,6 +85,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
             (p = createNode("p"));
             h1.innerHTML = `${el.name}`;
             p.innerHTML = `${el.city}, ${el.country} <br>${el.tagline}`;
+            ul.setAttribute("aria-label", "Secondary navigation");
 
             for (let i = 0; i < el.tags.length; i++) {
               let liTags = createNode("li");
