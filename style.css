@@ -260,4 +260,5 @@ border: 0;
 }
 .push-right {
   margin-right: auto;
+  margin-left: 10%;
 }
