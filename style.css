@@ -214,3 +214,11 @@ figcaption .price {
 .lesphotos .figcaption {
   display: flex;
 }
+.presentation figure {
+  display: flex;
+  flex-flow: column;
+  flex: 1 0 300px;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 10px !important;
+}
