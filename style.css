@@ -250,8 +250,7 @@ figcaption .price {
   display: flex;
   text-align: left;
 }
-/*.presentation figcaption ul {
-  display: flex;
-  align-items: flex-start;
-  margin-left: auto;
-}*/
+.presentation button {
+background-color: #911C1C;
+padding: 10px 20px;
+}
