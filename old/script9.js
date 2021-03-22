@@ -62,6 +62,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     var folioId = searchParams.get('id');
     var folioIdNum = parseInt(folioId);
 
+  /*let med="";*/
         data["media"].forEach(function (el){
           if(el['photographerId'] === folioIdNum) {
 
@@ -70,19 +71,20 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
             img.src = `img/${el.photographerId}/${el.image}`;
             append(figure, img);
             append(lesphotos, figure);
+
+            /*med+=`           
+          <figure>
+            <a href="#"><img src="img/${el.photographerId}/${el.image}" alt="${el.name}"></a>
+            <figcaption> 
+            <div class="city">${el.price}€</div>
+            <div class="brand">${el.likes}</div>
+          </figcaption>
+          </figure>   
+          `*/
           }
         })
+    /*lesphotos.innerHTML = med;*/
 
-        data["photographers"].forEach(function (el){
-          if(el['id'] === folioIdNum) {
-
-            let figure = createNode("figure");
-            (img = createNode("img"));
-            img.src = `img/${el.illustration}`;
-            append(figure, img);
-            append(presentation, figure);
-          }
-        })
 
   }     else {
       //window.location.pathname = 'folio';
