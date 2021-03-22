@@ -36,7 +36,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         h2.innerHTML = `${el.name}`;
         aImg.href = `folio?id=${el.id}`;
         img.src = `img/${el.illustration}`;
-        p.innerHTML = `${el.city} <br>#${el.tagline} <br>${el.price}€/jour`;
+        p.innerHTML = `${el.city} <br>${el.tagline} <br>${el.price}€/jour`;
         ul.setAttribute("aria-label", "Secondary navigation");
 
         for (let j = 0; j < el.tags.length; j++) {
@@ -84,14 +84,11 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
             (p = createNode("p"));
             h1.innerHTML = `${el.name}`;
             p.innerHTML = `${el.city}, ${el.country}`;
-
-            button.innerHTML = "Contactez-moi";
             img.src = `img/${el.illustration}`;
-
+            button.innerHTML = "Contactez-moi";
             append(figure, figcaption);
             append(figcaption, h1);
             append(figcaption, p);
-
             append(figure, button);
             append(figure, img);
             append(presentation, figure);
