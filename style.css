@@ -246,7 +246,7 @@ figcaption .price {
   display: flex;
   text-align: left;
 }
-.presentation figcaption ul {
+.presentation figcaption ul li {
   display: flex;
   align-items: flex-start;
 }
