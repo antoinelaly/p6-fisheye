@@ -216,7 +216,7 @@ figcaption .price {
 }
 .presentation figure {
   display: flex;
-  flex-flow: column;
+  justify-content: space-between;
   flex: 1 0 300px;
   align-items: center;
   text-align: center;

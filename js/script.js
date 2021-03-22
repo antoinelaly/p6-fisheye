@@ -76,10 +76,12 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         data["photographers"].forEach(function (el){
           if(el['id'] === folioIdNum) {
 
-            let figure = createNode("figure");
+            let figure = createNode("figure"),
+            button = createNode("button");
             (img = createNode("img"));
             img.src = `img/${el.illustration}`;
             append(figure, img);
+            append(figure, button);
             append(presentation, figure);
           }
         })
