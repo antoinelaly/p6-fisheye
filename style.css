@@ -242,7 +242,7 @@ figcaption .price {
   margin: 2px;
   padding: 1px 4px 3px 4px;
 }
-figcaption {
+.presentation figcaption h2, .presentation figcaption p {
   display: flex;
   text-align: left;
 }
