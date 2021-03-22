@@ -80,11 +80,15 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
             button = createNode("button"),
             figcaption = createNode("figcaption");
             (img = createNode("img")),
-            (h1 = createNode("h1"));
+            (h1 = createNode("h1")),
+            (p = createNode("p"));
+            h1.innerHTML = `${el.name}`;
+            p.innerHTML = `${el.price}`;
             img.src = `img/${el.illustration}`;
             button.innerHTML = "Contactez-moi";
             append(figure, figcaption);
             append(figcaption, h1);
+            append(figcaption, p);
             append(figure, button);
             append(figure, img);
             append(presentation, figure);
