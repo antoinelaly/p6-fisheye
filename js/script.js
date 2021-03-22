@@ -76,7 +76,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         data["photographers"].forEach(function (el){
           if(el['id'] === folioIdNum) {
 
-            let figure = createNode("figure"),
+            let ul = createNode("ul"),
+            figure = createNode("figure"),
             button = createNode("button"),
             figcaption = createNode("figcaption");
             (img = createNode("img")),
@@ -84,11 +85,20 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
             (p = createNode("p"));
             h1.innerHTML = `${el.name}`;
             p.innerHTML = `${el.city}, ${el.country} <br>${el.tagline}`;
+
+            for (let i = 0; i < el.tags.length; i++) {
+              let liTags = createNode("li");
+              liTags.className = "petitsb"; 
+              liTags.innerHTML = el.tags[i];
+              append(ul, liTags);
+            }
+
             img.src = `img/${el.illustration}`;
             button.innerHTML = "Contactez-moi";
             append(figure, figcaption);
             append(figcaption, h1);
             append(figcaption, p);
+            append(figcaption, ul);
             append(figure, button);
             append(figure, img);
             append(presentation, figure);
