@@ -211,7 +211,7 @@ figcaption .price {
   max-width: 100%;
   vertical-align: middle;
 }
-.lesphotos .figcaption {
+.lesphotos figcaption {
   display: flex;
 }
 .presentation figure {
@@ -221,4 +221,18 @@ figcaption .price {
   align-items: center;
   text-align: center;
   margin-bottom: 10px !important;
+}
+.presentation figure img {
+  object-fit: cover;
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+}
+.presentation img {
+  height: auto;
+  width: 100%;
+  max-width: 100%;
+  vertical-align: middle;
 }
