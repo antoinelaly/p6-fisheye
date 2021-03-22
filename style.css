@@ -263,8 +263,9 @@ padding: 20px 10px;
 display: flex;
 text-align: left;
 border: 0;
+border-radius: 30px;
 }
 .push-right {
   /*margin-right: auto;*/
-  margin-right: 14%;
+  margin-right: 20%;
 }
