@@ -80,6 +80,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
             button = createNode("button");
             (img = createNode("img"));
             img.src = `img/${el.illustration}`;
+            button.innerHTML = "Contactez-moi";
             append(figure, img);
             append(figure, button);
             append(presentation, figure);
