@@ -90,7 +90,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
             append(lesphotos, figure);
           }
         })
-        console.log(folioIdNum);
+        console.log(lesphotos);
 
         data["photographers"].forEach(function (el){
           if(el['id'] === folioIdNum) {
