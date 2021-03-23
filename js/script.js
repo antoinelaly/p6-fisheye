@@ -40,7 +40,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       let ul = createNode("ul");
       jsonObject = el.tags.map(JSON.stringify);
       uniqueSet = new Set(jsonObject);
-      console.log(uniqueSet);
+      //console.log(uniqueSet);
       uniqueArray = Array.from(uniqueSet).map(JSON.parse);
       console.log(uniqueArray);
 
