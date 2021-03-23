@@ -47,7 +47,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       for (let j = 0; j < uniqueArray.length; j++) {
         let liTags = createNode("li");
         liTags.className = "petitsb"; 
-        liTags.innerHTML = el.tags[j];
+        liTags.innerHTML = uniqueArray[j];
         append(ul, liTags);
       }
 
