@@ -2,6 +2,7 @@
 var home = document.querySelector(".out");
 var lesphotos = document.querySelector(".lesphotos");
 var presentation = document.querySelector(".presentation");
+var nav = document.querySelector(".nav");
 
 function createNode(element) {
 	return document.createElement(element);
@@ -27,6 +28,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 .then(response => {
   return response.json();
 }).then(data => {
+
 
   if(home) {
       data["photographers"].forEach(function (el){
