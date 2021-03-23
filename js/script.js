@@ -3,6 +3,7 @@ var home = document.querySelector(".out");
 var lesphotos = document.querySelector(".lesphotos");
 var presentation = document.querySelector(".presentation");
 var nav = document.querySelector(".nav");
+var uniqueTags = [];
 
 function createNode(element) {
 	return document.createElement(element);
@@ -39,7 +40,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
       let ul = createNode("ul");
       for (let j = 0; j < el.tags.length; j++) {
-        if(el.tags(onlyUnique)) {
+        if(uniqueTags.indexOf(el.tags[j]) === -1) {
         let liTags = createNode("li");
         liTags.className = "petitsb"; 
         liTags.innerHTML = el.tags[j];
