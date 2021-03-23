@@ -80,7 +80,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
             (pp = createNode("p"));
             img.src = `img/${el.photographerId}/${el.image}`;
             p.innerHTML = `${el.date}`;
-            pp.innerHTML = `${el.price} €   ${el.likes}&hearts;`;
+            pp.innerHTML = `${el.price} €    ${el.likes} &hearts;`;
             append(figure, img);
             append(figure, figcaption);
             append(figcaption, p);
