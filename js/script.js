@@ -88,6 +88,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
             append(lesphotos, figure);
           }
         })
+        console.log(el.price);
 
         data["photographers"].forEach(function (el){
           if(el['id'] === folioIdNum) {
@@ -133,5 +134,3 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   console.log('Fetch Error :-S', err);
 });
 });
-
-console.log(price);
