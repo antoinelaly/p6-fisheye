@@ -64,9 +64,9 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   };
 
   var searchParams = new URLSearchParams(window.location.search);
-// get tring
+// url get string id
 
-  if(searchParams.has('id')) { // compare strings to start
+  if(searchParams.has('id')) { // s'il y a un id dans l'url
     var folioId = searchParams.get('id'); // convert to var
     var folioIdNum = parseInt(folioId); // convert string to num
 
@@ -88,7 +88,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
             append(lesphotos, figure);
           }
         })
-        console.log(el.price);
+        console.log(folioIdNum);
 
         data["photographers"].forEach(function (el){
           if(el['id'] === folioIdNum) {
