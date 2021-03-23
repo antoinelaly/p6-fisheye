@@ -73,10 +73,15 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         data["media"].forEach(function (el){ // start looping in media
           if(el['photographerId'] === folioIdNum) { // target objets
             
-            let figure = createNode("figure"); // creat html
-            (img = createNode("img"));
+            let figure = createNode("figure"), // creat html
+            figcaption = createNode("figcaption");
+            (img = createNode("img")),
+            (p = createNode("p"));
             img.src = `img/${el.photographerId}/${el.image}`;
+            p.innerHTML = `${el.date}, ${el.price} <br>${el.likes}`;
             append(figure, img);
+            append(figure, figcaption);
+            append(figcaption, p);
             append(lesphotos, figure);
           }
         })
