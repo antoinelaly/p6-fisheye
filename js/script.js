@@ -18,9 +18,7 @@ function sortJSON(data, key) {
   });
 }
 
-function profilGenerator(el) {
 
-}
 
 window.addEventListener('load', () => {
 
@@ -80,8 +78,6 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
             img.src = `img/${el.photographerId}/${el.image}`;
             append(figure, img);
             append(lesphotos, figure);
-
-            console.log(el.sort());
           }
         })
 
