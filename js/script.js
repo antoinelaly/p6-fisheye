@@ -9,8 +9,17 @@ function createNode(element) {
 function append(parent, el) {
 	return parent.appendChild(el);
 }
+
+function sortJSON(data, key) {
+  return data.sort(function(a, b) {
+    var x = a[key];
+    var y = b[key];
+    return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+  });
+}
+
 function profilGenerator(el) {
-  
+
 }
 
 window.addEventListener('load', () => {
@@ -57,15 +66,16 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   };
 
   var searchParams = new URLSearchParams(window.location.search);
+// get tring
 
-  if(searchParams.has('id')) {
-    var folioId = searchParams.get('id');
-    var folioIdNum = parseInt(folioId);
+  if(searchParams.has('id')) { // compare strings to start
+    var folioId = searchParams.get('id'); // convert to var
+    var folioIdNum = parseInt(folioId); // convert string to num
 
-        data["media"].forEach(function (el){
-          if(el['photographerId'] === folioIdNum) {
-
-            let figure = createNode("figure");
+        data["media"].forEach(function (el){ // start looping in media
+          if(el['photographerId'] === folioIdNum) { // target objets
+            console.log(el.sort());
+            let figure = createNode("figure"); // creat html
             (img = createNode("img"));
             img.src = `img/${el.photographerId}/${el.image}`;
             append(figure, img);
