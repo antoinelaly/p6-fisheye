@@ -32,6 +32,21 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   var searchParams = new URLSearchParams(window.location.search);
   // url get string id
 
+  if(nav) {
+    data["photographers"].forEach(function (el){
+
+      let ul = createNode("ul");
+      for (let j = 0; j < el.tags.length; j++) {
+        let liTags = createNode("li");
+        liTags.className = "petitsb"; 
+        liTags.innerHTML = el.tags[j];
+        append(ul, liTags);
+      }
+
+      append(nav, ul);
+
+    });
+
   if(home) {
       data["photographers"].forEach(function (el){
 
