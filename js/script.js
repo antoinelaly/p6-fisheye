@@ -41,7 +41,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       jsonObject = el.tags.map(JSON.stringify);
       uniqueSet = new Set(jsonObject);
       uniqueArray = Array.from(uniqueSet).map(JSON.parse);
-      //console.log(uniqueArray);
+      console.log(uniqueArray);
 
       for (let j = 0; j < uniqueArray.length; j++) {
         let liTags = createNode("li");
