@@ -3,7 +3,6 @@ var home = document.querySelector(".out");
 var lesphotos = document.querySelector(".lesphotos");
 var presentation = document.querySelector(".presentation");
 var nav = document.querySelector(".nav");
-var uniqueTags = [];
 
 function createNode(element) {
 	return document.createElement(element);
@@ -11,7 +10,9 @@ function createNode(element) {
 function append(parent, el) {
 	return parent.appendChild(el);
 }
-
+function onlyUnique(value, index, self) {
+  return self.indexOf(value) === index;
+}
 function sortJSON(data, key) {
   return data.sort(function(a, b) {
     var x = a[key];
@@ -38,7 +39,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
       let ul = createNode("ul");
       for (let j = 0; j < el.tags.length; j++) {
-        if(uniqueTags.indexOf(el.tags[j]) === -1) {
+        if(el.tags(onlyUnique)) {
         let liTags = createNode("li");
         liTags.className = "petitsb"; 
         liTags.innerHTML = el.tags[j];
