@@ -39,10 +39,9 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     data["photographers"].forEach(function (el){
       let ul = createNode("ul");
       jsonObject = el.tags.map(JSON.stringify);
-      console.log(jsonObject);
       uniqueSet = new Set(jsonObject);
       uniqueArray = Array.from(uniqueSet).map(JSON.parse);
-      console.log(uniqueArray);
+      //console.log(uniqueArray);
 
       for (let j = 0; j < uniqueArray.length; j++) {
 
