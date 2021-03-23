@@ -38,17 +38,16 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   if(nav) {
     data["photographers"].forEach(function (el){
       let ul = createNode("ul");
-      for (let j = 0; j < el.tags.length; j++) {
+      jsonObject = el.tags.map(JSON.stringify);
+      uniqueSet = new Set(jsonObject);
+      uniqueArray = Array.from(uniqueSet).map(JSON.parse);
+      //console.log(uniqueArray);
 
+      for (let j = 0; j < uniqueArray.length; j++) {
         let liTags = createNode("li");
         liTags.className = "petitsb"; 
         liTags.innerHTML = el.tags[j];
-        
-        jsonObject = liTags.map(JSON.stringify);
-        uniqueSet = new Set(jsonObject);
-        uniqueArray = Array.from(uniqueSet).map(JSON.parse);
-        //console.log(uniqueArray);
-        append(ul, uniqueArray);
+        append(ul, liTags);
       }
 
       append(nav, ul);
