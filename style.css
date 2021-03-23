@@ -225,6 +225,7 @@ figcaption .price {
 .lesphotos figcaption p {
   display: flex;
   justify-content: space-between;
+  width: 100%;
   padding-top: 10px;
   padding-bottom: 20px;
   color: #D3573C;
