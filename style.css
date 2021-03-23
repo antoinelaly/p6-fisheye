@@ -222,6 +222,10 @@ figcaption .price {
 .lesphotos figcaption {
   display: flex;
 }
+.lesphotos figcaption p {
+  padding-top: 20px;
+  color: #D3573C;
+}
 .presentation figure {
   display: flex;
   justify-content: space-between;
