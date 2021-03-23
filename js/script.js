@@ -39,7 +39,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     data["photographers"].forEach(function (el){
       let ul = createNode("ul");
       for (let j = 0; j < el.tags.length; j++) {
-        if(uniqueTags.indexOf([j].el.tags) === -1) {
+
         let liTags = createNode("li");
         liTags.className = "petitsb"; 
         liTags.innerHTML = el.tags[j];
@@ -47,7 +47,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       }
 
       append(nav, ul);
-    }
+
     })
   };
 
