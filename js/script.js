@@ -70,10 +70,10 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       })
   };
 
-  if(tagpage && searchParams.has('id')) {
+  if(searchParams.has('id')) {
     data["photographers"].forEach(function (el){
 
-      if(el.tags.includes('folioId')) { 
+     if(el.includes(folioId)) { 
           
       let ul = createNode("ul"),
       figure = createNode("figure"),
