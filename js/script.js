@@ -10,9 +10,6 @@ function createNode(element) {
 function append(parent, el) {
 	return parent.appendChild(el);
 }
-/*function onlyUnique(value, index, self) {
-  return self.indexOf(value) === index;
-}*/
 function sortJSON(data, key) {
   return data.sort(function(a, b) {
     var x = a[key];
@@ -21,10 +18,7 @@ function sortJSON(data, key) {
   });
 }
 
-
-
 window.addEventListener('load', () => {
-
 
 fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json')
 .then(response => {
@@ -33,6 +27,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
   var searchParams = new URLSearchParams(window.location.search);
   // url get string id
+  var folioId = searchParams.get('id'); // convert to var
+  var folioIdNum = parseInt(folioId); // convert string to num
 
   if(home) {
       data["photographers"].forEach(function (el){
@@ -53,10 +49,14 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         ul.setAttribute("aria-label", "Secondary navigation");
 
         for (let j = 0; j < el.tags.length; j++) {
+
           let liTags = createNode("li");
+          (aTag = createNode("a"));
+          aTag.href = `tag?id=${el.tags[j]}`;
           liTags.className = "petitsb"; 
           liTags.innerHTML = el.tags[j];
-          append(ul, liTags);
+          append(ul, aTag);
+          append(aTag, liTags);
         }
 
         append(figure, aImg);
@@ -73,7 +73,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     data["photographers"].forEach(function (el){
       
       var temp = [ ]
-      data = el.tags.filter((el)=>{
+      dataa = el.tags.filter((el)=>{
       if(!temp.includes(el.userid)){
         temp.push(el.userid)
         return true;
@@ -81,12 +81,14 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       });
 
       let ul = createNode("ul");
-      for (let j = 0; j < data.length; j++) {
-
+      for (let j = 0; j < dataa.length; j++) {
         let liTags = createNode("li");
+        (aTag = createNode("a"));
+        aTag.href = `tag?id=${el.tags[j]}`;
         liTags.className = "petitsb"; 
-        liTags.innerHTML = data[j];
-        append(ul, liTags);
+        liTags.innerHTML = dataa[j];
+        append(ul, aTag);
+        append(aTag, liTags);
       }
 
       append(nav, ul);
@@ -95,8 +97,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   };
 
   if(searchParams.has('id')) { // s'il y a un id dans l'url
-    var folioId = searchParams.get('id'); // convert to var
-    var folioIdNum = parseInt(folioId); // convert string to num
+    //var folioId = searchParams.get('id'); // convert to var
+    //var folioIdNum = parseInt(folioId); // convert string to num
 
         data["media"].forEach(function (el){ // start looping in media
           if(el['photographerId'] === folioIdNum) { // target objets
