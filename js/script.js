@@ -177,10 +177,17 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
             ul.setAttribute("aria-label", "Secondary navigation");
 
             for (let i = 0; i < el.tags.length; i++) {
-              let liTags = createNode("li");
+              /*let liTags = createNode("li");
               liTags.className = "petitsb"; 
               liTags.innerHTML = el.tags[i];
-              append(ul, liTags);
+              append(ul, liTags);*/
+              let liTags = createNode("li");
+              (aTag = createNode("a"));
+              aTag.href = `tag?id=${el.tags[j]}`;
+              liTags.className = "petitsb"; 
+              liTags.innerHTML = `#${dataa[j]}`;
+              append(ul, aTag);
+              append(aTag, liTags);
             }
 
             img.src = `img/${el.illustration}`;
