@@ -72,10 +72,9 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
   if(tagpage) {
     data["photographers"].forEach(function (el){
-
-    for(var i = 0; i < el.tags.length; i++) {
-    if (el.tags[i] == folioId) {
-
+      if(el['tags'].includes(folioId)) { 
+        //if(el.tags.includes(folioId)) { 
+          
       let ul = createNode("ul"),
       figure = createNode("figure"),
       figcaption = createNode("figcaption");
@@ -110,7 +109,6 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       append(figcaption, ul);
       append(home, figure);
     }
-  }
     })
 };
 
