@@ -39,9 +39,9 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     data["photographers"].forEach(function (el){
       
       var temp = [ ]
-      data = el.tags.filter((item)=>{
-      if(!temp.includes(item.userid)){
-        temp.push(item.userid)
+      data = el.tags.filter((el)=>{
+      if(!temp.includes(el.userid)){
+        temp.push(el.userid)
         return true;
       }
       })
