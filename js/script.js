@@ -178,12 +178,9 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
             for (let i = 0; i < el.tags.length; i++) {
               let liTags = createNode("li");
-              (aTag = createNode("a"));
-              aTag.href = `tag?id=${el.tags[i]}`;
               liTags.className = "petitsb"; 
-              liTags.innerHTML = `#${dataa[i]}`;
-              append(ul, aTag);
-              append(aTag, liTags);
+              liTags.innerHTML = el.tags[i];
+              append(ul, liTags);
             }
 
             img.src = `img/${el.illustration}`;
