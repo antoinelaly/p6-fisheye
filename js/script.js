@@ -57,7 +57,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       append(nav, ul);
 
     })
-  };
+  }
 
   if(home) {
       data["photographers"].forEach(function (el){
