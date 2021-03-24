@@ -72,7 +72,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
   if(tagpage) {
     data["photographers"].forEach(function (el){
-      if(el['tags'] == [folioId]) { 
+      if(el['tags'] == ["folioId"]) { 
 
       let ul = createNode("ul"),
       figure = createNode("figure"),
