@@ -43,7 +43,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         temp.push(el.userid)
         return true;
       }
-      });
+      })
 
       let ul = createNode("ul");
       for (let j = 0; j < data.length; j++) {
@@ -59,7 +59,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     })
   }
 
-  /*if(home) {*/
+  if(home) {
       data["photographers"].forEach(function (el){
 
         let ul = createNode("ul"),
@@ -92,7 +92,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         append(figcaption, ul);
         append(home, figure);
       })
- /* };*/
+  };
 
   if(searchParams.has('id')) { // s'il y a un id dans l'url
     var folioId = searchParams.get('id'); // convert to var
