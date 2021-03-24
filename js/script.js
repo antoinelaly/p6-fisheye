@@ -18,6 +18,42 @@ function sortJSON(data, key) {
     return ((x < y) ? -1 : ((x > y) ? 1 : 0));
   });
 }
+function creatFigure(el) {
+  let ul = createNode("ul"),
+  figure = createNode("figure"),
+  figcaption = createNode("figcaption");
+  (img = createNode("img")),
+  (h2 = createNode("h2")),
+  (p = createNode("p"));
+  address = createNode("address");
+  a = createNode("a");
+  aImg = createNode("a");
+  h2.innerHTML = `${el.name}`;
+  aImg.href = `folio?id=${el.id}`;
+  img.src = `img/${el.illustration}`;
+  p.innerHTML = `${el.city} <br>${el.tagline} <br>${el.price}€/jour`;
+  ul.setAttribute("aria-label", "Secondary navigation");
+
+  for (let j = 0; j < el.tags.length; j++) {
+
+    let liTags = createNode("li");
+    (aTag = createNode("a"));
+    aTag.href = `tag?id=${el.tags[j]}`;
+    liTags.className = "petitsb"; 
+    liTags.innerHTML = `#${el.tags[j]}`;
+    append(ul, aTag);
+    append(aTag, liTags);
+  }
+
+  append(figure, aImg);
+  append(aImg, img);
+  append(figure, figcaption);
+  append(figcaption, h2);
+  append(figcaption, p);
+  append(figcaption, ul);
+  append(home, figure);
+
+}
 
 window.addEventListener('load', () => {
 
@@ -34,39 +70,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   if(home) {
       data["photographers"].forEach(function (el){
 
-        let ul = createNode("ul"),
-        figure = createNode("figure"),
-        figcaption = createNode("figcaption");
-        (img = createNode("img")),
-        (h2 = createNode("h2")),
-        (p = createNode("p"));
-        address = createNode("address");
-        a = createNode("a");
-        aImg = createNode("a");
-        h2.innerHTML = `${el.name}`;
-        aImg.href = `folio?id=${el.id}`;
-        img.src = `img/${el.illustration}`;
-        p.innerHTML = `${el.city} <br>${el.tagline} <br>${el.price}€/jour`;
-        ul.setAttribute("aria-label", "Secondary navigation");
+        creatFigure(el);
 
-        for (let j = 0; j < el.tags.length; j++) {
-
-          let liTags = createNode("li");
-          (aTag = createNode("a"));
-          aTag.href = `tag?id=${el.tags[j]}`;
-          liTags.className = "petitsb"; 
-          liTags.innerHTML = `#${el.tags[j]}`;
-          append(ul, aTag);
-          append(aTag, liTags);
-        }
-
-        append(figure, aImg);
-        append(aImg, img);
-        append(figure, figcaption);
-        append(figcaption, h2);
-        append(figcaption, p);
-        append(figcaption, ul);
-        append(home, figure);
       })
   };
 
