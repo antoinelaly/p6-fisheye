@@ -37,19 +37,19 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
   if(nav) {
     data["photographers"].forEach(function (el){
-
-      var eTags = el.tags.filter((thing, index) => {
-        return index === data.findIndex(obj => {
+      
+      var tags = elel.tags.filter((thing, index) => {
+        return index === el.findIndex(obj => {
           return JSON.stringify(obj) === JSON.stringify(thing);
         });
       });
 
       let ul = createNode("ul");
-      for (let j = 0; j < eTags.length; j++) {
+      for (let j = 0; j < tags.length; j++) {
 
         let liTags = createNode("li");
         liTags.className = "petitsb"; 
-        liTags.innerHTML = eTags[j];
+        liTags.innerHTML = tags[j];
         append(ul, liTags);
       }
 
