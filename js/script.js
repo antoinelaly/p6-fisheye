@@ -32,8 +32,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   return response.json();
 }).then(data => {
 
-  var searchParams = new URLSearchParams(window.location.search);
-  // url get string id
+
 
   if(nav) {
     data["photographers"].forEach(function (el){
@@ -87,6 +86,9 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       })
   };
 
+  var searchParams = new URLSearchParams(window.location.search);
+  // url get string id
+  
   if(searchParams.has('id')) { // s'il y a un id dans l'url
     var folioId = searchParams.get('id'); // convert to var
     var folioIdNum = parseInt(folioId); // convert string to num
