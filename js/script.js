@@ -3,7 +3,6 @@ var home = document.querySelector(".out");
 var lesphotos = document.querySelector(".lesphotos");
 var presentation = document.querySelector(".presentation");
 var nav = document.querySelector(".nav");
-var uniqueTags = [];
 
 function createNode(element) {
 	return document.createElement(element);
@@ -32,17 +31,26 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   return response.json();
 }).then(data => {
 
-
+  var searchParams = new URLSearchParams(window.location.search);
+  // url get string id
 
   if(nav) {
     data["photographers"].forEach(function (el){
+      
+      var temp = [ ]
+      data = el.tags.filter((el)=>{
+      if(!temp.includes(el.userid)){
+        temp.push(el.userid)
+        return true;
+      }
+      });
 
       let ul = createNode("ul");
-      for (let j = 0; j < el.tags.length; j++) {
+      for (let j = 0; j < data.length; j++) {
 
         let liTags = createNode("li");
         liTags.className = "petitsb"; 
-        liTags.innerHTML = el.tags[j];
+        liTags.innerHTML = data[j];
         append(ul, liTags);
       }
 
@@ -86,9 +94,6 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       })
   };
 
-  var searchParams = new URLSearchParams(window.location.search);
-  // url get string id
-  
   if(searchParams.has('id')) { // s'il y a un id dans l'url
     var folioId = searchParams.get('id'); // convert to var
     var folioIdNum = parseInt(folioId); // convert string to num
