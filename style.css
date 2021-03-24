@@ -295,3 +295,6 @@ border-radius: 3px;
 .presentation a li {
   list-style: none;
 }
+.presentation .trier {
+  display: flex;
+}
