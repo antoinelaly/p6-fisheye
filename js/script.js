@@ -54,7 +54,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           (aTag = createNode("a"));
           aTag.href = `tag?id=${el.tags[j]}`;
           liTags.className = "petitsb"; 
-          liTags.innerHTML = el.tags[j];
+          liTags.innerHTML = `#${el.tags[j]}`;
           append(ul, aTag);
           append(aTag, liTags);
         }
@@ -86,7 +86,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         (aTag = createNode("a"));
         aTag.href = `tag?id=${el.tags[j]}`;
         liTags.className = "petitsb"; 
-        liTags.innerHTML = dataa[j];
+        liTags.innerHTML = `#${dataa[j]}`;
         append(ul, aTag);
         append(aTag, liTags);
       }

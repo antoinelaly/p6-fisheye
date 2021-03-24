@@ -25,13 +25,21 @@ header {
 }
 nav {
   display:flex;
-  padding: 5px 25px;
+  /*padding: 5px 25px;*/
   margin-left: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
 }
 
 /* font */
 a { 
   color: #000; 
+  list-style: none;
+  outline: none;
+  text-decoration: none;
 }
 h1 {
   font-size: 36px;
@@ -83,17 +91,15 @@ nav a {
 li a {
   outline: none;
   text-decoration: none;
+  list-style: none;
 }  
-li {
+a li {
   list-style: none;
 }
-nav {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 50%;
+nav ul {
+  display:flex;
 }
-nav ul, figcaption ul {
+figcaption ul {
   display:flex;
   padding-left: 0;
   margin-top: 2px;
@@ -105,22 +111,19 @@ nav .petitsb {
   border: 0.5px solid #C4C4C4;
   border-radius: 11px;
   margin: 12px 2px;
-  padding: 1px 4px 3px 4px;
+  padding: 4px 8px;
 }
-nav .petitsb a {
+nav a .petitsb  {
   color: #D3573C;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 800;
 }
 
 /* vvv photographes vvv */
-/*main {
-  padding-top: 60px;
-}*/
 .nophoto {
   position: absolute;
   right: 100px;
-  top: 58px;
+  top: 77px;
 } 
 .photographes {
   display: flex;
@@ -153,12 +156,12 @@ nav .petitsb a {
   border: 0.5px solid #C4C4C4;
   border-radius: 11px;
   margin: 2px;
-  padding: 1px 4px 3px 4px;
+  padding: 4px 8px;
 }
-.photographes .petitsb a {
+.photographes a .petitsb  {
   color: #D3573C;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 800;
 }
 figcaption .city {
   font-size: 13px;
