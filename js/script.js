@@ -34,31 +34,6 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   var searchParams = new URLSearchParams(window.location.search);
   // url get string id
 
-  if(nav) {
-    data["photographers"].forEach(function (el){
-      
-      var temp = [ ]
-      data = el.tags.filter((el)=>{
-      if(!temp.includes(el.userid)){
-        temp.push(el.userid)
-        return true;
-      }
-      });
-
-      let ul = createNode("ul");
-      for (let j = 0; j < data.length; j++) {
-
-        let liTags = createNode("li");
-        liTags.className = "petitsb"; 
-        liTags.innerHTML = data[j];
-        append(ul, liTags);
-      }
-
-      append(nav, ul);
-
-    })
-  };
-
   if(home) {
       data["photographers"].forEach(function (el){
 
@@ -92,6 +67,31 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         append(figcaption, ul);
         append(home, figure);
       })
+  };
+
+  if(nav) {
+    data["photographers"].forEach(function (el){
+      
+      var temp = [ ]
+      data = el.tags.filter((el)=>{
+      if(!temp.includes(el.userid)){
+        temp.push(el.userid)
+        return true;
+      }
+      });
+
+      let ul = createNode("ul");
+      for (let j = 0; j < data.length; j++) {
+
+        let liTags = createNode("li");
+        liTags.className = "petitsb"; 
+        liTags.innerHTML = data[j];
+        append(ul, liTags);
+      }
+
+      append(nav, ul);
+
+    })
   };
 
   if(searchParams.has('id')) { // s'il y a un id dans l'url
