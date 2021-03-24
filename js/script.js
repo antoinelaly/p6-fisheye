@@ -67,9 +67,9 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   var folioIdNum = parseInt(folioId); // convert string to num
 
   if(home) {
-      data["photographers"].forEach(function (el){
+      data["photographers"].forEach(function (){
 
-        creatFigure(el);
+        creatFigure();
         
       })
   };
