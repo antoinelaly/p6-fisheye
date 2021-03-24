@@ -73,7 +73,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   if(tagpage && searchParams.has('id')) {
     data["photographers"].forEach(function (el){
   
-      if(el['tags'].includes('sports')) { 
+      if(el['tags'].includes(' ')) { 
           
       let ul = createNode("ul"),
       figure = createNode("figure"),
