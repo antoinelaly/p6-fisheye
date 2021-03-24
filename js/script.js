@@ -51,7 +51,6 @@ function creatFigure(el) {
   append(figcaption, h2);
   append(figcaption, p);
   append(figcaption, ul);
-  append(home, figure);
 
 }
 
@@ -71,6 +70,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       data["photographers"].forEach(function (el){
 
         creatFigure(el);
+        append(home, figure);
 
       })
   };
