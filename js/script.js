@@ -10,9 +10,9 @@ function createNode(element) {
 function append(parent, el) {
 	return parent.appendChild(el);
 }
-function onlyUnique(value, index, self) {
+/*function onlyUnique(value, index, self) {
   return self.indexOf(value) === index;
-}
+}*/
 function sortJSON(data, key) {
   return data.sort(function(a, b) {
     var x = a[key];
@@ -37,12 +37,13 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   if(nav) {
     data["photographers"].forEach(function (el){
       
-      var temp = [ ]
+      /*var temp = [ ]
       data = el.tags.filter((el)=>{
       if(!temp.includes(el.userid)){
         temp.push(el.userid)
+        return true;
       }
-      })
+      });*/
 
       let ul = createNode("ul");
       for (let j = 0; j < data.length; j++) {
@@ -56,7 +57,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       append(nav, ul);
 
     })
-  };
+  }
 
   if(home) {
       data["photographers"].forEach(function (el){
