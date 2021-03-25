@@ -115,11 +115,11 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
               array.push(likes[key]);
             }
             array.sort(function(a, b){
-                return b.score - a.score;
+                return b.likes - a.likes;
             });
             var rank = 1;
             for (var i = 0; i < array.length; i++) {
-              if (i > 0 && array[i].score < array[i - 1].score) {
+              if (i > 0 && array[i].likes < array[i - 1].likes) {
                 rank++;
               }
               array[i].rank = rank;
