@@ -18,10 +18,10 @@ function sortJSON(data, key) {
     return ((x < y) ? -1 : ((x > y) ? 1 : 0));
   });
 }
-function sortByValue(el){
+function sortByValue(likes){
   var sortedArray = [];
-  for(var i in el) {
-      sortedArray.push([el[i], i]);
+  for(var i in likes) {
+      sortedArray.push([likes[i], i]);
   }
   return sortedArray.sort();
 }
@@ -123,7 +123,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         data["media"].forEach(function (el){ // in data media
           if(el['photographerId'] === folioIdNum) { // photographer id
 
-            elLi = sortJSON(el, likes);
+            elLi = sortByValue(likes);
             console.log(elLi);
             
             let figure = createNode("figure"), 
