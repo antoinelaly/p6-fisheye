@@ -230,7 +230,7 @@ figcaption .price {
 }
 .lesphotos figcaption {
   display: flex;
-  width: 93%;
+  width: 340px;
   justify-content: space-between;
 }
 .lesphotos figcaption p {
