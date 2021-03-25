@@ -123,7 +123,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         data["media"].forEach(function (el){ // in data media
           if(el['photographerId'] === folioIdNum) { // photographer id
 
-            elLi = sortJSON(el.likes);
+            elLi = sortJSON(el, likes);
             console.log(elLi);
             
             let figure = createNode("figure"), 
