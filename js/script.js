@@ -117,7 +117,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         data["media"].forEach(function (el){ // in data media
           if(el['photographerId'] === folioIdNum) { // objets with id
             
-            var media = sortJSON(el.media, "likes");
+            var media = sortJSON(data.media, "likes");
 
             let figure = createNode("figure"), 
             figcaption = createNode("figcaption");
