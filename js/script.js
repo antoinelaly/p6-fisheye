@@ -110,14 +110,22 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         data["media"].forEach(function (el){ // in data media
           if(el['photographerId'] === folioIdNum) { // photographer id
 
-            var likes = 1;
-            for (var i = 0; i < el.length; i++) {
-              // increase rank only if current score less than previous
-              if (i > 0 && el[i].score < el[i - 1].score) {
-                likes++;
-              }
-                el[i].rank = likes;
+            var array = [];
+            for (var key in media) {
+              array.push(likes[key]);
             }
+            array.sort(function(a, b){
+                return b.score - a.score;
+            });
+            var rank = 1;
+            for (var i = 0; i < array.length; i++) {
+              if (i > 0 && array[i].score < array[i - 1].score) {
+                rank++;
+              }
+              array[i].rank = rank;
+            }
+            
+            console.log(array);
             
             let figure = createNode("figure"), 
             figcaption = createNode("figcaption");
