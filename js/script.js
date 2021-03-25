@@ -11,20 +11,7 @@ function createNode(element) {
 function append(parent, el) {
 	return parent.appendChild(el);
 }
-function sortJSON(data, key) {
-  return data.sort(function(a, b) {
-    var x = a[key];
-    var y = b[key];
-    return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-  });
-}
-function sortByValue(likes){
-  var sortedArray = [];
-  for(var i in likes) {
-      sortedArray.push([likes[i], i]);
-  }
-  return sortedArray.sort();
-}
+
 
 function creatFigure(el, valueFigure) {
   let ul = createNode("ul"),
@@ -123,7 +110,9 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         data["media"].forEach(function (el){ // in data media
           if(el['photographerId'] === folioIdNum) { // photographer id
 
-            elLi = sortByValue(likes);
+            elLi = data.sort(function(a, b){
+              return a.likes - b.likes;
+            });
             console.log(elLi);
             
             let figure = createNode("figure"), 
