@@ -116,24 +116,24 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
         data["media"].forEach(function (el){ // in data media
           if(el['photographerId'] === folioIdNum) { // objets with id
-            
-            var media = sortJSON(data.media, "likes");
 
-            for (var r = 0; r < media.length; r++) {
             let figure = createNode("figure"), 
             figcaption = createNode("figcaption");
             (img = createNode("img")),
             (p = createNode("p")),
             (pp = createNode("p"));
-            img.src = `img/${media.photographerId}/${media.image}`;
-            p.innerHTML = `${media.date}`;
-            pp.innerHTML = `${media.price} €    ${media.likes} &hearts;`;
+            img.src = `img/${el.photographerId}/${el.image}`;
+            p.innerHTML = `${el.date}`;
+            pp.innerHTML = `${el.price} €    ${el.likes} &hearts;`;
             append(figure, img);
             append(figure, figcaption);
             append(figcaption, p);
             append(figcaption, pp);
             append(lesphotos, figure);
-            }
+
+            lesphotos.sort(function(a, b){
+              return a.id - b.id;
+          });
           }
         })
 
