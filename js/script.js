@@ -19,8 +19,7 @@ function sortJSON(data, key) {
   });
 }
 
-function creatFigure(el, theValue) {
-
+function creatFigure(el, valueFigure) {
   let ul = createNode("ul"),
   figure = createNode("figure"),
   figcaption = createNode("figcaption");
@@ -53,7 +52,7 @@ function creatFigure(el, theValue) {
   append(figcaption, h2);
   append(figcaption, p);
   append(figcaption, ul);
-  append(theValue, figure);
+  append(valueFigure, figure);
 }
 
 window.addEventListener('load', () => {
@@ -69,17 +68,17 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   var folioIdNum = parseInt(folioId); // convert string to num
 
   if(home) {
-    data["photographers"].forEach(function (el, theValue){
-      var theValue = home;
-      creatFigure(el, theValue); // homepage figures 
+    data["photographers"].forEach(function (el, valueFigure){
+      var valueFigure = home;
+      creatFigure(el, valueFigure); // homepage figures 
     })
   };
 
   if(tagpage && searchParams.has('id')) {
     data["photographers"].forEach(function (el){
       if(el['tags'].includes(folioId)) { 
-        var theValue = tagpage;
-        creatFigure(el, theValue); // tagpage figures
+        var valueFigure = tagpage;
+        creatFigure(el, valueFigure); // tagpage figures
       }
     })
   };
