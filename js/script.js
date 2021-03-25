@@ -11,7 +11,13 @@ function createNode(element) {
 function append(parent, el) {
 	return parent.appendChild(el);
 }
-
+function sortJSON(data, key) {
+  return data.sort(function(a, b) {
+    var x = a[key];
+    var y = b[key];
+    return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+  });
+}
 
 function creatFigure(el, valueFigure) {
   let ul = createNode("ul"),
@@ -110,31 +116,16 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         data["media"].forEach(function (el){ // in data media
           if(el['photographerId'] === folioIdNum) { // photographer id
 
-            var array = [];
-            for (var key in el) {
-              array.push(el.likes[key]);
-            }
-            array.sort(function(a, b){
-                return b.el.likes - a.el.likes;
-            });
-            var rank = 1;
-            for (var i = 0; i < array.length; i++) {
-              if (i > 0 && array[i].el.likes < array[i - 1].el.likes) {
-                rank++;
-              }
-              array[i].rank = rank;
-            }
-            
-            console.log(array);
+            var li = sortJSON(data.media, "likes");
             
             let figure = createNode("figure"), 
             figcaption = createNode("figcaption");
             (img = createNode("img")),
             (p = createNode("p")),
             (pp = createNode("p"));
-            img.src = `img/${el.photographerId}/${el.image}`;
-            p.innerHTML = `${el.date}`;
-            pp.innerHTML = `${el.price} €    ${el.likes} &hearts;`;
+            img.src = `img/${li.photographerId}/${li.image}`;
+            p.innerHTML = `${li.date}`;
+            pp.innerHTML = `${li.price} €    ${li.likes} &hearts;`;
             append(figure, img);
             append(figure, figcaption);
             append(figcaption, p);
