@@ -113,28 +113,27 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     //var folioId = searchParams.get('id'); // convert to var
     //var folioIdNum = parseInt(folioId); // convert string to num
 
-        //data["media"].forEach(function (el){  in data media
-          if(data['photographerId'] === folioIdNum) { // photographer id
+        data["media"].forEach(function (el){ // in data media
+          if(el['photographerId'] === folioIdNum) { // photographer id
 
-            var li = sortJSON(data, likes);
-
-            for (var r = 0; r < li.length; r++) {
+            /*var li = sortJSON(data.media, "likes");*/
+            
             let figure = createNode("figure"), 
             figcaption = createNode("figcaption");
             (img = createNode("img")),
             (p = createNode("p")),
             (pp = createNode("p"));
-            img.src = `img/${li.photographerId}/${li.image}`;
-            p.innerHTML = `${li.date}`;
-            pp.innerHTML = `${li.price} €    ${li.likes} &hearts;`;
+            img.src = `img/${el.photographerId}/${el.image}`;
+            p.innerHTML = `${el.date}`;
+            pp.innerHTML = `${el.price} €    ${el.likes} &hearts;`;
             append(figure, img);
             append(figure, figcaption);
             append(figcaption, p);
             append(figcaption, pp);
             append(lesphotos, figure);
-            }
+
           }
-        //})
+        })
 
         data["photographers"].forEach(function (el){
           if(el['id'] === folioIdNum) {
