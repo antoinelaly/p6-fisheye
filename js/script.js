@@ -132,10 +132,9 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           if(el['photographerId'] === folioIdNum) { // photographer id
 
             var valueFolio = lesphotos;
-            creatFolio(el, valueFolio);
-            /*.sort(function(a, b) {
-              return parseFloat(a.el.likes) - parseFloat(b.el.likes);
-          });*/
+            creatFolio(el, valueFolio).sort(function(a, b) {
+              return parseFloat(a.likes) - parseFloat(b.likes);
+          });
 
           }
         })
