@@ -18,7 +18,9 @@ function sortJSON(data, key) {
     return ((x < y) ? -1 : ((x > y) ? 1 : 0));
   });
 }
-function creatFigure(el) {
+
+function creatFigure(el, theValue) {
+
   let ul = createNode("ul"),
   figure = createNode("figure"),
   figcaption = createNode("figcaption");
@@ -51,7 +53,7 @@ function creatFigure(el) {
   append(figcaption, h2);
   append(figcaption, p);
   append(figcaption, ul);
-  append(home, figure);
+  append(theValue, figure);
 }
 
 window.addEventListener('load', () => {
@@ -67,9 +69,9 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   var folioIdNum = parseInt(folioId); // convert string to num
 
   if(home) {
-      data["photographers"].forEach(function (el){
-
-        creatFigure(el);
+      data["photographers"].forEach(function (el, theValue){
+        var theValue = home;
+        creatFigure(el, theValue);
         
       })
   };
