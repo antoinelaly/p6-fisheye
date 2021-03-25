@@ -71,7 +71,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   if(home) {
     data["photographers"].forEach(function (el, theValue){
       var theValue = home;
-      creatFigure(el, theValue);
+      creatFigure(el, theValue); // homepage figures 
     })
   };
 
@@ -79,14 +79,14 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     data["photographers"].forEach(function (el){
       if(el['tags'].includes(folioId)) { 
         var theValue = tagpage;
-        creatFigure(el, theValue);
+        creatFigure(el, theValue); // tagpage figures
       }
     })
   };
 
-  if(nav) {
+  if(nav) { // nav buttons
     data["photographers"].forEach(function (el){
-      var temp = [ ]
+      var temp = [ ] // no duplication
       dataa = el.tags.filter((el)=>{
       if(!temp.includes(el.userid)){
         temp.push(el.userid)
@@ -110,21 +110,23 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     })
   };
 
-  if(searchParams.has('id')) { // s'il y a un id dans l'url
+  if(searchParams.has('id')) { // if id in url
     //var folioId = searchParams.get('id'); // convert to var
     //var folioIdNum = parseInt(folioId); // convert string to num
 
-        data["media"].forEach(function (el){ // start looping in media
-          if(el['photographerId'] === folioIdNum) { // target objets
+        data["media"].forEach(function (el){ // in data media
+          if(el['photographerId'] === folioIdNum) { // objets with id
             
-            let figure = createNode("figure"), // creat html
+            var media = sortJSON(el.media, "likes");
+
+            let figure = createNode("figure"), 
             figcaption = createNode("figcaption");
             (img = createNode("img")),
             (p = createNode("p")),
             (pp = createNode("p"));
-            img.src = `img/${el.photographerId}/${el.image}`;
-            p.innerHTML = `${el.date}`;
-            pp.innerHTML = `${el.price} €    ${el.likes} &hearts;`;
+            img.src = `img/${media.photographerId}/${media.image}`;
+            p.innerHTML = `${media.date}`;
+            pp.innerHTML = `${media.price} €    ${media.likes} &hearts;`;
             append(figure, img);
             append(figure, figcaption);
             append(figcaption, p);
@@ -135,7 +137,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
         data["photographers"].forEach(function (el){
           if(el['id'] === folioIdNum) {
-            var theValue = presentation;
+            var theValue = presentation; // photographer presentation 
             creatFigure(el, theValue);
           }
         })
