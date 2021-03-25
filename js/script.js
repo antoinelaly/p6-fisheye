@@ -120,9 +120,9 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
             
             let figure = createNode("figure"), 
             figcaption = createNode("figcaption");
-            (img = createNode("img")),
+            (pp = createNode("p")),
             (p = createNode("p")),
-            (pp = createNode("p"));
+            (img = createNode("img"));
             pp.innerHTML = `${el.likes} &hearts;  ${el.price} €`;
             img.src = `img/${el.photographerId}/${el.image}`;
             p.innerHTML = `${el.date}`;
