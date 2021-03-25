@@ -183,8 +183,11 @@ figcaption .price {
 .presentation {
   display: flex;
   justify-content: space-around;
+}
+.presentation figure {
+  display: flex;
   flex-direction: row;
-  -webkit-flex-direction: row-reverse; 
+  -webkit-flex-direction: row-reverse;
   flex-direction: row-reverse;
 }
 .lespetitsb {
