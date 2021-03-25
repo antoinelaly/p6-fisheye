@@ -244,8 +244,6 @@ figcaption .price {
   display: flex;
   justify-content: space-between;
   flex: 1 0 300px;
-  align-items: center;
-  text-align: center;
   margin-bottom: 10px !important;
   padding-left: 40px;
   padding-right: 40px;

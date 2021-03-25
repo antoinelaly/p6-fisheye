@@ -85,6 +85,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   if(nav) { // nav buttons
     data["photographers"].forEach(function (el){
       var temp = [ ] // no duplication
+      
       dataa = el.tags.filter((el)=>{
       if(!temp.includes(el.userid)){
         temp.push(el.userid)
