@@ -119,6 +119,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
             
             var media = sortJSON(data.media, "likes");
 
+            for (var r = 0; r < media.length; r++) {
             let figure = createNode("figure"), 
             figcaption = createNode("figcaption");
             (img = createNode("img")),
@@ -132,6 +133,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
             append(figcaption, p);
             append(figcaption, pp);
             append(lesphotos, figure);
+            }
           }
         })
 
