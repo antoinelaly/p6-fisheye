@@ -116,7 +116,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         data["media"].forEach(function (el){ // in data media
           if(el['photographerId'] === folioIdNum) { // photographer id
 
-            dataaa = data.sort(function(a, b){
+            dataaa = el.sort(function(a, b){
               return a.likes - b.likes;
           });
           for (let j = 0; j < dataaa.length; j++) {
