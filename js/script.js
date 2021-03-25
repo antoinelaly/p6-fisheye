@@ -113,10 +113,10 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     //var folioId = searchParams.get('id'); // convert to var
     //var folioIdNum = parseInt(folioId); // convert string to num
 
-        data["media"].forEach(function (el){ // in data media
-          if(el['photographerId'] === folioIdNum) { // photographer id
+        //data["media"].forEach(function (el){  in data media
+          if(data['photographerId'] === folioIdNum) { // photographer id
 
-            var li = sortJSON(el, likes);
+            var li = sortJSON(data, likes);
 
             for (var r = 0; r < li.length; r++) {
             let figure = createNode("figure"), 
@@ -134,7 +134,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
             append(lesphotos, figure);
             }
           }
-        })
+        //})
 
         data["photographers"].forEach(function (el){
           if(el['id'] === folioIdNum) {
