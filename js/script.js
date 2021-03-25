@@ -126,11 +126,11 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
             pp.innerHTML = `${el.likes} &hearts;  ${el.price} €`;
             img.src = `img/${el.photographerId}/${el.image}`;
             p.innerHTML = `${el.date}`;
-            
-            append(figure, img);
+
             append(figure, figcaption);
-            append(figcaption, p);
             append(figcaption, pp);
+            append(figure, img);
+            append(figcaption, p);
             append(lesphotos, figure);
 
           }
