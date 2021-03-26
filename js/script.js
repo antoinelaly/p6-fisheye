@@ -146,7 +146,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
             el.sort((a, b) => { return a.likes - b.likes; });
 
-            employees.forEach((e) => {
+            el.forEach((e) => {
               var valueFolio = lesphotos;
             creatFolio(e, valueFolio);
           });
