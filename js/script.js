@@ -69,15 +69,15 @@ function creatFigure(el, valueFigure) {
   append(valueFigure, figure);
 }
 
-function creatFolio(el, valueFolio) {
+function creatFolio(e, valueFolio) {
   let figure = createNode("figure"), 
   figcaption = createNode("figcaption");
   (img = createNode("img")),
   (p = createNode("p")),
   (pp = createNode("p"));
-  img.src = `img/${el.photographerId}/${el.image}`;
-  p.innerHTML = `${el.date}`;
-  pp.innerHTML = `${el.price} €    ${el.likes} &hearts;`;
+  img.src = `img/${e.photographerId}/${e.image}`;
+  p.innerHTML = `${e.date}`;
+  pp.innerHTML = `${e.price} €    ${e.likes} &hearts;`;
   append(figure, img);
   append(figure, figcaption);
   append(figcaption, p);
