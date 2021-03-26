@@ -110,11 +110,9 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   };
 
   if(searchParams.has('id')) { // if id in url, folio id 
-    //var folioId = searchParams.get('id'); // convert to var
-    //var folioIdNum = parseInt(folioId); // convert string to num
-
+    if(el['photographerId'] === folioIdNum) { // photographer id
         data["media"].forEach(function (el){ // in data media
-          if(el['photographerId'] === folioIdNum) { // photographer id
+          
 
             /*var li = sortJSON(data.media, "likes");*/
             
