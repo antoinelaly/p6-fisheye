@@ -11,17 +11,27 @@ function createNode(element) {
 function append(parent, el) {
 	return parent.appendChild(el);
 }
-function compare(a, b) {
-  const likesA = a.likes;
-  const likesB = b.likes.;
+function compareValues(key, order = 'asc') {
+  return function innerSort(a, b) {
+    if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+      return 0;
+    }
 
-  let comparison = 0;
-  if (likesA > likesB) {
-    comparison = 1;
-  } else if (likesA < likesB) {
-    comparison = -1;
-  }
-  return comparison;
+    const varA = typeof a[key] === 'string' ?
+    a[key].toUpperCase() : a[key];
+    const varB = typeof b[key] === 'string' ?
+    b[key].toUpperCase() : b[key];
+
+    let comparison = 0;
+    if (varA > varB) {
+      comparison = 1;
+    } else if (varA < varB) {
+      comparison = -1;
+    }
+    return (
+      order === 'desc' ? comparison * -1 : comparison);
+
+  };
 }
 
 function creatFigure(el, valueFigure) {
@@ -134,10 +144,10 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         data["media"].forEach(function (el){ // in data media
           if(el['photographerId'] === folioIdNum) { // photographer id
 
-
-            laData = el.sort(compare);
+            
+            elSort = el.sort(compareValues('likes', 'desc'))
             var valueFolio = lesphotos;
-            creatFolio(laData, valueFolio);
+            creatFolio(elSort, valueFolio);
           }
         })
 
