@@ -144,10 +144,14 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         data["media"].forEach(function (el){ // in data media
           if(el['photographerId'] === folioIdNum) { // photographer id
 
+            el.sort((a, b) => { return a.likes - b.likes; });
+
+            employees.forEach((e) => {
+              var valueFolio = lesphotos;
+            creatFolio(e, valueFolio);
+          });
+
             
-            elSort = el.sort(compareValues('likes', 'desc'))
-            var valueFolio = lesphotos;
-            creatFolio(elSort, valueFolio);
           }
         })
 
