@@ -11,12 +11,17 @@ function createNode(element) {
 function append(parent, el) {
 	return parent.appendChild(el);
 }
-function sortJSON(data, key) {
-  return data.sort(function(a, b) {
-    var x = a[key];
-    var y = b[key];
-    return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-  });
+function compare(a, b) {
+  const likesA = a.likes;
+  const likesB = b.likes.;
+
+  let comparison = 0;
+  if (likesA > likesB) {
+    comparison = 1;
+  } else if (likesA < likesB) {
+    comparison = -1;
+  }
+  return comparison;
 }
 
 function creatFigure(el, valueFigure) {
@@ -130,7 +135,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           if(el['photographerId'] === folioIdNum) { // photographer id
 
 
-           var laData = el.sort((a, b) => (a.likes > b.likes) ? 1 : -1);
+            laData = el.sort(compare);
             var valueFolio = lesphotos;
             creatFolio(laData, valueFolio);
           }
