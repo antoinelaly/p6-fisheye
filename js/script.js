@@ -161,7 +161,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
               append(figcaption, p);
               append(figcaption, pp);
               append(valueFolio, figure);
-              creatFolio(e, lesphotos); 
+              append(e, lesphotos); 
             
             });
           }
