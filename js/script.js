@@ -140,11 +140,12 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     })
   };
 
+  data.sort((a, b) => { return a.likes - b.likes; });
+
   if(searchParams.has('id')) { // if id in url, folio id 
         data["media"].forEach(function (el){ // in data media
           if(el['photographerId'] === folioIdNum) { // photographer id
 
-            el.sort((a, b) => { return a.likes - b.likes; });
             el.forEach((e) => { 
               
               let figure = createNode("figure"), 
