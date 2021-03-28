@@ -69,21 +69,21 @@ function creatFigure(el, valueFigure) {
   append(valueFigure, figure);
 }
 
-/*function creatFolio(e, valueFolio) {
+function creatFolio(el, valueFolio) {
   let figure = createNode("figure"), 
   figcaption = createNode("figcaption");
   (img = createNode("img")),
   (p = createNode("p")),
   (pp = createNode("p"));
-  img.src = `img/${e.photographerId}/${e.image}`;
-  p.innerHTML = `${e.date}`;
-  pp.innerHTML = `${e.price} €    ${e.likes} &hearts;`;
+  img.src = `img/${el.photographerId}/${el.image}`;
+  p.innerHTML = `${el.date}`;
+  pp.innerHTML = `${el.price} €    ${el.likes} &hearts;`;
   append(figure, img);
   append(figure, figcaption);
   append(figcaption, p);
   append(figcaption, pp);
   append(valueFolio, figure);
-}*/
+}
 
 window.addEventListener('load', () => {
 
@@ -144,26 +144,9 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         data["media"].forEach(function (el){ // in data media
           if(el['photographerId'] === folioIdNum) { // photographer id
 
-            el.sort((a, b) => b.likes - a.likes);
+            var valueFolio = lesphotos;
+            creatFigure(el, valueFolio);
 
-          el.forEach((e) => {
-
-              console.log(e);
-              let figure = createNode("figure"), 
-              figcaption = createNode("figcaption");
-              (img = createNode("img")),
-              (p = createNode("p")),
-              (pp = createNode("p"));
-              img.src = `img/${e.photographerId}/${e.image}`;
-              p.innerHTML = `${e.date}`;
-              pp.innerHTML = `${e.price} €    ${e.likes} &hearts;`;
-              append(figure, img);
-              append(figure, figcaption);
-              append(figcaption, p);
-              append(figcaption, pp);
-              append(valueFolio, figure);
-              append(e, lesphotos); 
-            });
           }
         })
 
