@@ -85,23 +85,13 @@ function creatFolio(el, valueFolio) {
   append(valueFolio, figure);
 }
 
-window.onload = fetchData('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json');
-var datum = [];
+window.addEventListener('load', () => {
 
-function fetchData(url) {
-  var data = "";
-  fetch(url)
-  .then((resp) => resp.json())
-  .then(function (data) {
-    data = displayData(data.results);
-    return data;
-  })
-  .catch(function (error) {
-    return data
-  });
-  }
+fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json')
+.then(response => {
+  return response.json();
+}).then(data => {
 
-  function displayData() {
   var searchParams = new URLSearchParams(window.location.search);
   // url get string id
   var folioId = searchParams.get('id'); // convert to var
@@ -170,4 +160,8 @@ function fetchData(url) {
   }     else {
       //window.location.pathname = 'folio';
   }
-}
+
+}).catch(err => {
+  console.log('Fetch Error :-S', err);
+});
+});
