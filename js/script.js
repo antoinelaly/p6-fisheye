@@ -101,7 +101,7 @@ function fetchData(url) {
   });
   }
 
-  function displayData() {
+  function displayData(data) {
   var searchParams = new URLSearchParams(window.location.search);
   // url get string id
   var folioId = searchParams.get('id'); // convert to var
