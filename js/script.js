@@ -1,4 +1,3 @@
-
 var home = document.querySelector(".out");
 var lesphotos = document.querySelector(".lesphotos");
 var presentation = document.querySelector(".presentation");
@@ -11,7 +10,7 @@ function createNode(element) {
 function append(parent, el) {
 	return parent.appendChild(el);
 }
-function compareValues(key, order = 'asc') {
+/*function compareValues(key, order = 'asc') {
   return function innerSort(a, b) {
     if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
       return 0;
@@ -32,7 +31,7 @@ function compareValues(key, order = 'asc') {
       order === 'desc' ? comparison * -1 : comparison);
 
   };
-}
+}*/
 
 function creatFigure(el, valueFigure) {
   let ul = createNode("ul"),
@@ -85,23 +84,32 @@ function creatFolio(el, valueFolio) {
   append(valueFolio, figure);
 }
 
+/*function photographers(){
+  this.id = "";
+  this.title = "";
+  this.description = "";
+  this.postedUser = new User();
+}
 
-function search() {
-  //var queryURL = "https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json";
-  window.onload = queryURL("https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json");
-  fetch(queryURL)
-          .then(function (response) {
-              return response.json();
-          })
-          .then(function (ladata) {
-              displaylaData(ladata);
-          })
-          .catch(function (error) {
-              console.log('Error during fetch: ' + error.message);
-          });
-};
+function User(){
+  this.id="";
+  this.name = "";
+  this.age = "";
+}*/
 
-function displaylaData(ladata) {
+  const getData = function() {
+    fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json')
+    .then(response => { return response.json() })
+    .then(json => { 
+      dataLength = json.length;
+      displaylaData(json);
+    })
+    .catch(ex => {
+      console.log('parsing failed', ex)
+    })
+  }
+  
+function displaylaData(el) {
 
   var searchParams = new URLSearchParams(window.location.search);
   // url get string id
@@ -109,14 +117,15 @@ function displaylaData(ladata) {
   var folioIdNum = parseInt(folioId); // convert string to num
 
   if(home) {
-    ladata["photographers"].forEach(function (el, valueFigure){
+    data["photographers"].forEach(function (el, valueFigure){
       var valueFigure = home;
       creatFigure(el, valueFigure); // homepage figures 
     })
   };
 
+
   if(tagpage && searchParams.has('id')) {
-    ladata["photographers"].forEach(function (el){
+    data["photographers"].forEach(function (el){
       if(el['tags'].includes(folioId)) { 
         var valueFigure = tagpage;
         creatFigure(el, valueFigure); // tagpage figures
@@ -125,7 +134,7 @@ function displaylaData(ladata) {
   };
 
   if(nav) { // nav buttons
-    ladata["photographers"].forEach(function (el){
+    data["photographers"].forEach(function (el){
 
       var temp = [ ] // no duplication
       dataa = el.tags.filter((el)=>{
@@ -152,7 +161,7 @@ function displaylaData(ladata) {
   };
 
   if(searchParams.has('id')) { // if id in url, folio id 
-    ladata["media"].forEach(function (el){ // in data media
+    data["media"].forEach(function (el){ // in data media
           if(el['photographerId'] === folioIdNum) { // photographer id
 
             var valueFolio = lesphotos;
@@ -161,7 +170,7 @@ function displaylaData(ladata) {
           }
         })
 
-        ladata["photographers"].forEach(function (el){
+        data["photographers"].forEach(function (el){
           if(el['id'] === folioIdNum) {
             var valueFigure = presentation; // photographer presentation 
             creatFigure(el, valueFigure);
@@ -172,3 +181,4 @@ function displaylaData(ladata) {
       //window.location.pathname = 'folio';
   }
 }
+;
