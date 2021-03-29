@@ -10,28 +10,6 @@ function createNode(element) {
 function append(parent, el) {
 	return parent.appendChild(el);
 }
-/*function compareValues(key, order = 'asc') {
-  return function innerSort(a, b) {
-    if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
-      return 0;
-    }
-
-    const varA = typeof a[key] === 'string' ?
-    a[key].toUpperCase() : a[key];
-    const varB = typeof b[key] === 'string' ?
-    b[key].toUpperCase() : b[key];
-
-    let comparison = 0;
-    if (varA > varB) {
-      comparison = 1;
-    } else if (varA < varB) {
-      comparison = -1;
-    }
-    return (
-      order === 'desc' ? comparison * -1 : comparison);
-
-  };
-}*/
 
 function creatFigure(el, valueFigure) {
   let ul = createNode("ul"),
@@ -84,101 +62,26 @@ function creatFolio(el, valueFolio) {
   append(valueFolio, figure);
 }
 
-/*function photographers(){
-  this.id = "";
-  this.title = "";
-  this.description = "";
-  this.postedUser = new User();
-}
 
-function User(){
-  this.id="";
-  this.name = "";
-  this.age = "";
-}*/
 
-  const getData = function() {
-    fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json')
-    .then(response => { return response.json() })
-    .then(json => { 
-      dataLength = json.length;
-      displaylaData(json);
-    })
-    .catch(ex => {
-      console.log('parsing failed', ex)
-    })
-  }
-  
-function displaylaData(el) {
+fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json') 
+		.then(response => {
+      return response.json();
+    }).then(data => {
+      displayHome(data);
+			console.log(data);
+		}).catch(err => {
 
-  var searchParams = new URLSearchParams(window.location.search);
-  // url get string id
-  var folioId = searchParams.get('id'); // convert to var
-  var folioIdNum = parseInt(folioId); // convert string to num
+	});
 
+  function displayHome(data) {
+
+   
   if(home) {
     data["photographers"].forEach(function (el, valueFigure){
       var valueFigure = home;
       creatFigure(el, valueFigure); // homepage figures 
     })
   };
-
-
-  if(tagpage && searchParams.has('id')) {
-    data["photographers"].forEach(function (el){
-      if(el['tags'].includes(folioId)) { 
-        var valueFigure = tagpage;
-        creatFigure(el, valueFigure); // tagpage figures
-      }
-    })
-  };
-
-  if(nav) { // nav buttons
-    data["photographers"].forEach(function (el){
-
-      var temp = [ ] // no duplication
-      dataa = el.tags.filter((el)=>{
-      if(!temp.includes(el.userid)){
-        temp.push(el.userid)
-        return true;
-      }
-    });
-
-      let ul = createNode("ul");
-      for (let j = 0; j < dataa.length; j++) {
-        let liTags = createNode("li");
-        (aTag = createNode("a"));
-        aTag.href = `tag?id=${dataa[j]}`;
-        liTags.className = "petitsb"; 
-        liTags.innerHTML = `#${dataa[j]}`;
-        append(ul, aTag);
-        append(aTag, liTags);
-      }
-
-      append(nav, ul);
-
-    })
-  };
-
-  if(searchParams.has('id')) { // if id in url, folio id 
-    data["media"].forEach(function (el){ // in data media
-          if(el['photographerId'] === folioIdNum) { // photographer id
-
-            var valueFolio = lesphotos;
-            creatFolio(el, valueFolio);
-
-          }
-        })
-
-        data["photographers"].forEach(function (el){
-          if(el['id'] === folioIdNum) {
-            var valueFigure = presentation; // photographer presentation 
-            creatFigure(el, valueFigure);
-          }
-        })
-
-  }     else {
-      //window.location.pathname = 'folio';
+  
   }
-}
-;
