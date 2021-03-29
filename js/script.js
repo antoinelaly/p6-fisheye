@@ -101,6 +101,8 @@ function fetchData(url) {
   });
   }
 
+console.log(displayData());
+
   function displayData() {
 
   var searchParams = new URLSearchParams(window.location.search);
