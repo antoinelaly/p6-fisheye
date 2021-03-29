@@ -69,9 +69,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       return response.json();
     }).then(data => {
       displayHome(data);
-			console.log(data);
 		}).catch(err => {
-
+      console.log('Fetch Error :-S', err);
 	});
 
   function displayHome(data) {
@@ -83,5 +82,5 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       creatFigure(el, valueFigure); // homepage figures 
     })
   };
-  
+
   }
