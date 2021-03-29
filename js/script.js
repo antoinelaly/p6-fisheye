@@ -63,7 +63,7 @@ function creatFolio(el, valueFolio) {
 }
 
 
-
+window.addEventListener('load', () => {
 fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json') 
 		.then(response => {
       return response.json();
@@ -143,5 +143,5 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     }     else {
         //window.location.pathname = 'folio';
     }
-
   }
+});
