@@ -85,25 +85,23 @@ function creatFolio(el, valueFolio) {
   append(valueFolio, figure);
 }
 
-window.onload = fetchData('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json');
-var datum = [];
 
-function fetchData(url) {
-  var data = "";
-  fetch(url)
-  .then((resp) => resp.json())
-  .then(function (data) {
-    data = displayData(data);
-    return data;
-  })
-  .catch(function (error) {
-    return data
-  });
-  }
+function search() {
+  //var queryURL = "https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json";
+  window.onload = queryURL("https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json");
+  fetch(queryURL)
+          .then(function (response) {
+              return response.json();
+          })
+          .then(function (ladata) {
+              displaylaData(ladata);
+          })
+          .catch(function (error) {
+              console.log('Error during fetch: ' + error.message);
+          });
+};
 
-console.log(displayData());
-
-  function displayData() {
+function displaylaData(ladata) {
 
   var searchParams = new URLSearchParams(window.location.search);
   // url get string id
@@ -111,14 +109,14 @@ console.log(displayData());
   var folioIdNum = parseInt(folioId); // convert string to num
 
   if(home) {
-    data["photographers"].forEach(function (el, valueFigure){
+    ladata["photographers"].forEach(function (el, valueFigure){
       var valueFigure = home;
       creatFigure(el, valueFigure); // homepage figures 
     })
   };
 
   if(tagpage && searchParams.has('id')) {
-    data["photographers"].forEach(function (el){
+    ladata["photographers"].forEach(function (el){
       if(el['tags'].includes(folioId)) { 
         var valueFigure = tagpage;
         creatFigure(el, valueFigure); // tagpage figures
@@ -127,7 +125,7 @@ console.log(displayData());
   };
 
   if(nav) { // nav buttons
-    data["photographers"].forEach(function (el){
+    ladata["photographers"].forEach(function (el){
 
       var temp = [ ] // no duplication
       dataa = el.tags.filter((el)=>{
@@ -154,7 +152,7 @@ console.log(displayData());
   };
 
   if(searchParams.has('id')) { // if id in url, folio id 
-        data["media"].forEach(function (el){ // in data media
+    ladata["media"].forEach(function (el){ // in data media
           if(el['photographerId'] === folioIdNum) { // photographer id
 
             var valueFolio = lesphotos;
@@ -163,7 +161,7 @@ console.log(displayData());
           }
         })
 
-        data["photographers"].forEach(function (el){
+        ladata["photographers"].forEach(function (el){
           if(el['id'] === folioIdNum) {
             var valueFigure = presentation; // photographer presentation 
             creatFigure(el, valueFigure);
