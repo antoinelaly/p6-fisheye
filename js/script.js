@@ -93,7 +93,7 @@ function fetchData(url) {
   fetch(url)
   .then((resp) => resp.json())
   .then(function (data) {
-    data = displayData(data.results);
+    data = displayData(data);
     return data;
   })
   .catch(function (error) {
@@ -101,7 +101,8 @@ function fetchData(url) {
   });
   }
 
-  function displayData(data) {
+  function displayData() {
+
   var searchParams = new URLSearchParams(window.location.search);
   // url get string id
   var folioId = searchParams.get('id'); // convert to var
