@@ -61,6 +61,11 @@ function creatFolio(el, valueFolio) {
   append(figcaption, pp);
   append(valueFolio, figure);
 }
+let showObj = function() {
+  for (let prop in mainObj)
+  console.log(prop);
+  console.log(mainObj[prop]);
+}
 
 
 window.addEventListener('load', () => {
@@ -69,14 +74,15 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       return response.json();
     }).then(data => {
       displayData(data);
+      mainObj = data;
+      showObj();
 		}).catch(err => {
       console.log('Fetch Error :-S', err);
 	});
 
   function displayData(data) {
    
-    var searchParams = new URLSearchParams(window.location.search);
-    // url get string id
+    var searchParams = new URLSearchParams(window.location.search);  // url get string id
     var folioId = searchParams.get('id'); // convert to var
     var folioIdNum = parseInt(folioId); // convert string to num
   
@@ -86,7 +92,6 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         creatFigure(el, valueFigure); // homepage figures 
       })
     };
-  
     if(tagpage && searchParams.has('id')) {
       data["photographers"].forEach(function (el){
         if(el['tags'].includes(folioId)) { 
@@ -95,18 +100,15 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
         }
       })
     };
-  
     if(nav) { // nav buttons
       data["photographers"].forEach(function (el){
-  
         var temp = [ ] // no duplication
         dataa = el.tags.filter((el)=>{
         if(!temp.includes(el.userid)){
           temp.push(el.userid)
           return true;
-        }
-      });
-  
+          }
+        });
         let ul = createNode("ul");
         for (let j = 0; j < dataa.length; j++) {
           let liTags = createNode("li");
@@ -117,19 +119,14 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
           append(ul, aTag);
           append(aTag, liTags);
         }
-  
         append(nav, ul);
-  
       })
     };
-  
     if(searchParams.has('id')) { // if id in url, folio id 
           data["media"].forEach(function (el){ // in data media
             if(el['photographerId'] === folioIdNum) { // photographer id
-  
               var valueFolio = lesphotos;
               creatFolio(el, valueFolio);
-  
             }
           })
   
@@ -139,7 +136,6 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
               creatFigure(el, valueFigure);
             }
           })
-  
     }     else {
         //window.location.pathname = 'folio';
     }
