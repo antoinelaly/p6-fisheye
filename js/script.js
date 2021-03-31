@@ -52,8 +52,8 @@ function creatFolio(el, valueFolio) {
   (img = createNode("img")),
   (p = createNode("p")),
   (pp = createNode("p"));
-  //img.src = `img/${el.photographerId}/${el.image}`;
-  img.src = `img/${el.photographerId}/${limg}`;
+  img.src = `img/${el.photographerId}/${el.image}`;
+  //img.src = `img/${el.photographerId}/${limg}`;
   p.innerHTML = `${el.date}`;
   pp.innerHTML = `${el.price} €    ${el.likes} &hearts;`;
   append(figure, img);
