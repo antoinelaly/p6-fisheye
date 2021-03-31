@@ -61,12 +61,17 @@ function creatFolio(el, valueFolio) {
   append(figcaption, pp);
   append(valueFolio, figure);
 }
-let showObj = function() {
-  for (let prop in mainObj)
-  console.log(prop);
-  console.log(mainObj[prop]);
-}
 
+let mediaObj = {};
+let showObj = function() {
+
+  for (let key in mediaObj) {
+    console.log(key);
+    console.log(mediaObj[key]);
+
+
+  };
+}
 
 window.addEventListener('load', () => {
 fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json') 
@@ -74,8 +79,11 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       return response.json();
     }).then(data => {
       displayData(data);
-      mainObj = data;
+      
+      mediaObj = data.media;
+
       showObj();
+
 		}).catch(err => {
       console.log('Fetch Error :-S', err);
 	});
@@ -123,7 +131,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       })
     };
     if(searchParams.has('id')) { // if id in url, folio id 
-          data["media"].forEach(function (el){ // in data media
+          //data["media"].forEach(function (el){ // in data media
+          mediaObj.forEach(function (el){ 
             if(el['photographerId'] === folioIdNum) { // photographer id
               var valueFolio = lesphotos;
               creatFolio(el, valueFolio);
