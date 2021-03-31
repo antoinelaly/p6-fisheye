@@ -92,21 +92,21 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     var folioIdNum = parseInt(folioId); // convert string to num
   
     if(home) {
-      data["photographers"].forEach(function (el, valueFigure){
+      data.photographers.forEach(function (el, valueFigure){
         var valueFigure = home;
         creatFigure(el, valueFigure); // homepage figures 
       })
     };
     if(tagpage && searchParams.has('id')) {
-      data["photographers"].forEach(function (el){
-        if(el['tags'].includes(folioId)) { 
+      data.photographers.forEach(el => {
+        if(el.tags.includes(folioId)) { 
           var valueFigure = tagpage;
           creatFigure(el, valueFigure); // tagpage figures
         }
       })
     };
     if(nav) { // nav buttons
-      data["photographers"].forEach(function (el){
+      data.photographers.forEach(el => {
         var temp = [ ] // no duplication
         dataa = el.tags.filter((el)=>{
         if(!temp.includes(el.userid)){
@@ -137,8 +137,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
             }
           })
   
-          data["photographers"].forEach(function (el){
-            if(el['id'] === folioIdNum) {
+          data.photographers.forEach(el => {
+            if(el.id === folioIdNum) {
               var valueFigure = presentation; // photographer presentation 
               creatFigure(el, valueFigure);
             }
