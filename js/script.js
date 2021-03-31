@@ -52,7 +52,8 @@ function creatFolio(el, valueFolio) {
   (img = createNode("img")),
   (p = createNode("p")),
   (pp = createNode("p"));
-  img.src = `img/${el.photographerId}/${el.image}`;
+  //img.src = `img/${el.photographerId}/${el.image}`;
+  img.src = `img/${el.photographerId}/${limg}`;
   p.innerHTML = `${el.date}`;
   pp.innerHTML = `${el.price} €    ${el.likes} &hearts;`;
   append(figure, img);
@@ -70,18 +71,20 @@ let showObj = function() {
   };
 }
 
-class BallFactory {
+class ImgFactory {
   constructor() {
-    this.createBall = function(type) {
-      let ball;
-      if (type === 'football' || type === 'soccer') ball = new Football();
-      else if (type === 'basketball') ball = new Basketball();
-      ball.roll = function() {
-        return `The ${this._type} is rolling.`;
-      };
-
-      return ball;
+    this.createImg = function(mediaObj) {
+      let limg;
+      if (mediaObj === 'image' || mediaObj === 'video') limg = new Limage();
+      return limg;
     };
+    console.log(limg);
+  }
+}
+
+class Limage {
+  constructor() {
+
   }
 }
 
