@@ -66,8 +66,8 @@ function creatFolio(el, valueFolio) {
 let mediaObj = {};
 let showObj = function() {
   for (let key in mediaObj) {
-    console.log(key);
-    console.log(mediaObj[key]);
+    //console.log(key);
+    //console.log(mediaObj[key]);
   };
 }
 
