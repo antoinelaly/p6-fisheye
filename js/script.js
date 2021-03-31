@@ -132,8 +132,9 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     };
     if(searchParams.has('id')) { // if id in url, folio id 
           //data["media"].forEach(function (el){ // in data media
-          data.media.forEach(function (el){ 
-            if(el['photographerId'] === folioIdNum) { // photographer id
+          data.media.forEach(el => { 
+            //if(el['photographerId'] === folioIdNum) { // photographer id
+            if(el.photographerId === folioIdNum) {
               var valueFolio = lesphotos;
               creatFolio(el, valueFolio);
             }
