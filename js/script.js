@@ -82,9 +82,15 @@ class ImgFactory {
   }
 }
 
-class Limage {
-  constructor() {
-
+class LeMedia {
+  constructor(mediaObj) {
+    this.id = mediaObj.id;
+    this.photographerId = mediaObj.photographerId;
+    this.image = mediaObj.image;
+    this.video = mediaObj.video;
+    this.tags = mediaObj.tags;
+    this.likesdate = mediaObj.likesdate;
+    this.price = mediaObj.price;
   }
 }
 
