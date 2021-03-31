@@ -70,6 +70,21 @@ let showObj = function() {
   };
 }
 
+class BallFactory {
+  constructor() {
+    this.createBall = function(type) {
+      let ball;
+      if (type === 'football' || type === 'soccer') ball = new Football();
+      else if (type === 'basketball') ball = new Basketball();
+      ball.roll = function() {
+        return `The ${this._type} is rolling.`;
+      };
+
+      return ball;
+    };
+  }
+}
+
 window.addEventListener('load', () => {
 fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json') 
 		.then(response => {
@@ -92,21 +107,21 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     var folioIdNum = parseInt(folioId); // convert string to num
   
     if(home) {
-      data["photographers"].forEach(function (el, valueFigure){
+      data.photographers.forEach(function (el, valueFigure){
         var valueFigure = home;
         creatFigure(el, valueFigure); // homepage figures 
       })
     };
     if(tagpage && searchParams.has('id')) {
-      data["photographers"].forEach(function (el){
-        if(el['tags'].includes(folioId)) { 
+      data.photographers.forEach(el => {
+        if(el.tags.includes(folioId)) { 
           var valueFigure = tagpage;
           creatFigure(el, valueFigure); // tagpage figures
         }
       })
     };
     if(nav) { // nav buttons
-      data["photographers"].forEach(function (el){
+      data.photographers.forEach(el => {
         var temp = [ ] // no duplication
         dataa = el.tags.filter((el)=>{
         if(!temp.includes(el.userid)){
@@ -128,17 +143,15 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       })
     };
     if(searchParams.has('id')) { // if id in url, folio id 
-          //data["media"].forEach(function (el){ // in data media
           data.media.forEach(el => { 
-            //if(el['photographerId'] === folioIdNum) { // photographer id
             if(el.photographerId === folioIdNum) {
               var valueFolio = lesphotos;
               creatFolio(el, valueFolio);
             }
           })
   
-          data["photographers"].forEach(function (el){
-            if(el['id'] === folioIdNum) {
+          data.photographers.forEach(el => {
+            if(el.id === folioIdNum) {
               var valueFigure = presentation; // photographer presentation 
               creatFigure(el, valueFigure);
             }
