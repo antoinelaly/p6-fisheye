@@ -63,34 +63,12 @@ function creatFolio(el, valueFolio) {
   append(valueFolio, figure);
 }
 
-let mediaObj = {};
-let showObj = function() {
+
+function Media() {
   for (let key in mediaObj) {
     //console.log(key);
     //console.log(mediaObj[key]);
-  };
-}
-
-class ImgFactory {
-  constructor() {
-    this.createImg = function(mediaObj) {
-      let limg;
-      if (mediaObj === 'image' || mediaObj === 'video') limg = new Limage();
-      return limg;
-    };
-    console.log(limg);
-  }
-}
-
-class LeMedia {
-  constructor(mediaObj) {
-    this.id = mediaObj.id;
-    this.photographerId = mediaObj.photographerId;
-    this.image = mediaObj.image;
-    this.video = mediaObj.video;
-    this.tags = mediaObj.tags;
-    this.likesdate = mediaObj.likesdate;
-    this.price = mediaObj.price;
+    this[ key ] = mediaObj[ key ];
   }
 }
 
@@ -103,7 +81,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       
       mediaObj = data.media;
 
-      showObj();
+      //showObj();
 
 		}).catch(err => {
       console.log('Fetch Error :-S', err);
