@@ -63,6 +63,19 @@ function creatFolio(el, valueFolio) {
   append(valueFolio, figure);
 }
 
+
+const createMedia = ({ image, video }) => ({
+  image,
+  video,
+  setImage (image) {
+    this.image = image;
+    return this;
+  },
+  setVideo (video) {
+    this.video = video;
+    return this;
+  }
+});
 console.log(createMedia({ image: 'echo.png', video: 'echo.mp4' }));
 
 window.addEventListener('load', () => {
