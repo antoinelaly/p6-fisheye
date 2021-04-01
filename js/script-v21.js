@@ -109,6 +109,18 @@ function creatMedia(media=[]) {
     price
   };
 }
+const createMedia = ({ image, video }) => ({
+  image,
+  video,
+  setImage (image) {
+    this.image = image;
+    return this;
+  },
+  setVideo (video) {
+    this.video = video;
+    return this;
+  }
+});
 
 window.addEventListener('load', () => {
 fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json') 

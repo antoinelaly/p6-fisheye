@@ -63,14 +63,7 @@ function creatFolio(el, valueFolio) {
   append(valueFolio, figure);
 }
 
-
-function Media() {
-  for (let key in mediaObj) {
-    //console.log(key);
-    //console.log(mediaObj[key]);
-    this[ key ] = mediaObj[ key ];
-  }
-}
+console.log(createMedia({ image: 'echo.png', video: 'echo.mp4' }));
 
 window.addEventListener('load', () => {
 fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json') 
