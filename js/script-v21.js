@@ -87,7 +87,22 @@ class ImgFactory {
   }
 }
 
-class LeMedia {
+const createMedia = ({ image, video }) => ({
+  image,
+  video,
+  setImage (image) {
+    this.image = image;
+    return this;
+  },
+  setVideo (video) {
+    this.video = video;
+    return this;
+  }
+});
+console.log(createMedia({ image: 'echo.png', video: 'echo.mp4' }));
+
+
+class LePhotographe {
   constructor(mediaObj) {
     this.id = mediaObj.id;
     this.photographerId = mediaObj.photographerId;

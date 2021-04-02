@@ -53,7 +53,6 @@ function creatFolio(el, valueFolio) {
   (p = createNode("p")),
   (pp = createNode("p"));
   img.src = `img/${el.photographerId}/${el.image}`;
-  //img.src = `img/${el.photographerId}/${limg}`;
   p.innerHTML = `${el.date}`;
   pp.innerHTML = `${el.price} €    ${el.likes} &hearts;`;
   append(figure, img);
@@ -63,21 +62,6 @@ function creatFolio(el, valueFolio) {
   append(valueFolio, figure);
 }
 
-
-const createMedia = ({ image, video }) => ({
-  image,
-  video,
-  setImage (image) {
-    this.image = image;
-    return this;
-  },
-  setVideo (video) {
-    this.video = video;
-    return this;
-  }
-});
-console.log(createMedia({ image: 'echo.png', video: 'echo.mp4' }));
-
 window.addEventListener('load', () => {
 fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json') 
 		.then(response => {
@@ -86,8 +70,9 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       displayData(data);
       
       mediaObj = data.media;
-
-      //showObj();
+      photoObj = data.photographers.id;
+      //console.log(photoObj);
+      showObj(data);
 
 		}).catch(err => {
       console.log('Fetch Error :-S', err);
@@ -154,3 +139,31 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     }
   }
 });
+
+function showObj(data) {
+  data.photographers.forEach(el => { 
+    lename = el.name;
+
+class MyClass {
+  constructor() {
+      this.names_ = [];
+  }
+
+  set name(value) {
+      this.names_.push(value);
+  }
+
+  get name() {
+      return this.names_[this.names_.length - 1];
+  }
+}
+
+
+//console.log(lename);
+const myClassInstance = new MyClass();
+myClassInstance.name = lename;
+
+console.log(myClassInstance.names_);
+
+})
+}
