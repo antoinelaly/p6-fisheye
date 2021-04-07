@@ -162,13 +162,11 @@ function showObj(data) { // function dans fetch retourne data
   get img() { return this.imgs_[this.imgs_.length - 1];}
 
   set video(value) { this.videos_.push(value); }
-  get video() { 
-    if (this.log.length === 0) { 
+  get video() { if (this.log.length === 0) { 
       return this.imgs_[this.imgs_.length - 1]; 
     }
     return this.videos_[this.videos_.length - 1];}
   }
-}
 
   const myClassInstance = new MyClass();
   myClassInstance.graphe = grapherid;
