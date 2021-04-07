@@ -221,8 +221,8 @@ function showObj(data) { // function dans fetch retourne data
   myClassInstance.video = elvideo;
 
   //console.log(myClassInstance.graphes_);
-  //console.log(myClassInstance.videos_);
-  console.log(limage);
+  console.log(myClassInstance.videos_);
+  //console.log(limage);
   //console.log(lemedia_);
   
   })
