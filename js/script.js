@@ -141,7 +141,47 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   }
 });
 
-function leFiltre(data) {
+
+function showObj(data) { // function dans fetch retourne data
+  
+  data.media.forEach(el => { // loop in media
+    grapherid = el.photographerId; // objects
+    limage = el.image || el.video;
+    //elvideo = el.video;
+
+  class MyClass {
+    constructor() {
+        this.graphes_ = []; // photographer id
+        this.imgs_ = []; // 
+        //this.videos_ = [];
+        //this.lemedia_ = [];
+    }
+
+  set graphe(value) { this.graphes_.push(value); }
+  get graphe() { return this.graphes_[this.graphes_.length - 1];}
+  
+  set img(value) { this.imgs_.push(value); }
+  get img() { return this.imgs_[this.imgs_.length - 1];} 
+
+  //set video(value) { this.videos_.push(value); }
+  //get video() { return this.videos_[this.videos_.length - 1];}
+
+}
+
+  const myClassInstance = new MyClass();
+  myClassInstance.graphe = grapherid;
+  myClassInstance.img = limage;
+  //myClassInstance.video = elvideo;
+
+  //console.log(myClassInstance.graphes_);
+  console.log(myClassInstance.imgs_);
+  //console.log(limage);
+  //console.log(lemedia_);
+  
+  })
+}
+
+function leFiltre(data) { // autre test
 
   class LePhotographe {
     constructor(photoObj) {
@@ -172,58 +212,4 @@ function leFiltre(data) {
 
  const creatFromMedia = { photographerId: 82, };
  //console.log(LePhotographe());
-}
-
-function showObj(data) { // function dans fetch retourne data
-  
-  data.media.forEach(el => { // loop in media
-    grapherid = el.photographerId; // objects
-    limage = el.image;
-    elvideo = el.video;
-
-    class Media {
-      constructor() {
-        this._type = 'image';
-      }
-    }
-
-  class MyClass {
-    constructor() {
-        this.graphes_ = []; // array from new n° photographer id
-        this.imgs_ = []; // 
-        this.videos_ = [];
-        this.lemedia_ = [];
-
-        let lemedia;
-        this.creatMedia = function(el) {
-          if (el === 'image' || el === 'video') lemedia = new Media();
-          return lemedia_ = [];
-        }  
-    }
-
-  set graphe(value) { this.graphes_.push(value); }
-  get graphe() { return this.graphes_[this.graphes_.length - 1];}
-  
-  set img(value) { this.imgs_.push(value); }
-  get img() { return this.imgs_[this.imgs_.length - 1];}
-
-  set video(value) { this.videos_.push(value); }
-  get video() { return this.videos_[this.imgs_.length - 1];}
-
-  //set fullMedia(value) { this.imgs_.push(value) || this.videos_.push(value); }
-  //get fullMedia() { return this.imgs_[this.imgs_.length - 1] || this.videos_[this.imgs_.length - 1]; }
-
-}
-
-  const myClassInstance = new MyClass();
-  myClassInstance.graphe = grapherid;
-  myClassInstance.img = limage;
-  myClassInstance.video = elvideo;
-
-  //console.log(myClassInstance.graphes_);
-  console.log(myClassInstance.videos_);
-  //console.log(limage);
-  //console.log(lemedia_);
-  
-  })
 }
