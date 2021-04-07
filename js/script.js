@@ -73,6 +73,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       photoObj = data.photographers;
       //console.log(photoObj);
       showObj(data);
+      leFiltre(data);
 
 		}).catch(err => {
       console.log('Fetch Error :-S', err);
@@ -173,7 +174,7 @@ function showObj(data) {
  //console.log(photoObj.id);
 }
 
-function showObj(data) { // function dans fetch retourne data
+function leFiltre(data) { // function dans fetch retourne data
   
   data.media.forEach(el => { // loop in media
     grapherid = el.photographerId; // objects
