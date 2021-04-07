@@ -140,30 +140,57 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   }
 });
 
-function showObj(data) {
-  data.photographers.forEach(el => { 
-    lename = el.name;
 
-class MyClass {
-  constructor() {
-      this.names_ = [];
-  }
+function showObj(data) { // function dans fetch retourne data
+  
+  data.media.forEach(el => { // loop in media
+    grapherid = el.photographerId; // objects
+    limage = el.image;
+    elvideo = el.video;
 
-  set name(value) {
-      this.names_.push(value);
-  }
+    /*class Media {
+      constructor() {
+        this._type = 'image';
+      }
+    }*/
 
-  get name() {
-      return this.names_[this.names_.length - 1];
-  }
+  class MyClass {
+    constructor() {
+        this.graphes_ = []; // array from new n° photographer id
+        this.imgs_ = []; // 
+        this.videos_ = [];
+        this.lemedia_ = [];
+
+        /*let lemedia;
+        this.creatMedia = function(el) {
+          if (el === 'image' || el === 'video') lemedia = new Media();
+          return lemedia_ = [];
+        }   */ 
+    }
+
+  set graphe(value) { this.graphes_.push(value); }
+  get graphe() { return this.graphes_[this.graphes_.length - 1];}
+  
+  set img(value) { this.imgs_.push(value); }
+  get img() { return this.imgs_[this.imgs_.length - 1];}
+
+  set video(value) { this.videos_.push(value); }
+  get video() { return this.videos_[this.imgs_.length - 1];}
+
+  //set fullMedia(value) { this.imgs_.push(value) || this.videos_.push(value); }
+  //get fullMedia() { return this.imgs_[this.imgs_.length - 1] || this.videos_[this.imgs_.length - 1]; }
+
 }
 
+  const myClassInstance = new MyClass();
+  myClassInstance.graphe = grapherid;
+  myClassInstance.img = limage;
+  myClassInstance.video = elvideo;
 
-//console.log(lename);
-const myClassInstance = new MyClass();
-myClassInstance.name = lename;
-
-console.log(myClassInstance.names_);
-
-})
+  //console.log(myClassInstance.graphes_);
+  //console.log(myClassInstance.videos_);
+  console.log(limage);
+  //console.log(lemedia_);
+  
+  })
 }
