@@ -148,24 +148,11 @@ function showObj(data) { // function dans fetch retourne data
     limage = el.image;
     elvideo = el.video;
 
-    /*class Media {
-      constructor() {
-        this._type = 'image';
-      }
-    }*/
-
   class MyClass {
     constructor() {
         this.graphes_ = []; // array from new n° photographer id
         this.imgs_ = []; // 
         this.videos_ = [];
-        this.lemedia_ = [];
-
-        /*let lemedia;
-        this.creatMedia = function(el) {
-          if (el === 'image' || el === 'video') lemedia = new Media();
-          return lemedia_ = [];
-        }   */ 
     }
 
   set graphe(value) { this.graphes_.push(value); }
@@ -175,11 +162,12 @@ function showObj(data) { // function dans fetch retourne data
   get img() { return this.imgs_[this.imgs_.length - 1];}
 
   set video(value) { this.videos_.push(value); }
-  get video() { return this.videos_[this.imgs_.length - 1];}
-
-  //set fullMedia(value) { this.imgs_.push(value) || this.videos_.push(value); }
-  //get fullMedia() { return this.imgs_[this.imgs_.length - 1] || this.videos_[this.imgs_.length - 1]; }
-
+  get video() { 
+    if (this.log.length === 0) { 
+      return this.imgs_[this.imgs_.length - 1]; 
+    }
+    return this.videos_[this.videos_.length - 1];}
+  }
 }
 
   const myClassInstance = new MyClass();
@@ -190,7 +178,6 @@ function showObj(data) { // function dans fetch retourne data
   //console.log(myClassInstance.graphes_);
   console.log(myClassInstance.videos_);
   //console.log(limage);
-  //console.log(lemedia_);
   
   })
 }
