@@ -70,7 +70,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       displayData(data);
       
       mediaObj = data.media;
-      photoObj = data.photographers.id;
+      photoObj = data.photographers;
       //console.log(photoObj);
       showObj(data);
 
@@ -140,6 +140,38 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   }
 });
 
+function showObj(data) {
+
+  class LePhotographe {
+    constructor(photoObj) {
+      this.name = photoObj.name;
+      this.id = photoObj.id;
+      this.city = photoObj.city;
+      this.country = photoObj.country;
+      this.tags = photoObj.tags;
+      this.tagline = mediaObj.tagline;
+      this.price = mediaObj.price;
+      this.portrait = mediaObj.portrait;
+      this.illustration = mediaObj.illustration;
+    }
+  }
+
+  class FolioFactory {
+    creat(photoObj) {
+      return new LePhotographe(photoObj);
+    }
+
+    creatFromMedia(mediaObj) {
+      const prepareMediaJson = {
+        id: mediaObj.photographerId,
+      };
+      return new LePhotographe(mediaObj);
+    }
+  }
+
+ const creatFromMedia = { photographerId: 82, };
+ //console.log(photoObj.id);
+}
 
 function showObj(data) { // function dans fetch retourne data
   
@@ -148,11 +180,24 @@ function showObj(data) { // function dans fetch retourne data
     limage = el.image;
     elvideo = el.video;
 
+    class Media {
+      constructor() {
+        this._type = 'image';
+      }
+    }
+
   class MyClass {
     constructor() {
         this.graphes_ = []; // array from new n° photographer id
         this.imgs_ = []; // 
         this.videos_ = [];
+        this.lemedia_ = [];
+
+        let lemedia;
+        this.creatMedia = function(el) {
+          if (el === 'image' || el === 'video') lemedia = new Media();
+          return lemedia_ = [];
+        }  
     }
 
   set graphe(value) { this.graphes_.push(value); }
@@ -162,11 +207,12 @@ function showObj(data) { // function dans fetch retourne data
   get img() { return this.imgs_[this.imgs_.length - 1];}
 
   set video(value) { this.videos_.push(value); }
-  get video() { if (this.log.length === 0) { 
-      return this.imgs_[this.imgs_.length - 1]; 
-    }
-    return this.videos_[this.videos_.length - 1];}
-  }
+  get video() { return this.videos_[this.imgs_.length - 1];}
+
+  //set fullMedia(value) { this.imgs_.push(value) || this.videos_.push(value); }
+  //get fullMedia() { return this.imgs_[this.imgs_.length - 1] || this.videos_[this.imgs_.length - 1]; }
+
+}
 
   const myClassInstance = new MyClass();
   myClassInstance.graphe = grapherid;
@@ -174,8 +220,9 @@ function showObj(data) { // function dans fetch retourne data
   myClassInstance.video = elvideo;
 
   //console.log(myClassInstance.graphes_);
-  console.log(myClassInstance.videos_);
-  //console.log(limage);
+  //console.log(myClassInstance.videos_);
+  console.log(limage);
+  //console.log(lemedia_);
   
   })
 }
