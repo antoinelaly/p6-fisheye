@@ -141,7 +141,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
   }
 });
 
-function showObj(data) {
+function leFiltre(data) {
 
   class LePhotographe {
     constructor(photoObj) {
@@ -171,10 +171,10 @@ function showObj(data) {
   }
 
  const creatFromMedia = { photographerId: 82, };
- //console.log(photoObj.id);
+ //console.log(LePhotographe());
 }
 
-function leFiltre(data) { // function dans fetch retourne data
+function showObj(data) { // function dans fetch retourne data
   
   data.media.forEach(el => { // loop in media
     grapherid = el.photographerId; // objects
