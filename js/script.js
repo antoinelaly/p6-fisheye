@@ -71,10 +71,11 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       
       mediaObj = data.media;
       photoObj = data.photographers;
-      var dataObj = Object.assign({}, mediaObj, photoObj);
-      //console.log(dataObj);
+      //var dataObj = Object.assign({}, mediaObj, photoObj);
+      const dataObj = data.flat(Infinity);
+      console.log(dataObj);
       showObj(data);
-      leFiltre(dataObj);
+      //leFiltre(dataObj);
 
 		}).catch(err => {
       console.log('Fetch Error :-S', err);
