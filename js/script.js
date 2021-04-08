@@ -82,30 +82,19 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 	});
 
 function leFiltre(dataObj) {
-
   for (var item in dataObj) {
-    //alert(dataObj[item])
     console.log(dataObj[item]);
- }
-  /*dataObj.forEach(el => { 
-    el.photographerId = el.id;
-    delete el.id;
-  })
-  console.log(dataObj.photographers);
-*/
-
+  }
 }
 
 function showObj(data) { // function dans fetch retourne data
   data.photographers.forEach(el => { 
     el.photographerId = el.id;
-    delete el.id;
+    //delete el.id;
   })
-  //console.log(data.photographers);
+  console.log(data.photographers);
 
   data.media.forEach(el => { // loop in media 
-  //dataObj.forEach(el => {
-
     grapherid = el.photographerId; // objects
     limage = el.image || el.video;
 
