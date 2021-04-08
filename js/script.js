@@ -50,12 +50,16 @@ function creatFolio(el, valueFolio) {
   let figure = createNode("figure"), 
   figcaption = createNode("figcaption");
   (img = createNode("img")),
+  (videos = createNode("video")),
   (p = createNode("p")),
   (pp = createNode("p"));
   img.src = `img/${el.photographerId}/${el.image}`;
+  videos.src = `img/${el.photographerId}/${el.video}`;
   p.innerHTML = `${el.date}`;
   pp.innerHTML = `${el.price} €    ${el.likes} &hearts;`;
-  append(figure, img);
+  if(el.img == undefined) { append(figure, videos)} 
+  else  { append(figure, img)};
+  append(figure, img) ; // if el.img null 
   append(figure, figcaption);
   append(figcaption, p);
   append(figcaption, pp);
