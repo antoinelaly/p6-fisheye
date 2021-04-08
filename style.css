@@ -227,7 +227,8 @@ figcaption .price {
   max-width: 100%;
   vertical-align: middle;
 }
-.lesphotos figure source {
+
+.lesphotos figure video {
   object-fit: cover;
   position: relative;
   overflow: hidden;
@@ -235,12 +236,13 @@ figcaption .price {
   width: 350px;
   border-radius: 5px;
 }
-.lesphotos source {
+.lesphotos video {
   height: auto;
   width: 100%;
   max-width: 100%;
   vertical-align: middle;
 }
+
 .lesphotos figcaption {
   display: flex;
   width: 340px;
