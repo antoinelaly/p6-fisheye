@@ -50,7 +50,7 @@ function creatFolio(el, valueFolio) {
   let figure = createNode("figure"), 
   figcaption = createNode("figcaption");
   (img = createNode("img")),
-  (videos = createNode("video")),
+  (videos = createNode("source")),
   (p = createNode("p")),
   (pp = createNode("p"));
   img.src = `img/${el.photographerId}/${el.image}`;
