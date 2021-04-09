@@ -47,6 +47,7 @@ function creatFigure(el, valueFigure) {
 }
 
 function creatFolio(el, valueFolio) {
+  for (let j = 0; j < el.figure.length; j++) {
   let figure = createNode("figure"), 
   figcaption = createNode("figcaption");
   (img = createNode("img")),
@@ -58,16 +59,17 @@ function creatFolio(el, valueFolio) {
   p.innerHTML = `${el.date}`;
   pp.innerHTML = `${el.price} €    ${el.likes} &hearts;`;
 
-  for (let j = 0; j < el.figure.length; j++) {
+  
   if (el.videos == undefined) { append(figure, img)}
   else if  (el.videos == undefined) { append(figure, videos)} ;
-  }
+
 
   //append(figure, img) ; // if el.img null 
   append(figure, figcaption);
   append(figcaption, p);
+
   append(figcaption, pp);
-  
+}
   append(valueFolio, figure);
 }
 
