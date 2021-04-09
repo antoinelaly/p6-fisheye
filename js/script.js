@@ -57,7 +57,7 @@ function creatFolio(el, valueFolio) {
   videos.src = `img/${el.photographerId}/${el.video}`;
   p.innerHTML = `${el.date}`;
   pp.innerHTML = `${el.price} €    ${el.likes} &hearts;`;
-  switch (figure) {
+  switch (top) {
     case el.videos == undefined:
       { append(figure, img)}
       break;
