@@ -57,14 +57,9 @@ function creatFolio(el, valueFolio) {
   videos.src = `img/${el.photographerId}/${el.video}`;
   p.innerHTML = `${el.date}`;
   pp.innerHTML = `${el.price} €    ${el.likes} &hearts;`;
-  switch (top) {
-    case el.videos == undefined:
-      { append(figure, img)}
-      break;
-    case el.img == undefined:
-      { append(figure, videos)};
-      break;
-  }
+  if (el.videos == undefined) { append(figure, img)}
+  else if (el.img == undefined) { append(figure, videos)} ;
+
   //append(figure, img) ; // if el.img null 
   append(figure, figcaption);
   append(figcaption, p);
