@@ -60,7 +60,7 @@ function creatFolio(el, valueFolio) {
 
   if (el.video == undefined) { append(figure, img)}
   else if (el.image == undefined) { append(figure, videos)}
-  else { false } ;
+  else { append(false) } ;
   //append(figure, img) ; // if el.img null 
   append(figure, figcaption);
   append(figcaption, p);
