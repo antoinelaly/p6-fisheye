@@ -59,7 +59,8 @@ function creatFolio(el, valueFolio) {
   pp.innerHTML = `${el.price} €    ${el.likes} &hearts;`;
 
   if (el.video == undefined) { append(figure, img)}
-  else { append(figure, videos)} ;
+  else if (el.image == undefined) { append(figure, videos)}
+  else { false } ;
   //append(figure, img) ; // if el.img null 
   append(figure, figcaption);
   append(figcaption, p);
