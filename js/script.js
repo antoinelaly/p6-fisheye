@@ -87,44 +87,18 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       console.log('Fetch Error :-S', err);
 	});
 
-function leFiltre(dataObj) {
-  for (var item in dataObj) {
-    console.log(dataObj[item]);
+  function sortJSON(data, key) {
+    return data.sort(function(a, b) {
+      var x = a[key];
+      var y = b[key];
+      return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+    });
   }
-}
 
-function showObj(data) { // function dans fetch retourne data
-  data.photographers.forEach(el => { 
-    el.photographerId = el.id;
-    //delete el.id;
-  })
-  console.log(data.photographers);
-
-  data.media.forEach(el => { // loop in media 
-    grapherid = el.photographerId; // objects
-    limage = el.image || el.video;
-
-  class MyClass {
-    constructor() {
-        this.graphes_ = []; // photographer id
-        this.imgs_ = []; // 
-    }
-
-  set graphe(value) { this.graphes_.push(value); }
-  get graphe() { return this.graphes_[this.graphes_.length - 1];}
-  
-  set img(value) { this.imgs_.push(value); }
-  get img() { return this.imgs_[this.imgs_.length - 1];} 
-}
-
-  const myClassInstance = new MyClass();
-  myClassInstance.graphe = grapherid;
-  myClassInstance.img = limage;
-
-  console.log(myClassInstance.imgs_);
-  })
-}
-
+  function myFunction() {
+    var x = document.getElementById("mySelect").value;
+    document.getElementById("demo").innerHTML = "You selected: " + x;
+  }
 
 function displayData(data) {
    
