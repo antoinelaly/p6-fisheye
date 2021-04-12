@@ -95,10 +95,12 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     });
   }
 
-  function myFunction() {
-    var x = document.getElementById("mySelect").value;
-    document.getElementById("demo").innerHTML = "You selected: " + x;
-  }
+  const selectElement = document.querySelector('.ice-cream');
+
+  selectElement.addEventListener('change', (event) => {
+    const result = document.querySelector('.result');
+    result.textContent = `You like ${event.target.value}`;
+  });
 
 function displayData(data) {
    
