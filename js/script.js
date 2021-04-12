@@ -95,7 +95,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     });
   }
 
-  const selectElement = document.querySelector('.ice-cream');
+  const selectElement = document.querySelector('.les-images');
 
   selectElement.addEventListener('change', (event) => {
     const result = document.querySelector('.result');
