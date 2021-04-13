@@ -102,7 +102,8 @@ var choice = select.value;
     case 'date':
       //update('date');
       showOption.textContent = "date";
-      update();
+      mediaObj.sort((a, b) => (a.date > b.date) ? 1 : -1);
+      update(mediaObj);
       break;
     case 'price':
       //update('price');
@@ -110,8 +111,8 @@ var choice = select.value;
       break;
   }
 
-  function update() {
-    media.forEach(el => { 
+  function update(mediaObj) {
+    mediaObj.forEach(el => { 
       if(el.photographerId === folioIdNum) {
         var valueFolio = lesphotos;
         creatFolio(el, valueFolio);
