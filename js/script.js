@@ -84,7 +84,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 var select = document.getElementById("my-select"),
 showOption = document.querySelector('#option-selected');
 
-select.onchange = function() {
+select.onchange = function(data) {
 
 var choice = select.value;
   switch (choice) {
