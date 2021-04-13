@@ -88,28 +88,28 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       console.log('Fetch Error :-S', err);
 	});
 
-  var select = document.getElementById("my-select"),
-  showOption = document.querySelector('#option-selected');
+var select = document.getElementById("my-select"),
+showOption = document.querySelector('#option-selected');
 
-  select.addEventListener('change', function(){
+select.addEventListener('change', function(){
 showOption.textContent = "Voici la selection : " + this.value;
 
-    switch (this.value) {
-      case 'likes':
-        sortByLikes()
-        displayFolio()
-        break
-      case 'date':
-        sortByDates()
-        displayFolio()
-        break
-      case 'price':
-        sortByPrice()
-        displayFolio()
-        break
-    }
+  switch (this.value) {
+    case 'likes':
+      sortByLikes()
+      displayFolio()
+      break
+    case 'date':
+      sortByDates()
+      displayFolio()
+      break
+    case 'price':
+      sortByPrice()
+      displayFolio()
+      break
+  }
 
-  });
+});
 
 function displayFolio() {
   var searchParams = new URLSearchParams(window.location.search);  // url get string id
@@ -126,33 +126,33 @@ function displayFolio() {
   }
 };
 
-  const sortByDates = () => {
-    data.media.sort((a, b) => {
-      if (a.date < b.date)
-        return -1;
-      if (a.date > b.date)
-        return 1;
-      return 0;
-    })
-  };
-  const sortByPrice = () => {
-    data.media.sort((a, b) => {
-      if (a.price < b.price)
-        return -1;
-      if (a.price > b.price)
-        return 1;
-      return 0;
-    })
-  };
-  const sortByLikes = () => {
-    data.media.sort((a, b) => {
-      if (a.likes < b.likes)
-        return -1;
-      if (a.likes > b.likes)
-        return 1;
-      return 0;
-    })
-  };
+const sortByDates = () => {
+  data.media.sort((a, b) => {
+    if (a.date < b.date)
+      return -1;
+    if (a.date > b.date)
+      return 1;
+    return 0;
+  })
+};
+const sortByPrice = () => {
+  data.media.sort((a, b) => {
+    if (a.price < b.price)
+      return -1;
+    if (a.price > b.price)
+      return 1;
+    return 0;
+  })
+};
+const sortByLikes = () => {
+  data.media.sort((a, b) => {
+    if (a.likes < b.likes)
+      return -1;
+    if (a.likes > b.likes)
+      return 1;
+    return 0;
+  })
+};
 
 function displayData(data) {
    
