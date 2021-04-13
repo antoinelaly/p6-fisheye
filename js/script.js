@@ -89,17 +89,17 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       console.log('Fetch Error :-S', err);
 	});
 
-/*var select = document.getElementById("my-select"),
-showOption = document.querySelector('#option-selected');*/
-var select = document.querySelector('select');
-var html = document.querySelector('body');
+var select = document.getElementById("my-select"),
+showOption = document.querySelector('#option-selected');
+/*var select = document.querySelector('select');
+var html = document.querySelector('body');*/
 
 select.onchange = function() {
 //showOption.textContent = "Voici la selection : " + this.value;
 
 var choice = select.value;
   switch (choice) {
-    case 'hot pink':
+ /*   case 'hot pink':
 			update('hotpink','lime');
 			break;
 		case 'black':
@@ -121,28 +121,22 @@ var choice = select.value;
 		html.style.color = textColor;
 		input.style.backgroundColor = bgColor;
 		input.style.color = textColor;
-	}
+	}*/
 
-/*    case 'likes':
-      sortByLikes()
-      displayFolio()
-      displayLikes()
+    case 'likes':
+      update('likes');
       break;
     case 'date':
-      sortByDates()
-      displayFolio()
-      showOption.textContent = "date";
+      update('date');
       break;
     case 'price':
-      sortByPrice()
-      displayFolio()
-      showOption.textContent = "price";
+      update('price');
       break;
   }
 
-  function displayLikes() {
-    showOption.textContent = "likes";
-  }*/
+  function update(leCase) {
+    showOption.textContent = leCase;
+  }
 
 };
 
