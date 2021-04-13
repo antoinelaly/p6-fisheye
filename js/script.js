@@ -93,17 +93,62 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
   select.addEventListener('change', function(){
 showOption.textContent = "Voici la selection : " + this.value;
+
+    switch (this.value) {
+      case 'likes':
+        sortByLikes()
+        displayFolio()
+        break
+      case 'date':
+        sortByDates()
+        displayFolio()
+        break
+      case 'price':
+        sortByPrice()
+        displayFolio()
+        break
+    }
+
   });
 
-  const sortByPopularity = () => {
-    mediaObj.sort((a, b) => {
+function displayFolio() {
+  if(searchParams.has('id')) { // if id in url, folio id 
+    data.media.forEach(el => { 
+      if(el.photographerId === folioIdNum) {
+        var valueFolio = lesphotos;
+        creatFolio(el, valueFolio);
+      }
+    })
+  }
+};
+
+  const sortByDates = () => {
+    data.media.sort((a, b) => {
+      if (a.date < b.date)
+        return -1;
+      if (a.date > b.date)
+        return 1;
+      return 0;
+    })
+  };
+  const sortByPrice = () => {
+    data.media.sort((a, b) => {
+      if (a.price < b.price)
+        return -1;
+      if (a.price > b.price)
+        return 1;
+      return 0;
+    })
+  };
+  const sortByLikes = () => {
+    data.media.sort((a, b) => {
       if (a.likes < b.likes)
         return -1;
       if (a.likes > b.likes)
         return 1;
       return 0;
     })
-  }
+  };
 
 function displayData(data) {
    
