@@ -103,6 +103,7 @@ var choice = select.value;
       //update('date');
       showOption.textContent = "date";
       displayFolio();
+      console.log(data.media);
       break;
     case 'price':
       //update('price');
