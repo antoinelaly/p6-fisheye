@@ -75,7 +75,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     }).then(data => {
 
       displayData(data);
-      displayFolio();
+      displayFolio(data);
 
       /*mediaObj = data.media;
       photoObj = data.photographers;
