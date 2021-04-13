@@ -99,7 +99,7 @@ select.addEventListener('change', function(){
     case 'likes':
       sortByLikes()
       displayFolio()
-      showOption.textContent = "likes";
+      displayLikes()
       break
     case 'date':
       sortByDates()
@@ -114,6 +114,10 @@ select.addEventListener('change', function(){
   }
 
 });
+
+function displayLikes() {
+  showOption.textContent = "likes";
+}
 
 function displayFolio() {
   var searchParams = new URLSearchParams(window.location.search);  // url get string id
