@@ -112,6 +112,10 @@ showOption.textContent = "Voici la selection : " + this.value;
   });
 
 function displayFolio() {
+  var searchParams = new URLSearchParams(window.location.search);  // url get string id
+  var folioId = searchParams.get('id'); // convert to var
+  var folioIdNum = parseInt(folioId); // convert string to num
+
   if(searchParams.has('id')) { // if id in url, folio id 
     data.media.forEach(el => { 
       if(el.photographerId === folioIdNum) {
