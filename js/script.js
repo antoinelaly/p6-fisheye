@@ -135,7 +135,8 @@ var choice = select.value;
   }
 
   function update(leCase) {
-    showOption.textContent = leCase;
+    showOption.textContent = "Voici la selection : " + choice;
+    //showOption.textContent = leCase;
   }
 
 };
