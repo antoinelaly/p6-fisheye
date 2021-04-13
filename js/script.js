@@ -80,8 +80,6 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       mediaObj = data.media;
       photoObj = data.photographers;
       var dataObj = Object.assign({}, mediaObj, photoObj);
-      //const dataObj = data.flat(Infinity);
-      //console.log(dataObj);
       showObj(data);
       leFiltre(dataObj);
 
@@ -91,37 +89,11 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
 var select = document.getElementById("my-select"),
 showOption = document.querySelector('#option-selected');
-/*var select = document.querySelector('select');
-var html = document.querySelector('body');*/
 
 select.onchange = function() {
-//showOption.textContent = "Voici la selection : " + this.value;
 
 var choice = select.value;
   switch (choice) {
- /*   case 'hot pink':
-			update('hotpink','lime');
-			break;
-		case 'black':
-			update('black','white');
-			break;
-		case 'purple':
-			update('purple','white');
-			break;
-		case 'yellow':
-			update('yellow','red');
-			break;
-		case 'psychedelic':
-			update('purple','yellow');
-			break;
-	}
-	
-	function update(bgColor, textColor) {
-		html.style.backgroundColor = bgColor;
-		html.style.color = textColor;
-		input.style.backgroundColor = bgColor;
-		input.style.color = textColor;
-	}*/
 
     case 'likes':
       //update('likes');
@@ -139,7 +111,7 @@ var choice = select.value;
   }
 
   function update() {
-    data.media.forEach(el => { 
+    media.forEach(el => { 
       if(el.photographerId === folioIdNum) {
         var valueFolio = lesphotos;
         creatFolio(el, valueFolio);
