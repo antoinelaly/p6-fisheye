@@ -95,7 +95,7 @@ select.onchange = function() {
   var choice = select.value;
   var medias = sortJSON(data.media, choice);
   
-    medias.forEach(el => { 
+  data.media.forEach(el => { 
       var valueFolio = lesphotos;
       creatFolio(el, valueFolio);
     })
