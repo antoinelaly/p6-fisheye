@@ -117,8 +117,8 @@ var choice = select.value;
     var folioIdNum = parseInt(folioId); // convert string to num
   
     if(searchParams.has('id')) { // if id in url, folio id 
-      data.media.sort((a, b) => (a.choice > b.choice) ? 1 : -1);
-      data.media.forEach(el => { 
+      ladata = data.media.sort((a, b) => (a.choice > b.choice) ? 1 : -1);
+      ladata.forEach(el => { 
         if(el.photographerId === folioIdNum) {
           var valueFolio = lesphotos;
           creatFolio(el, valueFolio);
@@ -126,7 +126,6 @@ var choice = select.value;
       })
     }
   }
-
 };
 
 
