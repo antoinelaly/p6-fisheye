@@ -73,6 +73,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 		.then(response => {
       return response.json();
     }).then(data => {
+
       displayData(data);
       
       mediaObj = data.media;
@@ -87,20 +88,22 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       console.log('Fetch Error :-S', err);
 	});
 
-  function sortJSON(data, key) {
-    return data.sort(function(a, b) {
-      var x = a[key];
-      var y = b[key];
-      return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-    });
-  }
+  var select = document.getElementById("my-select"),
+  showOption = document.querySelector('#option-selected');
 
-  const selectElement = document.querySelector('.les-images');
-
-  selectElement.addEventListener('change', (event) => {
-    const result = document.querySelector('.result');
-    result.textContent = `You like ${event.target.value}`;
+  select.addEventListener('change', function(){
+showOption.textContent = "Voici la selection : " + this.value;
   });
+
+  const sortByPopularity = () => {
+    mediaObj.sort((a, b) => {
+      if (a.likes < b.likes)
+        return -1;
+      if (a.likes > b.likes)
+        return 1;
+      return 0;
+    })
+  }
 
 function displayData(data) {
    
@@ -158,7 +161,7 @@ function displayData(data) {
             creatFigure(el, valueFigure);
           }
         })
-  }     else {
+    }    else {
       //window.location.pathname = 'folio';
   }
 }
