@@ -76,12 +76,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
       displayData(data);
       displayFolio(data);
-
-      mediaObj = data.media;
-      photoObj = data.photographers;
-      var dataObj = Object.assign({}, mediaObj, photoObj);
-      showObj(data);
-      leFiltre(dataObj);
+      ladata = data.media.sort((a, b) => (a.choice > b.choice) ? 1 : -1);
+      console.log(ladata);
 
 		}).catch(err => {
       console.log('Fetch Error :-S', err);
@@ -103,7 +99,7 @@ var choice = select.value;
       //update('date');
       showOption.textContent = "date";
       displayFolio();
-      console.log(data.media);
+      
       break;
     case 'price':
       //update('price');
@@ -117,7 +113,7 @@ var choice = select.value;
     var folioIdNum = parseInt(folioId); // convert string to num
   
     if(searchParams.has('id')) { // if id in url, folio id 
-      ladata = data.media.sort((a, b) => (a.choice > b.choice) ? 1 : -1);
+      
       ladata.forEach(el => { 
         if(el.photographerId === folioIdNum) {
           var valueFolio = lesphotos;
