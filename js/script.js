@@ -84,13 +84,22 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
 var select = document.getElementById("my-select"),
 showOption = document.querySelector('#option-selected');
-
+function sortJSON(data, key) {
+  return data.sort(function(a, b) {
+    var x = a[key];
+    var y = b[key];
+    return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+  });
+}
 select.onchange = function() {
-
-var choice = select.value;
-
+  var choice = select.value;
+  var medias = sortJSON(data.media, choice);
   
-  }
+    medias.forEach(el => { 
+      var valueFolio = lesphotos;
+      creatFolio(el, valueFolio);
+    })
+  };
 
 
 
