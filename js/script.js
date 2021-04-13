@@ -124,18 +124,22 @@ var choice = select.value;
 	}*/
 
     case 'likes':
-      update('likes');
+      //update('likes');
+      showOption.textContent = "likes";
       break;
     case 'date':
-      update('date');
+      //update('date');
+      showOption.textContent = "date";
       break;
     case 'price':
-      update('price');
+      //update('price');
+      showOption.textContent = "price";
       break;
   }
 
   function update(leCase) {
-    showOption.textContent = "Voici la selection : " + choice + leCase;
+
+    //showOption.textContent = "Voici la selection : " + choice + leCase;
     //showOption.textContent = leCase;
   }
 
