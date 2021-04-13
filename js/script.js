@@ -93,7 +93,7 @@ var select = document.getElementById("my-select"),
 showOption = document.querySelector('#option-selected');
 
 select.addEventListener('change', function(){
-showOption.textContent = "Voici la selection : " + this.value;
+//showOption.textContent = "Voici la selection : " + this.value;
 
 var choice = this.value;
   switch (choice) {
@@ -113,7 +113,7 @@ var choice = this.value;
       showOption.textContent = "price";
       break;
   }
-  
+
   function displayLikes() {
     showOption.textContent = "likes";
   }
