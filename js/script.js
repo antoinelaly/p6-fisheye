@@ -94,23 +94,23 @@ showOption = document.querySelector('#option-selected');
 
 select.addEventListener('change', function(){
 //showOption.textContent = "Voici la selection : " + this.value;
-
-  switch (this.value) {
+var choice = this.value;
+  switch (choice) {
     case 'likes':
       sortByLikes()
       displayFolio()
       displayLikes()
-      break
+      break;
     case 'date':
       sortByDates()
       displayFolio()
       showOption.textContent = "date";
-      break
+      break;
     case 'price':
       sortByPrice()
       displayFolio()
       showOption.textContent = "price";
-      break
+      break;
   }
 
 });
