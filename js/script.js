@@ -75,81 +75,49 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     }).then(data => {
 
       displayData(data);
-      displayFolio(data);
-      ladata = data.media.sort((a, b) => (a.choice > b.choice) ? 1 : -1);
-      console.log(ladata);
+      displayFolio(ladata);
 
 		}).catch(err => {
       console.log('Fetch Error :-S', err);
 	});
 
+
 var select = document.getElementById("my-select"),
 showOption = document.querySelector('#option-selected');
 
 select.onchange = function() {
-
 var choice = select.value;
   switch (choice) {
 
     case 'likes':
       //update('likes');
       showOption.textContent = "likes";
+      ladata = data.media.sort((a, b) => (a.likes > b.likes) ? 1 : -1);
+      console.log(ladata);
       break;
     case 'date':
       //update('date');
       showOption.textContent = "date";
-      displayFolio();
-      
+      ladata = data.media.sort((a, b) => (a.likes > b.likes) ? 1 : -1);
+      console.log(ladata);
       break;
     case 'price':
       //update('price');
       showOption.textContent = "price";
+      ladata = data.media.sort((a, b) => (a.likes > b.likes) ? 1 : -1);
+      console.log(ladata);
       break;
-  }
-
-  function displayFolio() {
-    var searchParams = new URLSearchParams(window.location.search);  // url get string id
-    var folioId = searchParams.get('id'); // convert to var
-    var folioIdNum = parseInt(folioId); // convert string to num
-  
-    if(searchParams.has('id')) { // if id in url, folio id 
-      
-      ladata.forEach(el => { 
-        if(el.photographerId === folioIdNum) {
-          var valueFolio = lesphotos;
-          creatFolio(el, valueFolio);
-        }
-      })
     }
-  }
+  return ladata;
+
 };
 
-
-const sortByDates = () => {
-  data.media.sort((a, b) => {
-    if (a.date < b.date)
-      return -1;
-    if (a.date > b.date)
-      return 1;
-    return 0;
-  })
-};
-const sortByPrice = () => {
-  data.media.sort((a, b) => {
-    if (a.price < b.price)
-      return -1;
-    if (a.price > b.price)
-      return 1;
-    return 0;
-  })
-};
-const sortByLikes = () => {
-  data.media.sort((a, b) => {
-    if (a.likes < b.likes)
-      return -1;
-    if (a.likes > b.likes)
-      return 1;
-    return 0;
+function displayFolio(ladata); {
+  ladata.forEach(el => { 
+    if(el.photographerId === folioIdNum) {
+      var valueFolio = lesphotos;
+      creatFolio(el, valueFolio);
+    }
   })
 };
 
