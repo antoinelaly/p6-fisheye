@@ -92,10 +92,10 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 var select = document.getElementById("my-select"),
 showOption = document.querySelector('#option-selected');
 
-select.addEventListener('change', function(){
+select.onchange = function() {
 //showOption.textContent = "Voici la selection : " + this.value;
 
-var choice = this.value;
+var choice = select.value;
   switch (choice) {
     case 'likes':
       sortByLikes()
@@ -118,7 +118,7 @@ var choice = this.value;
     showOption.textContent = "likes";
   }
 
-});
+};
 
 
 function displayFolio() {
