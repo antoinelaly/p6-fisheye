@@ -93,7 +93,8 @@ var select = document.getElementById("my-select"),
 showOption = document.querySelector('#option-selected');
 
 select.addEventListener('change', function(){
-//showOption.textContent = "Voici la selection : " + this.value;
+showOption.textContent = "Voici la selection : " + this.value;
+
 var choice = this.value;
   switch (choice) {
     case 'likes':
@@ -112,12 +113,13 @@ var choice = this.value;
       showOption.textContent = "price";
       break;
   }
+  
+  function displayLikes() {
+    showOption.textContent = "likes";
+  }
 
 });
 
-function displayLikes() {
-  showOption.textContent = "likes";
-}
 
 function displayFolio() {
   var searchParams = new URLSearchParams(window.location.search);  // url get string id
