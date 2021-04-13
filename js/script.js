@@ -75,7 +75,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     }).then(data => {
 
       displayData(data);
-      
+      displayFolio();
+
       mediaObj = data.media;
       photoObj = data.photographers;
       var dataObj = Object.assign({}, mediaObj, photoObj);
@@ -92,20 +93,23 @@ var select = document.getElementById("my-select"),
 showOption = document.querySelector('#option-selected');
 
 select.addEventListener('change', function(){
-showOption.textContent = "Voici la selection : " + this.value;
+//showOption.textContent = "Voici la selection : " + this.value;
 
   switch (this.value) {
     case 'likes':
       sortByLikes()
       displayFolio()
+      showOption.textContent = "likes";
       break
     case 'date':
       sortByDates()
       displayFolio()
+      showOption.textContent = "date";
       break
     case 'price':
       sortByPrice()
       displayFolio()
+      showOption.textContent = "price";
       break
   }
 
