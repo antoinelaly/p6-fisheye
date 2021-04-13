@@ -97,7 +97,31 @@ select.onchange = function() {
 
 var choice = select.value;
   switch (choice) {
-    case 'likes':
+    case 'hot pink':
+			update('hotpink','lime');
+			break;
+		case 'black':
+			update('black','white');
+			break;
+		case 'purple':
+			update('purple','white');
+			break;
+		case 'yellow':
+			update('yellow','red');
+			break;
+		case 'psychedelic':
+			update('purple','yellow');
+			break;
+	}
+	
+	function update(bgColor, textColor) {
+		html.style.backgroundColor = bgColor;
+		html.style.color = textColor;
+		input.style.backgroundColor = bgColor;
+		input.style.color = textColor;
+	}
+
+/*    case 'likes':
       sortByLikes()
       displayFolio()
       displayLikes()
@@ -116,7 +140,7 @@ var choice = select.value;
 
   function displayLikes() {
     showOption.textContent = "likes";
-  }
+  }*/
 
 };
 
