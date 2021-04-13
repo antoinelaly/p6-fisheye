@@ -155,13 +155,6 @@ function displayData(data) {
     })
   };
   if(searchParams.has('id')) { // if id in url, folio id 
-        data.media.forEach(el => { 
-          if(el.photographerId === folioIdNum) {
-            var valueFolio = lesphotos;
-            creatFolio(el, valueFolio);
-          }
-        })
-
         ladata.forEach(el => { 
           if(el.photographerId === folioIdNum) {
             var valueFolio = lesphotos;
