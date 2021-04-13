@@ -130,6 +130,7 @@ var choice = select.value;
     case 'date':
       //update('date');
       showOption.textContent = "date";
+      update();
       break;
     case 'price':
       //update('price');
@@ -137,10 +138,13 @@ var choice = select.value;
       break;
   }
 
-  function update(leCase) {
-
-    //showOption.textContent = "Voici la selection : " + choice + leCase;
-    //showOption.textContent = leCase;
+  function update() {
+    data.media.forEach(el => { 
+      if(el.photographerId === folioIdNum) {
+        var valueFolio = lesphotos;
+        creatFolio(el, valueFolio);
+      }
+    })
   }
 
 };
