@@ -75,7 +75,6 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     }).then(data => {
 
       displayData(data);
-      displayFolio(ladata);
 
 		}).catch(err => {
       console.log('Fetch Error :-S', err);
