@@ -89,8 +89,10 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       console.log('Fetch Error :-S', err);
 	});
 
-var select = document.getElementById("my-select"),
-showOption = document.querySelector('#option-selected');
+/*var select = document.getElementById("my-select"),
+showOption = document.querySelector('#option-selected');*/
+var select = document.querySelector('select');
+var html = document.querySelector('body');
 
 select.onchange = function() {
 //showOption.textContent = "Voici la selection : " + this.value;
