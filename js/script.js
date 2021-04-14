@@ -111,7 +111,7 @@ var choice = select.value;
     });
   }
 
-  ladata = data.media.sort((a, b) => (a.choice > b.choice) ? 1 : -1);
+  ladata = data.media.sort((a, b) => (a.likes > b.likes) ? 1 : -1);
 function  displayFolio(ladata) {
   ladata.forEach(el => { 
       var valueFolio = lesphotos;
