@@ -112,12 +112,16 @@ var choice = select.value;
   }
 
   //ladata = data.media.sort((a, b) => (a.likes > b.likes) ? 1 : -1);
-function  displayFolio(data) {
-  data.forEach(el => { 
-      var valueFolio = lesphotos;
-      creatFolio(el, valueFolio);
-  });
-}
+  function  displayFolio(data) {
+    if(searchParams.has('id')) { 
+      data.media.forEach(el => { 
+        if(el.photographerId === folioIdNum) {
+          var valueFolio = lesphotos;
+          creatFolio(el, valueFolio);
+        }
+      })
+    }
+  }
 }
 
 
