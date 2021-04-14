@@ -75,8 +75,10 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     }).then(data => {
 
       displayData(data);
-
-      displayFolio(data);
+      
+      ladata = data.media;
+      displayFolio(ladata);
+      console.log(ladata);
 
 		}).catch(err => {
       console.log('Fetch Error :-S', err);
@@ -90,8 +92,7 @@ select.onchange = function(data) {
 var choice = select.value;
   switch (choice) {
     case 'likes':
-      displayFolio(data);
-      sortJSON(data, choice);
+      displayFolio(ladata);
       showOption.textContent = "likes";
       break;
     case 'date':
@@ -110,21 +111,13 @@ var choice = select.value;
     });
   }
 
-  //ladata = data.media.sort((a, b) => (a.likes > b.likes) ? 1 : -1);
-  function  displayFolio(data) {
-    var searchParams = new URLSearchParams(window.location.search);  // url get string id
-    var folioId = searchParams.get('id'); // convert to var
-    var folioIdNum = parseInt(folioId); // convert string to num
-
-    if(searchParams.has('id')) { 
-      data.media.forEach(el => { 
-        if(el.photographerId === folioIdNum) {
-          var valueFolio = lesphotos;
-          creatFolio(el, valueFolio);
-        }
-      })
-    }
-  }
+  ladata = data.media.sort((a, b) => (a.choice > b.choice) ? 1 : -1);
+function  displayFolio(ladata) {
+  ladata.forEach(el => { 
+      var valueFolio = lesphotos;
+      creatFolio(el, valueFolio);
+  });
+}
 }
 
 
