@@ -77,7 +77,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       displayData(data);
       
       ladata = data.media;
-      displayFolio(ladata);
+      displayFolio(data);
       console.log(ladata);
 
 		}).catch(err => {
@@ -92,7 +92,7 @@ select.onchange = function(data) {
 var choice = select.value;
   switch (choice) {
     case 'likes':
-      displayFolio(ladata);
+      displayFolio(data);
       showOption.textContent = "likes";
       break;
     case 'date':
@@ -111,9 +111,9 @@ var choice = select.value;
     });
   }
 
-  ladata = data.media.sort((a, b) => (a.likes > b.likes) ? 1 : -1);
-function  displayFolio(ladata) {
-  ladata.forEach(el => { 
+  //ladata = data.media.sort((a, b) => (a.likes > b.likes) ? 1 : -1);
+function  displayFolio(data) {
+  data.media.forEach(el => { 
       var valueFolio = lesphotos;
       creatFolio(el, valueFolio);
   });
