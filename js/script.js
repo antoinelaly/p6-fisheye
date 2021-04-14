@@ -75,10 +75,8 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     }).then(data => {
 
       displayData(data);
-      
-      ladata = data.media;
+
       displayFolio(data);
-      console.log(ladata);
 
 		}).catch(err => {
       console.log('Fetch Error :-S', err);
@@ -93,6 +91,7 @@ var choice = select.value;
   switch (choice) {
     case 'likes':
       displayFolio(data);
+      sortJSON(data, choice);
       showOption.textContent = "likes";
       break;
     case 'date':
@@ -116,7 +115,7 @@ var choice = select.value;
     var searchParams = new URLSearchParams(window.location.search);  // url get string id
     var folioId = searchParams.get('id'); // convert to var
     var folioIdNum = parseInt(folioId); // convert string to num
-    
+
     if(searchParams.has('id')) { 
       data.media.forEach(el => { 
         if(el.photographerId === folioIdNum) {
