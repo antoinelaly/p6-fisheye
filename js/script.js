@@ -89,42 +89,32 @@ select.onchange = function(data) {
 var choice = select.value;
   switch (choice) {
     case 'likes':
-      update('likes');
+      displayFolio(likes);
       showOption.textContent = "likes";
       break;
     case 'date':
       showOption.textContent = "date";
-      data.media.sort(compareValues('date', 'desc'))
       break;
     case 'price':
-      update('price');
       showOption.textContent = "price";
       break;
 	}
 
-  function compareValues(key, order = 'asc') {
-    return function innerSort(a, b) {
-      if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
-        return 0;
-      }
-  
-      const varA = (typeof a[key] === 'string')
-        ? a[key].toUpperCase() : a[key];
-      const varB = (typeof b[key] === 'string')
-        ? b[key].toUpperCase() : b[key];
-  
-      let comparison = 0;
-      if (varA > varB) {
-        comparison = 1;
-      } else if (varA < varB) {
-        comparison = -1;
-      }
-      return (
-        (order === 'desc') ? (comparison * -1) : comparison
-      );
-    };
+  function sortJSON(data, key) {
+    return data.sort(function(a, b) {
+      var x = a[key];
+      var y = b[key];
+      return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+    });
   }
-    displayData(data);
+
+function  displayFolio(data) {
+  var lemedia = sortJSON(data.media, likes);
+  lemedia.forEach(el => { 
+      var valueFolio = lesphotos;
+      creatFolio(el, valueFolio);
+  });
+}
 }
 
 
