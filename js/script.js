@@ -116,6 +116,7 @@ var choice = select.value;
     if(searchParams.has('id')) { 
       data.media.forEach(el => { 
         if(el.photographerId === folioIdNum) {
+          var record = sortJSON(el, choice);
           var valueFolio = lesphotos;
           creatFolio(el, valueFolio);
         }
