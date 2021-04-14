@@ -76,7 +76,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
       displayData(data);
       
-      ladata = data.media.sort((a, b) => (a.choice > b.choice) ? 1 : -1);
+      ladata = data.media;
       displayFolio(ladata);
       console.log(ladata);
 
@@ -111,6 +111,7 @@ var choice = select.value;
     });
   }
 
+  ladata = data.media.sort((a, b) => (a.choice > b.choice) ? 1 : -1);
 function  displayFolio(ladata) {
   ladata.forEach(el => { 
       var valueFolio = lesphotos;
