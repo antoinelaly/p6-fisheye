@@ -91,7 +91,7 @@ select.onchange = function(data) {
 var choice = select.value;
   switch (choice) {
     case 'likes':
-      data.media.sort(compareValues('likes', 'desc'));
+      data.sort(compareValues('likes', 'desc'));
       displayData(data);
       showOption.textContent = "likes";
       break;
