@@ -68,28 +68,6 @@ function creatFolio(el, valueFolio) {
   append(valueFolio, figure);
 }
 
-function selectFolio(eldata, sortFolio) {
-  let figure = createNode("figure"), 
-  figcaption = createNode("figcaption");
-  (img = createNode("img")),
-  (videos = createNode("video")),
-  (p = createNode("p")),
-  (pp = createNode("p"));
-  img.src = `img/${eldata.photographerId}/${eldata.image}`;
-  videos.src = `img/${eldata.photographerId}/${eldata.video}`;
-  p.innerHTML = `${eldata.date}`;
-  pp.innerHTML = `${eldata.price} €    ${eldata.likes} &hearts;`;
-
-  if (eldata.video == undefined) { append(figure, img)}
-  else if (eldata.image == undefined) { append(figure, videos)}
-  else { append(false) } ;
-  //append(figure, img) ; // if el.img null 
-  append(figure, figcaption);
-  append(figcaption, p);
-  append(figcaption, pp);
-  append(sortFolio, figure);
-}
-
 window.addEventListener('load', () => {
 fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json') 
 		.then(response => {
@@ -97,10 +75,6 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     }).then(data => {
 
       displayData(data);
-      
-      ladata = data.media;
-      displayFolio(ladata);
-      console.log(ladata);
 
 		}).catch(err => {
       console.log('Fetch Error :-S', err);
@@ -114,7 +88,8 @@ select.onchange = function(data) {
 var choice = select.value;
   switch (choice) {
     case 'likes':
-      displayFolio(ladata);
+      
+      displayData(sortByLikes);
       showOption.textContent = "likes";
       break;
     case 'date':
@@ -125,15 +100,16 @@ var choice = select.value;
       break;
 	}
 
+  const sortByLikes = () => {
+    data.media.sort((a, b) => {
+      if (a.likes > b.likes)
+        return -1;
+      if (a.likes < b.likes)
+        return 1;
+      return 0;
+    })  
+  }
 
-
-ladata = data.media.sort((a, b) => (a.choice > b.choice) ? 1 : -1);
-function  displayFolio(ladata) {
-  ladata.forEach(eldata => { 
-      var sortFolio = lesphotos;
-      selectFolio(eldata, sortFolio);
-  });
-}
 }
 
 
