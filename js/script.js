@@ -103,19 +103,20 @@ var choice = select.value;
       break;
 	}
 
-  function sortJSON(data, key) {
+  /*function sortJSON(data, key) {
     return data.sort(function(a, b) {
       var x = a[key];
       var y = b[key];
       return ((x < y) ? -1 : ((x > y) ? 1 : 0));
     });
-  }
+  }*/
 
   ladata = data.media.sort((a, b) => (a.choice > b.choice) ? 1 : -1);
+  console.log(ladata);
 function  displayFolio(ladata) {
-  ladata.forEach(el => { 
+  ladata.forEach(elm => { 
       var valueFolio = lesphotos;
-      creatFolio(el, valueFolio);
+      creatFolio(elm, valueFolio);
   });
 }
 }
