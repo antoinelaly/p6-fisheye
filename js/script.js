@@ -100,41 +100,52 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
       
       ladata = data.media;
       displayFolio(ladata);
-      console.log(ladata);
 
 		}).catch(err => {
       console.log('Fetch Error :-S', err);
 	});
 
-var select = document.getElementById("my-select"),
-showOption = document.querySelector('#option-selected');
+var select = document.getElementById("my-select");
 
 select.onchange = function(data) {
-
 var choice = select.value;
   switch (choice) {
     case 'likes':
-      displayFolio(ladata);
-      showOption.textContent = "likes";
+      sortResults('likes', false);
       break;
     case 'date':
-      showOption.textContent = "date";
+      sortResults('date', false);
       break;
     case 'price':
-      showOption.textContent = "price";
+      sortResults('price', true);
       break;
 	}
 
-
-
-ladata = data.media.sort((a, b) => (a.choice > b.choice) ? 1 : -1);
-function  displayFolio(ladata) {
-  ladata.forEach(eldata => { 
-      var sortFolio = lesphotos;
-      selectFolio(eldata, sortFolio);
-  });
+  function sortResults(prop, asc) {
+    ladata = ladata.sort(function(a, b) {
+        if (asc) return ((a[prop] + "").toLowerCase() > (b[prop] + "").toLowerCase()) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
+        else return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
+    });
+    displayFolio();
 }
-}
+
+function  displayFolio() {
+  var searchParams = new URLSearchParams(window.location.search);  // url get string id
+  var folioId = searchParams.get('id'); // convert to var
+  var folioIdNum = parseInt(folioId); // convert string to num
+
+  if(searchParams.has('id')) { // if id in url, folio id 
+    ladata.forEach(eldata => { // ladata
+      if(eldata.photographerId === folioIdNum) {
+        
+        var sortFolio = lesphotos;
+        selectFolio(eldata, sortFolio);
+      }
+    }) 
+  } else {
+//window.location.pathname = 'folio';
+    }
+}}
 
 
 function displayData(data) {
