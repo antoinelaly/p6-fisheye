@@ -68,6 +68,28 @@ function creatFolio(el, valueFolio) {
   append(valueFolio, figure);
 }
 
+function selectFolio(eldata, sortFolio) {
+  let figure = createNode("figure"), 
+  figcaption = createNode("figcaption");
+  (img = createNode("img")),
+  (videos = createNode("video")),
+  (p = createNode("p")),
+  (pp = createNode("p"));
+  img.src = `img/${eldata.photographerId}/${eldata.image}`;
+  videos.src = `img/${eldata.photographerId}/${eldata.video}`;
+  p.innerHTML = `${eldata.date}`;
+  pp.innerHTML = `${eldata.price} €    ${eldata.likes} &hearts;`;
+
+  if (eldata.video == undefined) { append(figure, img)}
+  else if (eldata.image == undefined) { append(figure, videos)}
+  else { append(false) } ;
+  //append(figure, img) ; // if el.img null 
+  append(figure, figcaption);
+  append(figcaption, p);
+  append(figcaption, pp);
+  append(sortFolio, figure);
+}
+
 window.addEventListener('load', () => {
 fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json') 
 		.then(response => {
@@ -75,8 +97,10 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     }).then(data => {
 
       displayData(data);
-
-      //var datamedia = data.media;
+      
+      ladata = data.media;
+      displayFolio(ladata);
+      console.log(ladata);
 
 		}).catch(err => {
       console.log('Fetch Error :-S', err);
@@ -85,15 +109,12 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 var select = document.getElementById("my-select"),
 showOption = document.querySelector('#option-selected');
 
-//var datamedia = data.media;
 select.onchange = function(data) {
-  
+
 var choice = select.value;
   switch (choice) {
     case 'likes':
-      compareValues('likes', 'desc');
-      //displayData(data.media);
-      displayFolio(data);
+      displayFolio(ladata);
       showOption.textContent = "likes";
       break;
     case 'date':
@@ -104,35 +125,15 @@ var choice = select.value;
       break;
 	}
 
-  function compareValues(key, order = 'asc') {
-    return function innerSort(a, b) {
-      if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
-        return 0;
-      }
-  
-      const varA = (typeof a[key] === 'string')
-        ? a[key].toUpperCase() : a[key];
-      const varB = (typeof b[key] === 'string')
-        ? b[key].toUpperCase() : b[key];
-  
-      let comparison = 0;
-      if (varA > varB) {
-        comparison = 1;
-      } else if (varA < varB) {
-        comparison = -1;
-      }
-      return (
-        (order === 'desc') ? (comparison * -1) : comparison
-      );
-    };
-  }
 
-  function  displayFolio(data) {
-    data.forEach(el => { 
-        var valueFolio = lesphotos;
-        selectFolio(el, valueFolio);
-    });
-  }
+
+ladata = data.media.sort((a, b) => (a.choice > b.choice) ? 1 : -1);
+function  displayFolio(ladata) {
+  ladata.forEach(eldata => { 
+      var sortFolio = lesphotos;
+      selectFolio(eldata, sortFolio);
+  });
+}
 }
 
 
