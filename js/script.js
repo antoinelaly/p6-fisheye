@@ -68,6 +68,28 @@ function creatFolio(el, valueFolio) {
   append(valueFolio, figure);
 }
 
+function selectFolio(el, sortFolio) {
+  let figure = createNode("figure"), 
+  figcaption = createNode("figcaption");
+  (img = createNode("img")),
+  (videos = createNode("video")),
+  (p = createNode("p")),
+  (pp = createNode("p"));
+  img.src = `img/${el.photographerId}/${el.image}`;
+  videos.src = `img/${el.photographerId}/${el.video}`;
+  p.innerHTML = `${el.date}`;
+  pp.innerHTML = `${el.price} €    ${el.likes} &hearts;`;
+
+  if (el.video == undefined) { append(figure, img)}
+  else if (el.image == undefined) { append(figure, videos)}
+  else { append(false) } ;
+  //append(figure, img) ; // if el.img null 
+  append(figure, figcaption);
+  append(figcaption, p);
+  append(figcaption, pp);
+  append(sortFolio, figure);
+}
+
 window.addEventListener('load', () => {
 fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json') 
 		.then(response => {
@@ -112,11 +134,10 @@ var choice = select.value;
   }*/
 
   ladata = data.media.sort((a, b) => (a.choice > b.choice) ? 1 : -1);
-  console.log(ladata);
 function  displayFolio(ladata) {
-  ladata.forEach(elm => { 
-      var valueFolio = lesphotos;
-      creatFolio(elm, valueFolio);
+  ladata.forEach(el => { 
+      var sortFolio = lesphotos;
+      selectFolio(el, sortFolio);
   });
 }
 }
