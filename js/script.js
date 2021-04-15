@@ -129,7 +129,7 @@ var choice = select.value;
 
 ladata = data.media.sort((a, b) => (a.choice > b.choice) ? 1 : -1);
 function  displayFolio(ladata) {
-  ladata.forEach(el => { 
+  ladata.forEach(eldata => { 
       var sortFolio = lesphotos;
       selectFolio(eldata, sortFolio);
   });
