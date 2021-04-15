@@ -92,7 +92,8 @@ var choice = select.value;
   switch (choice) {
     case 'likes':
       compareValues('likes', 'desc');
-      displayData(data.media);
+      //displayData(data.media);
+      displayFolio(data);
       showOption.textContent = "likes";
       break;
     case 'date':
@@ -125,8 +126,13 @@ var choice = select.value;
       );
     };
   }
-  
 
+  function  displayFolio(data) {
+    data.forEach(el => { 
+        var valueFolio = lesphotos;
+        selectFolio(el, valueFolio);
+    });
+  }
 }
 
 
