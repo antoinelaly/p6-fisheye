@@ -76,7 +76,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 
       displayData(data);
 
-      var datamedia = data.media;
+      //var datamedia = data.media;
 
 		}).catch(err => {
       console.log('Fetch Error :-S', err);
@@ -85,14 +85,14 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 var select = document.getElementById("my-select"),
 showOption = document.querySelector('#option-selected');
 
-var datamedia = data.media;
-select.onchange = function(datamedia) {
+//var datamedia = data.media;
+select.onchange = function(data) {
   
 var choice = select.value;
   switch (choice) {
     case 'likes':
-      datamedia.sort(compareValues('likes', 'desc'));
-      displayData(datamedia);
+      data.media.sort(compareValues('likes', 'desc'));
+      displayData(data);
       showOption.textContent = "likes";
       break;
     case 'date':
