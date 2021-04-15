@@ -93,7 +93,7 @@ var choice = select.value;
     case 'likes':
       console.log(
       data.sort(compareValues('likes', 'desc')));
-      displayData(data);
+      displayData(data.sort(compareValues('likes', 'desc')));
       showOption.textContent = "likes";
       break;
     case 'date':
