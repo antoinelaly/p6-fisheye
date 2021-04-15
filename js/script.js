@@ -88,8 +88,8 @@ select.onchange = function(data) {
 var choice = select.value;
   switch (choice) {
     case 'likes':
-      sortByLikes(data);
-      
+      data.media.sort(compareValues('likes', 'desc'));
+      displayData(data);
       showOption.textContent = "likes";
       break;
     case 'date':
@@ -100,16 +100,29 @@ var choice = select.value;
       break;
 	}
 
-  const sortByLikes = () => {
-    data.media.sort((a, b) => {
-      if (a.likes > b.likes)
-        return -1;
-      if (a.likes < b.likes)
-        return 1;
-      return 0;
-    })  
-    return displayData(data);
+  function compareValues(key, order = 'asc') {
+    return function innerSort(a, b) {
+      if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+        return 0;
+      }
+  
+      const varA = (typeof a[key] === 'string')
+        ? a[key].toUpperCase() : a[key];
+      const varB = (typeof b[key] === 'string')
+        ? b[key].toUpperCase() : b[key];
+  
+      let comparison = 0;
+      if (varA > varB) {
+        comparison = 1;
+      } else if (varA < varB) {
+        comparison = -1;
+      }
+      return (
+        (order === 'desc') ? (comparison * -1) : comparison
+      );
+    };
   }
+  
 
 }
 
