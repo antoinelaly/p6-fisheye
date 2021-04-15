@@ -125,15 +125,26 @@ var choice = select.value;
       break;
 	}
 
-  /*function sortJSON(data, key) {
-    return data.sort(function(a, b) {
-      var x = a[key];
-      var y = b[key];
-      return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-    });
-  }*/
+  var ladata = data.media;
 
-  ladata = data.media.sort((a, b) => (a.choice > b.choice) ? 1 : -1);
+  arrayOfObj = [];
+  for (item in ladata) {
+      if (ladata.hasOwnProperty(item)) {
+          arrayOfObj.push(ladata[item]);
+      }
+  }
+  arrayOfObj.sort(function (a, b) {
+      if (a.choice < b.choice) {
+          return -1;
+      }
+      else if (a.choice > b.choice) {
+          return 1;
+      }
+      return 0;
+  }).forEach(function (elem) { console.log(elem.choice); });
+  
+
+  //ladata = data.media.sort((a, b) => (a.choice > b.choice) ? 1 : -1);
 function  displayFolio(ladata) {
   ladata.forEach(el => { 
       var sortFolio = lesphotos;
