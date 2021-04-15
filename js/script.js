@@ -88,8 +88,8 @@ select.onchange = function(data) {
 var choice = select.value;
   switch (choice) {
     case 'likes':
+      sortByLikes(data);
       
-      displayData(sortByLikes);
       showOption.textContent = "likes";
       break;
     case 'date':
@@ -108,6 +108,7 @@ var choice = select.value;
         return 1;
       return 0;
     })  
+    return displayData(data);
   }
 
 }
