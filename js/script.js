@@ -92,7 +92,7 @@ var choice = select.value;
   switch (choice) {
     case 'likes':
       compareValues('likes', 'desc');
-      displayData(data);
+      displayData(data.media);
       showOption.textContent = "likes";
       break;
     case 'date':
