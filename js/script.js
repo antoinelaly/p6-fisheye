@@ -68,20 +68,20 @@ function creatFolio(el, valueFolio) {
   append(valueFolio, figure);
 }
 
-function selectFolio(el, sortFolio) {
+function selectFolio(eldata, sortFolio) {
   let figure = createNode("figure"), 
   figcaption = createNode("figcaption");
   (img = createNode("img")),
   (videos = createNode("video")),
   (p = createNode("p")),
   (pp = createNode("p"));
-  img.src = `img/${el.photographerId}/${el.image}`;
-  videos.src = `img/${el.photographerId}/${el.video}`;
-  p.innerHTML = `${el.date}`;
-  pp.innerHTML = `${el.price} €    ${el.likes} &hearts;`;
+  img.src = `img/${eldata.photographerId}/${eldata.image}`;
+  videos.src = `img/${eldata.photographerId}/${eldata.video}`;
+  p.innerHTML = `${eldata.date}`;
+  pp.innerHTML = `${eldata.price} €    ${eldata.likes} &hearts;`;
 
-  if (el.video == undefined) { append(figure, img)}
-  else if (el.image == undefined) { append(figure, videos)}
+  if (eldata.video == undefined) { append(figure, img)}
+  else if (eldata.image == undefined) { append(figure, videos)}
   else { append(false) } ;
   //append(figure, img) ; // if el.img null 
   append(figure, figcaption);
@@ -125,30 +125,14 @@ var choice = select.value;
       break;
 	}
 
-  var ladata = data.media;
 
-  arrayOfObj = [];
-  for (item in ladata) {
-      if (ladata.hasOwnProperty(item)) {
-          arrayOfObj.push(ladata[item]);
-      }
-  }
-  arrayOfObj.sort(function (a, b) {
-      if (a.choice < b.choice) {
-          return -1;
-      }
-      else if (a.choice > b.choice) {
-          return 1;
-      }
-      return 0;
-  }).forEach(function (elem) { console.log(elem.choice); });
-  
 
-  //ladata = data.media.sort((a, b) => (a.choice > b.choice) ? 1 : -1);
+//ladata = data.media.sort((a, b) => (a.choice > b.choice) ? 1 : -1);
 function  displayFolio(ladata) {
   ladata.forEach(el => { 
+    eldata = el.sort((a, b) => (a.choice > b.choice) ? 1 : -1);
       var sortFolio = lesphotos;
-      selectFolio(el, sortFolio);
+      selectFolio(eldata, sortFolio);
   });
 }
 }
