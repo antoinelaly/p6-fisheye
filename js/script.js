@@ -46,7 +46,7 @@ function creatFigure(el, valueFigure) {
   append(valueFigure, figure);
 }
 
-function creatFolio(el, valueFolio) {
+function creatFolio(el, lesphotos) {
   let figure = createNode("figure"), 
   figcaption = createNode("figcaption");
   (img = createNode("img")),
@@ -65,29 +65,7 @@ function creatFolio(el, valueFolio) {
   append(figure, figcaption);
   append(figcaption, p);
   append(figcaption, pp);
-  append(valueFolio, figure);
-}
-
-function selectFolio(eldata, sortFolio) {
-  let figure = createNode("figure"), 
-  figcaption = createNode("figcaption");
-  (img = createNode("img")),
-  (videos = createNode("video")),
-  (p = createNode("p")),
-  (pp = createNode("p"));
-  img.src = `img/${eldata.photographerId}/${eldata.image}`;
-  videos.src = `img/${eldata.photographerId}/${eldata.video}`;
-  p.innerHTML = `${eldata.date}`;
-  pp.innerHTML = `${eldata.price} €    ${eldata.likes} &hearts;`;
-
-  if (eldata.video == undefined) { append(figure, img)}
-  else if (eldata.image == undefined) { append(figure, videos)}
-  else { append(false) } ;
-  //append(figure, img) ; // if el.img null 
-  append(figure, figcaption);
-  append(figcaption, p);
-  append(figcaption, pp);
-  append(sortFolio, figure);
+  append(lesphotos, figure);
 }
 
 window.addEventListener('load', () => {
@@ -108,25 +86,23 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 var select = document.getElementById("my-select");
 
 select.onchange = function(data) {
+  lesphotos.innerHTML = ''
 var choice = select.value;
-  switch (choice) {
-    case 'likes':
-      sortResults('likes', false);
-      break;
-    case 'date':
-      sortResults('date', false);
-      break;
-    case 'price':
-      sortResults('price', true);
-      break;
-	}
+  const lesort = {
+    'likes': false,
+    'date': false,
+    'price': true,
+  }
+  return lesort[sortResults(choice)] ?? "not found";
+
 
   function sortResults(prop, asc) {
-    ladata = ladata.sort(function(a, b) {
+
+    el = el.sort(function(a, b) {
         if (asc) return ((a[prop] + "").toLowerCase() > (b[prop] + "").toLowerCase()) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
         else return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
     });
-    displayFolio();
+    creatFolio(el, lesphotos);
 }
 
 function  displayFolio() {
@@ -137,9 +113,8 @@ function  displayFolio() {
   if(searchParams.has('id')) { // if id in url, folio id 
     ladata.forEach(eldata => { // ladata
       if(eldata.photographerId === folioIdNum) {
-        
-        var sortFolio = lesphotos;
-        selectFolio(eldata, sortFolio);
+        var valueFolio = lesphotos;
+        creatFolio(eldata, valueFolio);
       }
     }) 
   } else {
@@ -193,8 +168,9 @@ function displayData(data) {
   if(searchParams.has('id')) { // if id in url, folio id 
         data.media.forEach(el => { 
           if(el.photographerId === folioIdNum) {
-            var valueFolio = lesphotos;
-            creatFolio(el, valueFolio);
+            //var valueFolio = lesphotos;
+            creatFolio(el, lesphotos);
+
           }
         })
 
