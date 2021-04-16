@@ -88,6 +88,17 @@ var select = document.getElementById("my-select");
 select.onchange = function(data) {
   lesphotos.innerHTML = ''
 var choice = select.value;
+  /*switch (choice) {
+    case 'likes':
+      sortResults('likes', false);
+      break;
+    case 'date':
+      sortResults('date', false);
+      break;
+    case 'price':
+      sortResults('price', true);
+      break;
+	}*/
   const lesort = {
     'likes': false,
     'date': false,
@@ -95,14 +106,12 @@ var choice = select.value;
   }
   return lesort[sortResults(choice)] ?? "not found";
 
-
   function sortResults(prop, asc) {
-
-    el = el.sort(function(a, b) {
+    ladata = ladata.sort(function(a, b) {
         if (asc) return ((a[prop] + "").toLowerCase() > (b[prop] + "").toLowerCase()) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
         else return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
     });
-    creatFolio(el, lesphotos);
+    displayFolio();
 }
 
 function  displayFolio() {
@@ -168,9 +177,7 @@ function displayData(data) {
   if(searchParams.has('id')) { // if id in url, folio id 
         data.media.forEach(el => { 
           if(el.photographerId === folioIdNum) {
-            //var valueFolio = lesphotos;
             creatFolio(el, lesphotos);
-
           }
         })
 
