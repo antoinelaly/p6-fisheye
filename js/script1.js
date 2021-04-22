@@ -57,8 +57,11 @@ function creatFolio(el, lesphotos) {
   videos.src = `img/${el.photographerId}/${el.video}`;
   p.innerHTML = `${el.date}`;
   pp.innerHTML = `${el.price} €    ${el.likes} &hearts;`;
+
   if (el.video == undefined) { append(figure, img)}
-  else if (el.image == undefined) { append(figure, videos)};
+  else if (el.image == undefined) { append(figure, videos)}
+  else { append(false) } ;
+  //append(figure, img) ; // if el.img null 
   append(figure, figcaption);
   append(figcaption, p);
   append(figcaption, pp);
@@ -84,7 +87,18 @@ var select = document.getElementById("my-select");
 
 select.onchange = function(data) {
   lesphotos.innerHTML = ''
-  var choice = select.value;
+var choice = select.value;
+  /*switch (choice) {
+    case 'likes':
+      sortResults('likes', false);
+      break;
+    case 'date':
+      sortResults('date', false);
+      break;
+    case 'price':
+      sortResults('price', true);
+      break;
+	}*/
   const lesort = {
     'likes': false,
     'date': false,
@@ -93,7 +107,6 @@ select.onchange = function(data) {
   return lesort[sortResults(choice)] ?? "not found";
 
   function sortResults(prop, asc) {
-
     ladata = ladata.sort(function(a, b) {
         if (asc) return ((a[prop] + "").toLowerCase() > (b[prop] + "").toLowerCase()) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
         else return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
@@ -107,10 +120,10 @@ function  displayFolio() {
   var folioIdNum = parseInt(folioId); // convert string to num
 
   if(searchParams.has('id')) { // if id in url, folio id 
-    ladata.forEach(el => { // ladata
-      if(el.photographerId === folioIdNum) {
-        //var valueFolio = lesphotos;
-        creatFolio(el, lesphotos);
+    ladata.forEach(eldata => { // ladata
+      if(eldata.photographerId === folioIdNum) {
+        var valueFolio = lesphotos;
+        creatFolio(eldata, valueFolio);
       }
     }) 
   } else {
@@ -165,7 +178,6 @@ function displayData(data) {
         data.media.forEach(el => { 
           if(el.photographerId === folioIdNum) {
             creatFolio(el, lesphotos);
-            //console.log(el);
           }
         })
 
