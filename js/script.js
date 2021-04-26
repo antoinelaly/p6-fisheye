@@ -46,6 +46,8 @@ function creatFigure(el, valueFigure) {
   append(valueFigure, figure);
 }
 
+var datum = [];
+
 function creatFolio(el, lesphotos) {
   let figure = createNode("figure"), 
   figcaption = createNode("figcaption");
@@ -63,6 +65,8 @@ function creatFolio(el, lesphotos) {
   append(figcaption, p);
   append(figcaption, pp);
   append(lesphotos, figure);
+
+  console.log(datum);
 }
 
 window.addEventListener('load', () => {
@@ -72,9 +76,7 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
     }).then(data => {
 
       displayData(data);
-      
       ladata = data.media;
-      displayFolio(ladata);
 
 		}).catch(err => {
       console.log('Fetch Error :-S', err);
@@ -83,40 +85,32 @@ fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyed
 var select = document.getElementById("my-select");
 
 select.onchange = function(data) {
-  lesphotos.innerHTML = ''
+  lesphotos.innerHTML = '';
+  datum.innerHTML = '';
   var choice = select.value;
   const lesort = {
     'likes': false,
     'date': false,
     'price': true,
   }
-  return lesort[sortResults(choice)] ?? "not found";
+return lesort[sortResults(choice)] ?? "not found";
 
-  function sortResults(prop, asc) {
+function sortResults(prop, asc) {
 
-    ladata = ladata.sort(function(a, b) {
+  datum.sort(function(a, b) {
         if (asc) return ((a[prop] + "").toLowerCase() > (b[prop] + "").toLowerCase()) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
         else return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
     });
+    //console.log(lesphotos);
     displayFolio();
-}
+  }
 
-function  displayFolio() {
-  var searchParams = new URLSearchParams(window.location.search);  // url get string id
-  var folioId = searchParams.get('id'); // convert to var
-  var folioIdNum = parseInt(folioId); // convert string to num
-
-  if(searchParams.has('id')) { // if id in url, folio id 
-    ladata.forEach(el => { // ladata
-      if(el.photographerId === folioIdNum) {
-        //var valueFolio = lesphotos;
-        creatFolio(el, lesphotos);
-      }
+  function  displayFolio() {
+    datum.forEach(el => { 
+      creatFolio(el, lesphotos);
     }) 
-  } else {
-//window.location.pathname = 'folio';
-    }
-}}
+  }
+}
 
 
 function displayData(data) {
@@ -165,10 +159,9 @@ function displayData(data) {
         data.media.forEach(el => { 
           if(el.photographerId === folioIdNum) {
             creatFolio(el, lesphotos);
-            //console.log(el);
-          }
-        })
-
+            datum.push(el);
+          } 
+        }) 
         data.photographers.forEach(el => {
           if(el.id === folioIdNum) {
             var valueFigure = presentation; // photographer presentation 
