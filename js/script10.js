@@ -189,8 +189,11 @@ class AsyncGallery {
       loop: true,
       next: undefined,
       prev: undefined,
+      //dots: undefined,
       close: undefined,
       loader: undefined,
+      //counter: undefined,
+      //counterDivider: "/",
       keyboardNavigation: true,
       hiddenElements: []
     };
@@ -214,6 +217,10 @@ class AsyncGallery {
   get loading() {
     return !this.settings.hiddenElements.includes("loader");
   }
+
+  /*get dotsVisible() {
+    return !this.settings.hiddenElements.includes("dots");
+  }*/
 
   init() {
     this.clearUncomplete();
@@ -258,6 +265,34 @@ class AsyncGallery {
       text: "Loading..."
     });
 
+    /*this.createSingleElement({
+      element: "counter",
+      type: "SPAN",
+      text: "0/0"
+    });
+
+    this.createSingleElement({
+      element: "dots",
+      type: "UL",
+      text: ""
+    });
+
+    if (!this.settings.hiddenElements.includes("dots")) {
+      this.items.forEach((item, i) => {
+        let dot = document.createElement("LI");
+        dot.dataset.index = i;
+        let button = document.createElement("BUTTON");
+        button.innerHTML = i;
+        button.addEventListener("click", () => {
+          this.index = i;
+          this.getItem(i);
+        });
+
+        dot.append(button);
+        this.dots.append(dot);
+      });
+    }*/
+
     window.document.body.append(this.gallery);
   }
 
@@ -286,6 +321,15 @@ class AsyncGallery {
     if (contentObj === null) {
       contentObj = {};
       contentObj.src = this.items[i].dataset.large;
+      contentObj.description = this.items[i].dataset.description;
+    }
+
+    if (!this.settings.hiddenElements.includes("counter")) {
+      this.counter.innerHTML = `
+          <span class="asyncGallery__Current">${this.index + 1}</span>${
+        this.settings.counterDivider
+      }<span class="asyncGallery__Current">${this.items.length}</span>
+          `;
     }
 
     if (!this.addedItems.hasOwnProperty(i)) {
@@ -300,13 +344,28 @@ class AsyncGallery {
 
       this.clearVisible();
 
+      /*if (this.dotsVisible) {
+        this.gallery
+          .querySelector(`.asyncGallery__Dots li[data-index="${i}"]`)
+          .classList.add("is-active");
+      }*/
+
       image.src = contentObj.src;
+      image.alt = contentObj.description ? contentObj.description : "";
 
       galleryItem.innerHTML = `
           <div class="asyncGallery__ItemImage">
             ${image.outerHTML}
           </div>
           `;
+
+      if (contentObj.description) {
+        galleryItem.innerHTML += `
+            <div class="asyncGallery__ItemDescription">
+              <p>${contentObj.description}</p>
+            </div>
+            `;
+      }
 
       this.gallery.append(galleryItem);
       this.addedItems[i] = galleryItem;
@@ -332,6 +391,11 @@ class AsyncGallery {
         this.loader.classList.add("is-visible");
       }
 
+      if (this.dotsVisible) {
+        this.gallery
+          .querySelector(`.asyncGallery__Dots li[data-index="${i}"]`)
+          .classList.add("is-active");
+      }
     }
 
     if (!this.settings.loop) {
