@@ -316,4 +316,32 @@ border-radius: 3px;
 }
 .trier {
   display: flex;
+  padding: 20px 50px;
 }
+.trier #my-select {
+background-color: #911C1C;
+color: #fff;
+padding-right: 50px;
+margin-left: 20px;
+display: flex;
+text-align: left;
+border: 0;
+border-radius: 3px;
+}
+.arrow {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+}
+.arrow-bottom {
+  transform: rotate(135deg);
+}
+.arrow-top {
+  transform: rotate(-45deg);
+}
+
+
+
+/* popup */

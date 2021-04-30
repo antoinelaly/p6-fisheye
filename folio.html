@@ -1,48 +1,49 @@
 <!DOCTYPE html>
-<html lang="fr" >
+<html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
   <title>fisheye</title>
-<link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="lightbox.css">
 
 </head>
+
 <body>
-<header class="photographes">
-  <div class="logo lehead">
-   <a href="https://antoinelaly.github.io/p6-fisheye/"><img src="img/logo.svg" alt="Fisheye Logo"></a>
-  </div>
-</header>
+  <header class="photographes">
+    <div class="logo lehead">
+      <a href="https://antoinelaly.github.io/p6-fisheye/"><img src="img/logo.svg" alt="Fisheye Logo"></a>
+    </div>
+  </header>
 
-<main>
-  <div class="photos mimi-keel">
-    <div class="presentation">
-      
-  </div> 
-  
-<div class="trier">
-  <h4>Trier par </h4>
-  <select id="my-select">
-    <option value="likes">Popularité</option>
-    <option value="date">Date</option>
-    <option value="price">Prix</option>
-  </select>
-  <!--<select id="theme">
-    <option value="" disabled selected>Choose Style</option>
-    <option value="psychedelic">Psychedelic</option>
-    <option value="hot pink">Hot Pink</option>
-    <option value="black">Black</option>
-    <option value="purple">Purple</option>
-    <option value="yellow">Yellow</option>
-  </select>-->
-</div>
-<p id="option-selected"></p>
-  <div class="lesphotos"></div>
+  <main>
+    <div class="photos mimi-keel">
+      <div class="presentation">
 
-</div>
-</main>
-<script  src="js/script.js"></script>
+      </div>
+
+      <div class="trier">
+        <h4>Trier par </h4>
+        <select id="my-select">
+          <span class="arrow"></span>
+          <option value="likes">Popularité</option>
+          <option value="date">Date</option>
+          <option value="price">Prix</option>
+        </select>
+      </div>
+
+      <div class="lesphotos"></div>
+
+
+    </div>
+
+  </main>
+
+  <script src="js/script.js"></script>
+  <script src="js/lightbox.js" type="module" defer></script>
 </body>
-</html> 
+
+</html>
