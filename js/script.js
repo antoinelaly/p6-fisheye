@@ -90,7 +90,7 @@ window.addEventListener('load', () => {
   var select = document.getElementById("my-select");
 
   select.onchange = function (data) {
-    document.location.reload();
+    //document.location.reload();
     lesphotos.innerHTML = '';
     var choice = select.value;
     const lesort = {
