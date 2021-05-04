@@ -5,19 +5,19 @@ var nav = document.querySelector(".nav");
 var tagpage = document.querySelector(".tagpage");
 
 function createNode(element) {
-	return document.createElement(element);
+  return document.createElement(element);
 }
 function append(parent, el) {
-	return parent.appendChild(el);
+  return parent.appendChild(el);
 }
 
 function creatFigure(el, valueFigure) {
   let ul = createNode("ul"),
-  figure = createNode("figure"),
-  figcaption = createNode("figcaption");
+    figure = createNode("figure"),
+    figcaption = createNode("figcaption");
   (img = createNode("img")),
-  (h2 = createNode("h2")),
-  (p = createNode("p"));
+    (h2 = createNode("h2")),
+    (p = createNode("p"));
   address = createNode("address");
   a = createNode("a");
   aImg = createNode("a");
@@ -31,7 +31,7 @@ function creatFigure(el, valueFigure) {
     let liTags = createNode("li");
     (aTag = createNode("a"));
     aTag.href = `tag?id=${el.tags[j]}`;
-    liTags.className = "petitsb"; 
+    liTags.className = "petitsb";
     liTags.innerHTML = `#${el.tags[j]}`;
     append(ul, aTag);
     append(aTag, liTags);
@@ -49,138 +49,143 @@ function creatFigure(el, valueFigure) {
 var datum = [];
 
 function creatFolio(el, lesphotos) {
-  let figure = createNode("figure"), 
-  figcaption = createNode("figcaption");
-  (img = createNode("img")),
-  (videos = createNode("video")),
-  (p = createNode("p")),
-  (pp = createNode("p")),
-  (aImg = createNode("a")),
-  (aVid = createNode("a"));
+  let figure = createNode("figure"),
+    figcaption = createNode("figcaption");
+    (img = createNode("img")),
+    (videos = createNode("video")),
+    (p = createNode("p")),
+    (pp = createNode("p")),
+    (aImg = createNode("a")),
+    (aVid = createNode("a"));
   img.src = `img/${el.photographerId}/${el.image}`;
   videos.src = `img/${el.photographerId}/${el.video}`;
   img.className = `gallery__Image`;
-  videos.className = `gallery__Image`; 
-  img.setAttribute('data-large' , `img/${el.photographerId}/${el.image}`);
+  videos.className = `gallery__Image`;
+  
+  img.setAttribute('data-description', `${el.date}  ${el.price} € ${el.likes} &hearts;`);
+  img.setAttribute('data-large', `img/${el.photographerId}/${el.image}`);
+  videos.setAttribute('data-description', `${el.date}`);
   videos.setAttribute('data-large', `img/${el.photographerId}/${el.video}`);
   p.innerHTML = `${el.date}`;
   pp.innerHTML = `${el.price} €    ${el.likes} &hearts;`;
-  if (el.video == undefined) { append(figure, img);}
-  else if (el.image == undefined) { append(figure, videos);};
+  if (el.video == undefined) { append(figure, img); }
+  else if (el.image == undefined) { append(figure, videos); };
   append(figure, figcaption);
   append(figcaption, p);
   append(figcaption, pp);
   append(lesphotos, figure);
 
-  console.log(datum);
+  //console.log(datum);
 }
 
 window.addEventListener('load', () => {
-fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json') 
-		.then(response => {
+  fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json')
+    .then(response => {
       return response.json();
     }).then(data => {
 
       displayData(data);
       ladata = data.media;
 
-		}).catch(err => {
+    }).catch(err => {
       console.log('Fetch Error :-S', err);
-	});
+    });
 
-var select = document.getElementById("my-select");
+  var select = document.getElementById("my-select");
 
-select.onchange = function(data) {
-  lesphotos.innerHTML = '';
-  
-  var choice = select.value;
-  const lesort = {
-    'likes': false,
-    'date': false,
-    'price': true,
-  }
-return lesort[sortResults(choice)] ?? "not found";
+  select.onchange = function (data) {
+    lesphotos.innerHTML = '';
 
-function sortResults(prop, asc) {
+    var choice = select.value;
+    const lesort = {
+      'likes': false,
+      'date': false,
+      'price': true,
+    }
+    return lesort[sortResults(choice)] ?? "not found";
 
-  datum.sort(function(a, b) {
+    function sortResults(prop, asc) {
+
+      datum.sort(function (a, b) {
         if (asc) return ((a[prop] + "").toLowerCase() > (b[prop] + "").toLowerCase()) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
         else return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
-    });
-    //console.log(lesphotos);
-    displayFolio();
-  }
-
-  function  displayFolio() {
-    datum.forEach(el => { 
-      creatFolio(el, lesphotos);
-      new AsyncGallery();
-    }) 
-  }
-}
-
-
-function displayData(data) {
-   
-  var searchParams = new URLSearchParams(window.location.search);  // url get string id
-  var folioId = searchParams.get('id'); // convert to var
-  var folioIdNum = parseInt(folioId); // convert string to num
-
-  if(home) {
-    data.photographers.forEach(function (el, valueFigure){
-      var valueFigure = home;
-      creatFigure(el, valueFigure); // homepage figures 
-    })
-  };
-  if(tagpage && searchParams.has('id')) {
-    data.photographers.forEach(el => {
-      if(el.tags.includes(folioId)) { 
-        var valueFigure = tagpage;
-        creatFigure(el, valueFigure); // tagpage figures
-      }
-    })
-  };
-  if(nav) { // nav buttons
-    data.photographers.forEach(el => {
-      var temp = [ ] // no duplication
-      dataa = el.tags.filter((el)=>{
-      if(!temp.includes(el.userid)){
-        temp.push(el.userid)
-        return true;
-        }
       });
-      let ul = createNode("ul");
-      for (let j = 0; j < dataa.length; j++) {
-        let liTags = createNode("li");
-        (aTag = createNode("a"));
-        aTag.href = `tag?id=${dataa[j]}`;
-        liTags.className = "petitsb"; 
-        liTags.innerHTML = `#${dataa[j]}`;
-        append(ul, aTag);
-        append(aTag, liTags);
-      }
-      append(nav, ul);
-    })
-  };
-  if(searchParams.has('id')) { // if id in url, folio id 
-        data.media.forEach(el => { 
-          if(el.photographerId === folioIdNum) {
-            creatFolio(el, lesphotos);
-            datum.push(el);
-          } 
-        }) 
-        data.photographers.forEach(el => {
-          if(el.id === folioIdNum) {
-            var valueFigure = presentation; // photographer presentation 
-            creatFigure(el, valueFigure);
-          }
-        })
-    }    else {
-      //window.location.pathname = 'folio';
+      //console.log(lesphotos);
+      displayFolio();
+      new AsyncGallery();
+    }
+
+    function displayFolio() {
+      datum.forEach(el => {
+        creatFolio(el, lesphotos);
+
+      })
+    }
   }
-}
+
+
+  function displayData(data) {
+
+    var searchParams = new URLSearchParams(window.location.search);  // url get string id
+    var folioId = searchParams.get('id'); // convert to var
+    var folioIdNum = parseInt(folioId); // convert string to num
+
+    if (home) {
+      data.photographers.forEach(function (el, valueFigure) {
+        var valueFigure = home;
+        creatFigure(el, valueFigure); // homepage figures 
+      })
+    };
+    if (tagpage && searchParams.has('id')) {
+      data.photographers.forEach(el => {
+        if (el.tags.includes(folioId)) {
+          var valueFigure = tagpage;
+          creatFigure(el, valueFigure); // tagpage figures
+        }
+      })
+    };
+    if (nav) { // nav buttons
+      data.photographers.forEach(el => {
+        var temp = [] // no duplication
+        dataa = el.tags.filter((el) => {
+          if (!temp.includes(el.userid)) {
+            temp.push(el.userid)
+            return true;
+          }
+        });
+        let ul = createNode("ul");
+        for (let j = 0; j < dataa.length; j++) {
+          let liTags = createNode("li");
+          (aTag = createNode("a"));
+          aTag.href = `tag?id=${dataa[j]}`;
+          liTags.className = "petitsb";
+          liTags.innerHTML = `#${dataa[j]}`;
+          append(ul, aTag);
+          append(aTag, liTags);
+        }
+        append(nav, ul);
+      })
+    };
+    if (searchParams.has('id')) { // if id in url, folio id 
+      data.media.forEach(el => {
+        if (el.photographerId === folioIdNum) {
+          creatFolio(el, lesphotos);
+          datum.push(el);
+        }
+      })
+      data.photographers.forEach(el => {
+        if (el.id === folioIdNum) {
+          var valueFigure = presentation; // photographer presentation 
+          creatFigure(el, valueFigure);
+        }
+      })
+    } else {
+      //window.location.pathname = 'folio';
+    }
+  }
 });
 
+/******** Gallery ********/
 
 class AsyncGallery {
   constructor(settings) {
@@ -286,11 +291,13 @@ class AsyncGallery {
     if (contentObj === null) {
       contentObj = {};
       contentObj.src = this.items[i].dataset.large;
+      contentObj.description = this.items[i].dataset.description;
     }
 
     if (!this.addedItems.hasOwnProperty(i)) {
       let image = document.createElement("IMG");
-
+      let video = document.createElement("VIDEO");
+      
       let galleryItem = document.createElement("DIV");
       galleryItem.classList.add("asyncGallery__Item");
 
@@ -299,28 +306,57 @@ class AsyncGallery {
       }
 
       this.clearVisible();
-
-      image.src = contentObj.src;
-
-      galleryItem.innerHTML = `
-          <div class="asyncGallery__ItemImage">
-            ${image.outerHTML}
-          </div>
-          `;
+      
+      let lobject = contentObj.src;
 
       this.gallery.append(galleryItem);
       this.addedItems[i] = galleryItem;
 
-      image.addEventListener("load", () => {
-        this.addedItems[i].loaded = true;
-        if (!this.gallery.querySelector(".asyncGallery__Item.is-visible")) {
-          this.addedItems[i].classList.add("is-visible");
-        }
+      if (lobject.endsWith('mp4')) {
+        video.src = contentObj.src;
+        galleryItem.innerHTML = `
+        <div class="asyncGallery__ItemImage">
+          ${video.outerHTML}
+        </div>
+        `;
+        video.addEventListener("load", () => {
+          this.addedItems[i].loaded = true;
+          if (!this.gallery.querySelector(".asyncGallery__Item.is-visible")) {
+            this.addedItems[i].classList.add("is-visible");
+          }
+          if (this.loading) {
+            this.loader.classList.remove("is-visible");
+          }
+        }); console.log(video);
 
-        if (this.loading) {
-          this.loader.classList.remove("is-visible");
-        }
-      });
+      }  else if (lobject.endsWith('jpg')) {
+        image.src = contentObj.src;
+        galleryItem.innerHTML = `
+        <div class="asyncGallery__ItemImage">
+          ${image.outerHTML}
+        </div>
+        `;
+        image.addEventListener("load", () => {
+          this.addedItems[i].loaded = true;
+          if (!this.gallery.querySelector(".asyncGallery__Item.is-visible")) {
+            this.addedItems[i].classList.add("is-visible");
+          }
+          if (this.loading) {
+            this.loader.classList.remove("is-visible");
+          }
+        });
+      }
+      
+      image.alt = contentObj.description ? contentObj.description : "";
+      if (contentObj.description) {
+        galleryItem.innerHTML += `
+            <div class="asyncGallery__ItemDescription">
+              <p>${contentObj.description}</p>
+            </div>
+            `;
+      }
+
+
     } else {
       this.clearVisible();
       if (this.addedItems[this.index].loaded) {
@@ -331,7 +367,6 @@ class AsyncGallery {
       } else if (this.loading) {
         this.loader.classList.add("is-visible");
       }
-
     }
 
     if (!this.settings.loop) {
@@ -349,12 +384,6 @@ class AsyncGallery {
       this.gallery
         .querySelector(".asyncGallery__Item.is-visible")
         .classList.remove("is-visible");
-    }
-
-    if (this.gallery.querySelector(".asyncGallery__Dots li.is-active")) {
-      this.gallery
-        .querySelector(".asyncGallery__Dots li.is-active")
-        .classList.remove("is-active");
     }
   }
 
@@ -407,7 +436,8 @@ class AsyncGallery {
         this.gallery.classList.add("is-visible");
         this.index = i;
         this.getItem(i, {
-          src: e.target.dataset.large
+          src: e.target.dataset.large,
+          description: e.target.dataset.description
         });
       });
     });
@@ -441,9 +471,6 @@ class AsyncGallery {
   }
 }
 
-/*new AsyncGallery();*/
-
-
 function sleep(ms) {
   return new Promise(
     resolve => setTimeout(resolve, ms)
@@ -456,4 +483,3 @@ async function delayedGreeting() {
 }
 
 delayedGreeting();
-
