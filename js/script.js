@@ -22,7 +22,7 @@ function creatFigure(el, valueFigure) {
   a = createNode("a");
   aImg = createNode("a");
   h2.innerHTML = `${el.name}`;
-  aImg.href = `folio?id=${el.id}`;
+  aImg.href = `folio.html?id=${el.id}`;
   img.src = `img/${el.illustration}`;
   p.innerHTML = `${el.city} <br>${el.tagline} <br>${el.price}€/jour`;
   ul.setAttribute("aria-label", "Secondary navigation");
@@ -30,7 +30,7 @@ function creatFigure(el, valueFigure) {
   for (let j = 0; j < el.tags.length; j++) {
     let liTags = createNode("li");
     (aTag = createNode("a"));
-    aTag.href = `tag?id=${el.tags[j]}`;
+    aTag.href = `tag.html?id=${el.tags[j]}`;
     liTags.className = "petitsb";
     liTags.innerHTML = `#${el.tags[j]}`;
     append(ul, aTag);
@@ -51,17 +51,24 @@ var datum = [];
 function creatFolio(el, lesphotos) {
   let figure = createNode("figure"),
     figcaption = createNode("figcaption");
-    (img = createNode("img")),
+  (img = createNode("img")),
     (videos = createNode("video")),
     (p = createNode("p")),
     (pp = createNode("p")),
     (aImg = createNode("a")),
     (aVid = createNode("a"));
   img.src = `img/${el.photographerId}/${el.image}`;
-  videos.src = `img/${el.photographerId}/${el.video}`;
+  if (videos.canPlayType("video/mp4")) {
+    videos.setAttribute("src",`img/${el.photographerId}/${el.video}`);
+  } else {
+    videos.setAttribute("src",`img/${el.photographerId}/${el.video}`);
+  }
+  videos.setAttribute("width", "320");
+  videos.setAttribute("height", "240");
+  videos.setAttribute("controls", "controls");
   img.className = `gallery__Image`;
   videos.className = `gallery__Image`;
-  
+
   img.setAttribute('data-description', `${el.date}  ${el.price} € ${el.likes} &hearts;`);
   img.setAttribute('data-large', `img/${el.photographerId}/${el.image}`);
   videos.setAttribute('data-description', `${el.date}`);
@@ -75,7 +82,6 @@ function creatFolio(el, lesphotos) {
   append(figcaption, pp);
   append(lesphotos, figure);
 
-  //console.log(datum);
 }
 
 window.addEventListener('load', () => {
@@ -85,11 +91,17 @@ window.addEventListener('load', () => {
     }).then(data => {
 
       displayData(data);
-      ladata = data.media;
+
+      /*const ladata = new Ladata({
+        ...data
+      });
+      console.log(ladata);*/
 
     }).catch(err => {
       console.log('Fetch Error :-S', err);
     });
+
+
 
   var select = document.getElementById("my-select");
 
@@ -157,7 +169,7 @@ window.addEventListener('load', () => {
         for (let j = 0; j < dataa.length; j++) {
           let liTags = createNode("li");
           (aTag = createNode("a"));
-          aTag.href = `tag?id=${dataa[j]}`;
+          aTag.href = `tag.html?id=${dataa[j]}`;
           liTags.className = "petitsb";
           liTags.innerHTML = `#${dataa[j]}`;
           append(ul, aTag);
@@ -184,6 +196,7 @@ window.addEventListener('load', () => {
     }
   }
 });
+
 
 /******** Gallery ********/
 
@@ -221,7 +234,7 @@ class AsyncGallery {
   }
 
   init() {
-    this.clearUncomplete();
+    //this.clearUncomplete();
     this.createElements();
     this.bindEvents();
   }
@@ -297,47 +310,34 @@ class AsyncGallery {
     if (!this.addedItems.hasOwnProperty(i)) {
       let image = document.createElement("IMG");
       let video = document.createElement("VIDEO");
-      
+      if (video.canPlayType("video/mp4")) {
+        video.setAttribute("src",`${video.outerHTML}`);
+      } else {
+        video.setAttribute("src",`${video.outerHTML}`);
+      }
+      video.setAttribute("width", "640");
+      video.setAttribute("height", "480");
+      video.setAttribute("controls", "controls");
+
       let galleryItem = document.createElement("DIV");
       galleryItem.classList.add("asyncGallery__Item");
 
       if (this.loading) {
         this.loader.classList.add("is-visible");
       }
-
-      this.clearVisible();
       
-      let lobject = contentObj.src;
+      this.clearVisible();
 
+      //let lobject = contentObj.src; 
       this.gallery.append(galleryItem);
       this.addedItems[i] = galleryItem;
 
-      if (lobject.endsWith('mp4')) {
-        video.src = contentObj.src;
-        galleryItem.innerHTML = `
-        <div class="asyncGallery__ItemImage">
-          ${video.outerHTML}
-        </div>
-        `;
-        video.addEventListener("load", () => {
+      if  (contentObj.src.endsWith('mp4')) {
+        
+        video.addEventListener("loadeddata", () => {
+          console.log('mp4');
           this.addedItems[i].loaded = true;
-          if (!this.gallery.querySelector(".asyncGallery__Item.is-visible")) {
-            this.addedItems[i].classList.add("is-visible");
-          }
-          if (this.loading) {
-            this.loader.classList.remove("is-visible");
-          }
-        }); console.log(video);
-
-      }  else if (lobject.endsWith('jpg')) {
-        image.src = contentObj.src;
-        galleryItem.innerHTML = `
-        <div class="asyncGallery__ItemImage">
-          ${image.outerHTML}
-        </div>
-        `;
-        image.addEventListener("load", () => {
-          this.addedItems[i].loaded = true;
+          
           if (!this.gallery.querySelector(".asyncGallery__Item.is-visible")) {
             this.addedItems[i].classList.add("is-visible");
           }
@@ -345,9 +345,35 @@ class AsyncGallery {
             this.loader.classList.remove("is-visible");
           }
         });
-      }
-      
+        video.src = contentObj.src;
+        galleryItem.innerHTML = `
+        <div class="asyncGallery__ItemImage">
+          ${video.outerHTML}
+        </div>
+        `;
+      }  else if (contentObj.src.endsWith('jpg')) {
+        image.addEventListener("load", () => {
+          console.log('jpg');
+          this.addedItems[i].loaded = true;
+          
+          if (!this.gallery.querySelector(".asyncGallery__Item.is-visible")) {
+            this.addedItems[i].classList.add("is-visible");
+          }
+          if (this.loading) {
+            this.loader.classList.remove("is-visible");
+          }
+        });
+        image.src = contentObj.src;
+        galleryItem.innerHTML = `
+        <div class="asyncGallery__ItemImage">
+          ${image.outerHTML}
+        </div> 
+        `;
+      } 
+
       image.alt = contentObj.description ? contentObj.description : "";
+      video.alt = contentObj.description ? contentObj.description : "";
+      
       if (contentObj.description) {
         galleryItem.innerHTML += `
             <div class="asyncGallery__ItemDescription">
