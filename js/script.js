@@ -83,16 +83,16 @@ function creatFolio(el, lesphotos) {
   append(figcaption, pp);
   append(lesphotos, figure);
 }
-function creatNav(el, nav) {
+function creatNav(dataa, nav) {
   let ul = createNode("ul");
   let liTags = createNode("li");
   (aTag = createNode("a"));
-  for (let j = 0; j < el.tags.length; j++) {
+  for (let j = 0; j < dataa.length; j++) {
     let liTags = createNode("li");
     (aTag = createNode("a"));
-    aTag.href = `tag.html?id=${el.tags[j]}`;
+    aTag.href = `tag.html?id=${dataa[j]}`;
     liTags.className = "petitsb";
-    liTags.innerHTML = `#${el.tags[j]}`;
+    liTags.innerHTML = `#${dataa[j]}`;
     append(ul, aTag);
     append(aTag, liTags);
     append(nav, ul);
