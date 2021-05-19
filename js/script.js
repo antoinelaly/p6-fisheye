@@ -130,7 +130,7 @@ function tagnav(lahome) { // menu tags
 
 
 window.addEventListener('load', () => {
-  fetch('http://choisirsontheme.com/formation/ocr/p6-fisheye-tests/p6-v7/js/fisheyedatafr.json')
+  fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json')
     .then(response => {
       return response.json();
     }).then(data => {
