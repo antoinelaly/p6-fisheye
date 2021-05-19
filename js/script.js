@@ -127,8 +127,15 @@ function tagp(lestags) { // page tags
 };
 
 function tagnav(lahome) { // menu tags
-  lahome.map(el => {
-    creatNav(el, nav);
+  lahome.forEach(el => {
+    var temp = [] // no duplication
+    dataa = el.tags.filter((el) => {
+      if (!temp.includes(el.userid)) {
+        temp.push(el.userid)
+        return true;
+      }
+    })
+    creatNav(dataa, nav);
   })
 };
 
