@@ -1,0 +1,36 @@
+{
+  "bd_posts": [
+  {
+    "uid":"X03v250",
+    "title":"ES6 classes",
+    "content":"..."
+  },
+   {
+    "uid":"U83v101",
+    "title":"React Compoents Styling",
+    "content":"..."
+  }
+], 
+"db_users": [
+  {
+    "uid":"A63q382",
+    "email":"ewff@gsveweg.com",
+    "displayName":"H Mann"
+  },
+  {
+    "uid":"U83v101",
+    "email":"jvck@vevsfrebre.com",
+    "displayName":"J Kholm"
+  },
+  {
+    "uid":"X03v250",
+    "email":"cadc@vsvs.com",
+    "displayName":"J Smith"
+  },
+  {
+    "uid":"T01v951",
+    "email":"ej@vsevewfew.com",
+    "displayName":"Eric Judor"
+  }
+]
+}
