@@ -23,7 +23,11 @@ function creatFigure(el, valueFigure) {
   aImg = createNode("a");
   h2.innerHTML = `${el.name}`;
   aImg.href = `folio.html?id=${el.id}`;
-  img.src = `img/${el.illustration}`;
+  if (home) {
+    img.src = `img/${el.illustration}`;
+  } else {
+    img.src = `img/${el.portrait}`;
+  }
   p.innerHTML = `${el.city} <br>${el.tagline} <br>${el.price}€/jour`;
   ul.setAttribute("aria-label", "Secondary navigation");
   for (let j = 0; j < el.tags.length; j++) {
