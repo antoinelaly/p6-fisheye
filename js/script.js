@@ -85,7 +85,6 @@ function creatFolio(el, lesphotos) {
 }
 function creatNav(dataa, nav) {
   let ul = createNode("ul");
-  let liTags = createNode("li");
   (aTag = createNode("a"));
   for (let j = 0; j < dataa.length; j++) {
     let liTags = createNode("li");
@@ -109,36 +108,36 @@ function photos(lefolio) { // folio photos
   lefolio.map(el => {
     creatFolio(el, lesphotos);
     datum.push(el);
-  }) 
+  })
 };
 function graphes(lahome) { // la home
   lahome.map(el => {
     var valueFigure = home;
     if (home) {
-    creatFigure(el, valueFigure); 
+      creatFigure(el, valueFigure);
     }
   })
 };
 function tagp(lestags) { // page tags 
-    lestags.map(el => {
-      var valueFigure = tagpage;
-      creatFigure(el, valueFigure);
+  lestags.map(el => {
+    var valueFigure = tagpage;
+    creatFigure(el, valueFigure);
   })
 };
-
-function tagnav(lahome) { // menu tags
-  lahome.forEach(el => {
-    var temp = [] // no duplication
-    dataa = el.tags.filter((el) => {
-      if (!temp.includes(el.userid)) {
-        temp.push(el.userid)
-        return true;
-      }
-    })
-    creatNav(dataa, nav);
+function tagp(lestags) { // page tags 
+  lestags.map(el => {
+    var valueFigure = tagpage;
+    creatFigure(el, valueFigure);
   })
 };
-
+function tagn(dataa) { // nav tags 
+  //const combined1 = [].concat(array1, array2, array3, array4);
+  console.log('merged2', dataa);
+  //merged.map(dataa => {
+    //console.log('merged', merged);
+    creatNav(dataa, nav)
+  //})
+};
 
 window.addEventListener('load', () => {
   fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json')
@@ -157,18 +156,18 @@ window.addEventListener('load', () => {
         static getPosts(db, userUID) {
           const map = new Map(Object.entries(db));
           const values = map.values();
-          let posts = []; 
+          let posts = [];
           for (let item of values) {
             if (item.photographerId === userUID) {
               posts.push(item);
             }
           }
-          return posts; 
+          return posts;
         }
         static getUsers(db, userUID) {
           const map = new Map(Object.entries(db));
           const values = map.values();
-          let posts = []; 
+          let posts = [];
           for (let item of values) {
             if (item.id === userUID) {
               posts.push(item);
@@ -179,7 +178,7 @@ window.addEventListener('load', () => {
         static getTags(db, userUID) {
           const map = new Map(Object.entries(db));
           const values = map.values();
-          let posts = []; 
+          let posts = [];
           for (let item of values) {
             if (item.tags.includes(userUID)) {
               posts.push(item);
@@ -187,11 +186,22 @@ window.addEventListener('load', () => {
           }
           return posts;
         }
+        static tagsNav(db) {
+          const map = new Map(Object.entries(db));
+          const values = map.values();
+          let posts = [];
+          for (let item of values) {
+            if (!item.tags.includes(posts)) {
+              posts.push(item.tags);
+            }
+          }
+          return posts;
+        }
       }
-      
-      var searchParams = new URLSearchParams(window.location.search); 
-      var folioId = searchParams.get('id'); 
-      var folioIdNum = parseInt(folioId); 
+
+      var searchParams = new URLSearchParams(window.location.search);
+      var folioId = searchParams.get('id');
+      var folioIdNum = parseInt(folioId);
 
       var leuser = DBUser.getUsers(db_users, folioIdNum); // folio photographe
       photographe(leuser);
@@ -199,9 +209,14 @@ window.addEventListener('load', () => {
       photos(lefolio);
       var lahome = DBUser.getPosts(db_users);  // la home
       graphes(lahome);
-      tagnav(lahome);
+      //tagnav(lahome);
       var lestags = DBUser.getTags(db_users, folioId); // page tags 
-      tagp(lestags); 
+      tagp(lestags);
+      var tagsnav = DBUser.tagsNav(db_users); // page nav 
+      var dataa = [...new Set(tagsnav[0].concat(tagsnav[1],tagsnav[2],tagsnav[3],tagsnav[4],tagsnav[5]))]
+      //var merged = {...tagsnav[0], ...tagsnav[1], ...tagsnav[2],...tagsnav[3], ...tagsnav[4], ...tagsnav[5]};
+      tagn(dataa);
+      //console.log('merged', merged);
     });
     
 
