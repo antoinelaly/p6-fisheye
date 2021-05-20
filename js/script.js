@@ -131,12 +131,7 @@ function tagp(lestags) { // page tags
   })
 };
 function tagn(dataa) { // nav tags 
-  //const combined1 = [].concat(array1, array2, array3, array4);
-  console.log('merged2', dataa);
-  //merged.map(dataa => {
-    //console.log('merged', merged);
     creatNav(dataa, nav)
-  //})
 };
 
 window.addEventListener('load', () => {
@@ -214,9 +209,7 @@ window.addEventListener('load', () => {
       tagp(lestags);
       var tagsnav = DBUser.tagsNav(db_users); // page nav 
       var dataa = [...new Set(tagsnav[0].concat(tagsnav[1],tagsnav[2],tagsnav[3],tagsnav[4],tagsnav[5]))]
-      //var merged = {...tagsnav[0], ...tagsnav[1], ...tagsnav[2],...tagsnav[3], ...tagsnav[4], ...tagsnav[5]};
       tagn(dataa);
-      //console.log('merged', merged);
     });
     
 
