@@ -25,6 +25,36 @@
 
       </div>
 
+      <button class="show-modal">Contactez-moi</button>
+      <div class="modal hidden">
+        <button class="close-modal">&times;</button>
+        <form id="form" action="#" method="post"  onsubmit="sConsole(event)">
+          <h2>Contactez-moi</h2>
+          <h2 class="lenom"></h2>
+          <div class="form-group name">
+            <label >Prénom</label>
+            <input class="form-control" type="text" name="First name" id="first" />
+          </div>
+          <div class="form-group">
+            <label >Nom</label>
+            <input class="form-control" type="text" name="Last name" id="last" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input class="form-control" type="text" name="email" id="email" />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Votre message</label>
+            <textarea class="form-message" name="Your message"  id="message" rows="10" cols="20"></textarea>
+          </div>
+          <p>
+            <input type="submit" value="Envoyer" class="btn btn-primary btn-block" />
+          </p>
+        </form>
+      </div>
+      <div class="overlay hidden"></div>
+
       <div class="trier">
         <h4>Trier par </h4>
         <select id="my-select">
@@ -43,7 +73,7 @@
   </main>
 
   <script src="js/script.js"></script>
-  <script src="js/slider.js"></script>
+  <script src="js/folio.js"></script>
 </body>
 
 </html>

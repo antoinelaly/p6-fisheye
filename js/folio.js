@@ -1,35 +1,52 @@
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+const btnCloseModal = document.querySelector('.close-modal');
+const btnOpenModal = document.querySelectorAll('.show-modal');
 
-/************* selecteur  *************/
-var select = document.getElementById("my-select");
-
-select.onchange = function (data) {
-  lesphotos.innerHTML = '';
-  console.log(lesphotos);
-  var choice = select.value;
-
-  const lesort = {
-    'likes': false,
-    'date': false,
-    'price': true,
-  }
-  return lesort[sortResults(choice)] ?? "not found";
-
-  function sortResults(prop, asc) {
-
-    datum.sort(function (a, b) { 
-      if (asc) return ((a[prop] + "").toLowerCase() > (b[prop] + "").toLowerCase()) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
-      else return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
-    });
-    displayFolio();
-    new AsyncGallery();
-  }
-  
-  function displayFolio() {
-    datum.forEach(el => {
-      creatFolio(el, lesphotos);
-    })
-  }
+const openModal = function() {
+    modal.classList.remove('hidden');
+    overlay.classList.remove('hidden');
 }
+const closeModal = function(){
+    modal.classList.add('hidden');
+    overlay.classList.add('hidden')
+}
+
+for(let i = 0; i < btnOpenModal.length; i++) {
+    btnOpenModal[i].addEventListener('click', function(){
+        //console.log('button clicked');
+        openModal();
+    });
+}
+
+btnCloseModal.addEventListener('click',closeModal );
+overlay.addEventListener('click', closeModal);
+
+/************* modal / form  *************/
+const form = document.getElementById("form");
+form.addEventListener("submit", e => {
+  e.preventDefault(); // method useful when Clicking on a "Submit" button, prevent it from submitting a form
+  functionValidation();
+});
+
+function functionValidation() {
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
+}
+
+function sConsole(event) {
+  event.preventDefault();
+  var first = document.getElementById("first");
+  console.log('Prénom : ', first.value);
+  var last = document.getElementById("last");
+  console.log('Nom : ', last.value);
+  var email = document.getElementById("email");
+  console.log('Email : ', email.value);
+  var message = document.getElementById("message");
+  console.log('Message : ', message.value);
+}  
+
+/************* form  *************/
 
 
 /******** Gallery ********/
@@ -341,3 +358,4 @@ async function delayedGreeting() {
 delayedGreeting();
 
 
+/******* */ 

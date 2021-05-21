@@ -3,13 +3,14 @@ var lesphotos = document.querySelector(".lesphotos");
 var presentation = document.querySelector(".presentation");
 var nav = document.querySelector(".nav");
 var tagpage = document.querySelector(".tagpage");
+var lenom = document.querySelector(".lenom");
 
 function createNode(element) {
   return document.createElement(element);
-}
+};
 function append(parent, el) {
   return parent.appendChild(el);
-}
+};
 
 function creatFigure(el, valueFigure) {
   let ul = createNode("ul"),
@@ -22,6 +23,9 @@ function creatFigure(el, valueFigure) {
   a = createNode("a");
   aImg = createNode("a");
   h2.innerHTML = `${el.name}`;
+  if (lesphotos) {
+  lenom.innerHTML = `${el.name}`;
+  }
   aImg.href = `folio.html?id=${el.id}`;
   if (home) {
     img.src = `img/${el.illustration}`;
@@ -46,7 +50,7 @@ function creatFigure(el, valueFigure) {
   append(figcaption, p);
   append(figcaption, ul);
   append(valueFigure, figure);
-}
+};
 
 var datum = [];
 
@@ -82,7 +86,8 @@ function creatFolio(el, lesphotos) {
   append(figcaption, p);
   append(figcaption, pp);
   append(lesphotos, figure);
-}
+};
+
 function creatNav(dataa, nav) {
   let ul = createNode("ul");
   (aTag = createNode("a"));
@@ -94,9 +99,44 @@ function creatNav(dataa, nav) {
     liTags.innerHTML = `#${dataa[j]}`;
     append(ul, aTag);
     append(aTag, liTags);
-    append(nav, ul);
+    append(nav, ul); // f
   }
+};
+
+/************* selecteur  *************/
+var select = document.getElementById("my-select");
+
+if (lesphotos) {
+select.onchange = function () {
+  lesphotos.innerHTML = '';
+  console.log(lesphotos);
+  var choice = select.value;
+
+  const lesort = {
+    'likes': false,
+    'date': false,
+    'price': true,
+  }
+  return lesort[sortResults(choice)] ?? "not found";
 }
+
+  function sortResults(prop, asc) {
+
+    datum.sort(function (a, b) { 
+      if (asc) return ((a[prop] + "").toLowerCase() > (b[prop] + "").toLowerCase()) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
+      else return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
+    });
+    displayFolio();
+    new AsyncGallery();
+  }
+  
+  function displayFolio() {
+    datum.forEach(el => {
+      creatFolio(el, lesphotos);
+    })
+  }
+};
+/******** fin selecteur ********/
 
 function photographe(leuser) { // folio photographe
   leuser.map(el => {
@@ -131,11 +171,12 @@ function tagp(lestags) { // page tags
   })
 };
 function tagn(dataa) { // nav tags 
-    creatNav(dataa, nav)
+  console.log('merged2', dataa);
+    creatNav(dataa, nav) 
 };
 
 window.addEventListener('load', () => {
-  fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json')
+  fetch('http://choisirsontheme.com/formation/ocr/p6-fisheye-tests/p6-v7/js/fisheyedatafr.json')
     .then(response => {
       return response.json();
     }).then(data => {
@@ -192,7 +233,7 @@ window.addEventListener('load', () => {
           }
           return posts;
         }
-      }
+      };
 
       var searchParams = new URLSearchParams(window.location.search);
       var folioId = searchParams.get('id');
@@ -204,12 +245,13 @@ window.addEventListener('load', () => {
       photos(lefolio);
       var lahome = DBUser.getPosts(db_users);  // la home
       graphes(lahome);
-      //tagnav(lahome);
       var lestags = DBUser.getTags(db_users, folioId); // page tags 
       tagp(lestags);
+      if (nav) {
       var tagsnav = DBUser.tagsNav(db_users); // page nav 
       var dataa = [...new Set(tagsnav[0].concat(tagsnav[1],tagsnav[2],tagsnav[3],tagsnav[4],tagsnav[5]))]
-      tagn(dataa);
+      tagn(dataa); 
+      }
     });
     
 
