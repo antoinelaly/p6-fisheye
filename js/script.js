@@ -171,7 +171,6 @@ function tagp(lestags) { // page tags
   })
 };
 function tagn(dataa) { // nav tags 
-  console.log('merged2', dataa);
     creatNav(dataa, nav) 
 };
 

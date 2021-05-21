@@ -14,7 +14,6 @@ const closeModal = function(){
 
 for(let i = 0; i < btnOpenModal.length; i++) {
     btnOpenModal[i].addEventListener('click', function(){
-        //console.log('button clicked');
         openModal();
     });
 }
@@ -25,7 +24,7 @@ overlay.addEventListener('click', closeModal);
 /************* modal / form  *************/
 const form = document.getElementById("form");
 form.addEventListener("submit", e => {
-  e.preventDefault(); // method useful when Clicking on a "Submit" button, prevent it from submitting a form
+  e.preventDefault(); // method useful when Clicking on a "Submit" button
   functionValidation();
 });
 
@@ -357,5 +356,3 @@ async function delayedGreeting() {
 
 delayedGreeting();
 
-
-/******* */ 
