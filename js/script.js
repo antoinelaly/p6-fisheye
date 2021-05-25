@@ -61,6 +61,8 @@ function creatFolio(el, lesphotos) {
     (videos = createNode("video")),
     (p = createNode("p")),
     (pp = createNode("p")),
+    (input = createNode("input")),
+    (button = createNode("button")),
     (aImg = createNode("a")),
     (aVid = createNode("a"));
   img.src = `img/${el.photographerId}/${el.image}`;
@@ -79,12 +81,18 @@ function creatFolio(el, lesphotos) {
   videos.setAttribute('data-description', `${el.date}`);
   videos.setAttribute('data-large', `img/${el.photographerId}/${el.video}`);
   p.innerHTML = `${el.date}`;
-  pp.innerHTML = `${el.price} €    ${el.likes} &hearts;`;
+  pp.innerHTML = `${el.price} €`;
+  input.setAttribute("type", "number");
+  input.setAttribute("value", `${el.likes}`);
+  button.className = `qty-inc`;
+  button.innerHTML = `&hearts;`;
   if (el.video == undefined) { append(figure, img); }
   else if (el.image == undefined) { append(figure, videos); };
   append(figure, figcaption);
   append(figcaption, p);
   append(figcaption, pp);
+  append(figcaption, input);
+  append(figcaption, button);
   append(lesphotos, figure);
 };
 
@@ -102,6 +110,7 @@ function creatNav(dataa, nav) {
     append(nav, ul); // f
   }
 };
+
 
 /************* selecteur  *************/
 var select = document.getElementById("my-select");
@@ -175,7 +184,7 @@ function tagn(dataa) { // nav tags
 };
 
 window.addEventListener('load', () => {
-  fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json')
+  fetch('http://choisirsontheme.com/formation/ocr/p6-fisheye-tests/p6-v7/js/fisheyedatafr.json')
     .then(response => {
       return response.json();
     }).then(data => {

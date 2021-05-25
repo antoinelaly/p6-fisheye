@@ -313,6 +313,8 @@ display: flex;
 text-align: left;
 border: 0;
 border-radius: 3px;
+padding-top: 3px;
+padding-bottom: 3px;
 }
 .arrow {
   display: inline-block;
@@ -651,3 +653,45 @@ form .btn {
   top: 10px;
   margin-left: 4px;
   }
+
+
+  /* count */
+  input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0;
+  /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.qty-holder {
+  display: flex;
+}
+.qty-holder input {
+  outline: none;
+  width: 30px;
+  text-align: center;
+}
+figcaption button  {
+  padding: 1px 7px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #D3573C !important;
+  border-color: #fff;
+  background-color: #fff;
+  border-width: 0;
+  height: 10px;
+  padding-top: 7px;
+  margin-left: -30px;
+}
+
+figcaption input {
+  border-width: 0;
+  width: 25px;
+  margin-left: 120px;
+  color: #D3573C;
+  font-size: 16px;
+  border-color: #fff;
+  height: 10px;
+  padding-top: 16px;
+}
