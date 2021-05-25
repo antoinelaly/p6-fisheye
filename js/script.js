@@ -111,20 +111,7 @@ function creatNav(dataa, nav) {
   }
 };
 
-/* count */
-setTimeout(function() {
-  var qtyIncs = document.querySelectorAll(".qty-inc");
-  
-  qtyIncs.forEach((el) => {
-    el.addEventListener("click",function(e){
-      e.target.previousElementSibling.value++;
-      //e.target.previousElementSibling.stepUp(1);
-    })
-  })
-  console.log('FB loaded after 2s');
-  }, 2000);
-  console.log('Started');
-  
+
 /************* selecteur  *************/
 var select = document.getElementById("my-select");
 
@@ -160,6 +147,20 @@ select.onchange = function () {
   }
 };
 /******** fin selecteur ********/
+/* count */
+setTimeout(function() {
+  var qtyIncs = document.querySelectorAll(".qty-inc");
+  
+  qtyIncs.forEach((el) => {
+    el.addEventListener("click",function(e){
+      e.target.previousElementSibling.value++;
+      //e.target.previousElementSibling.stepUp(1);
+    })
+  })
+  console.log('FB loaded after 2s');
+  }, 2000);
+  console.log('Started');
+/* count */
 
 function photographe(leuser) { // folio photographe
   leuser.map(el => {
