@@ -155,9 +155,9 @@ setTimeout(function () {
       e.target.previousElementSibling.value++;
     })
   })
-  console.log('FB loaded after 2s');
+  //console.log('FB loaded after 2s');
 }, 2000);
-console.log('Started');
+//console.log('Started');
 /* count */
 
 function photographe(leuser) { // folio photographe
