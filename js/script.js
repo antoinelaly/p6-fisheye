@@ -137,7 +137,7 @@ if (lesphotos) {
     });
     displayFolio();
     new AsyncGallery();
-    setTimeout();
+    theCounter();
   }
 
   function displayFolio() {
@@ -148,16 +148,18 @@ if (lesphotos) {
 };
 
 /* count */
-setTimeout(function () {
-  var qtyIncs = document.querySelectorAll(".qty-inc");
-  qtyIncs.forEach((el) => {
-    el.addEventListener("click", function (e) {
-      e.target.previousElementSibling.value++;
+function theCounter() {
+  setTimeout(function () {
+    var qtyIncs = document.querySelectorAll(".qty-inc");
+    qtyIncs.forEach((el) => {
+      el.addEventListener("click", function (e) {
+        e.target.previousElementSibling.value++;
+      })
     })
-  })
-  //console.log('FB loaded after 2s');
-}, 2000);
-//console.log('Started');
+    //console.log('FB loaded after 2s');
+  }, 2000);
+  //console.log('Started');
+}
 /* count */
 
 function photographe(leuser) { // folio photographe
@@ -170,6 +172,7 @@ function photos(lefolio) { // folio photos
   lefolio.map(el => {
     creatFolio(el, lesphotos);
     datum.push(el);
+    theCounter();
   })
 };
 function graphes(lahome) { // la home
