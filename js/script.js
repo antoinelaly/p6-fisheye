@@ -24,7 +24,7 @@ function creatFigure(el, valueFigure) {
   aImg = createNode("a");
   h2.innerHTML = `${el.name}`;
   if (lesphotos) {
-  lenom.innerHTML = `${el.name}`;
+    lenom.innerHTML = `${el.name}`;
   }
   aImg.href = `folio.html?id=${el.id}`;
   if (home) {
@@ -116,22 +116,22 @@ function creatNav(dataa, nav) {
 var select = document.getElementById("my-select");
 
 if (lesphotos) {
-select.onchange = function () {
-  lesphotos.innerHTML = '';
-  console.log(lesphotos);
-  var choice = select.value;
+  select.onchange = function () {
+    lesphotos.innerHTML = '';
+    console.log(lesphotos);
+    var choice = select.value;
 
-  const lesort = {
-    'likes': false,
-    'date': false,
-    'price': true,
+    const lesort = {
+      'likes': false,
+      'date': false,
+      'price': true,
+    }
+    return lesort[sortResults(choice)] ?? "not found";
   }
-  return lesort[sortResults(choice)] ?? "not found";
-}
 
   function sortResults(prop, asc) {
 
-    datum.sort(function (a, b) { 
+    datum.sort(function (a, b) {
       if (asc) return ((a[prop] + "").toLowerCase() > (b[prop] + "").toLowerCase()) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
       else return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
     });
@@ -139,27 +139,25 @@ select.onchange = function () {
     new AsyncGallery();
     setTimeout();
   }
-  
+
   function displayFolio() {
     datum.forEach(el => {
       creatFolio(el, lesphotos);
     })
   }
 };
-/******** fin selecteur ********/
+
 /* count */
-setTimeout(function() {
+setTimeout(function () {
   var qtyIncs = document.querySelectorAll(".qty-inc");
-  
   qtyIncs.forEach((el) => {
-    el.addEventListener("click",function(e){
+    el.addEventListener("click", function (e) {
       e.target.previousElementSibling.value++;
-      //e.target.previousElementSibling.stepUp(1);
     })
   })
   console.log('FB loaded after 2s');
-  }, 2000);
-  console.log('Started');
+}, 2000);
+console.log('Started');
 /* count */
 
 function photographe(leuser) { // folio photographe
@@ -195,7 +193,7 @@ function tagp(lestags) { // page tags
   })
 };
 function tagn(dataa) { // nav tags 
-    creatNav(dataa, nav) 
+  creatNav(dataa, nav)
 };
 
 window.addEventListener('load', () => {
@@ -271,12 +269,12 @@ window.addEventListener('load', () => {
       var lestags = DBUser.getTags(db_users, folioId); // page tags 
       tagp(lestags);
       if (nav) {
-      var tagsnav = DBUser.tagsNav(db_users); // page nav 
-      var dataa = [...new Set(tagsnav[0].concat(tagsnav[1],tagsnav[2],tagsnav[3],tagsnav[4],tagsnav[5]))]
-      tagn(dataa); 
+        var tagsnav = DBUser.tagsNav(db_users); // page nav 
+        var dataa = [...new Set(tagsnav[0].concat(tagsnav[1], tagsnav[2], tagsnav[3], tagsnav[4], tagsnav[5]))]
+        tagn(dataa);
       }
     });
-    
+
 
 }).catch(err => {
   console.log('Fetch Error :-S', err);
