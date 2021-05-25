@@ -137,6 +137,7 @@ select.onchange = function () {
     });
     displayFolio();
     new AsyncGallery();
+    setTimeout();
   }
   
   function displayFolio() {
