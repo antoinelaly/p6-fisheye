@@ -45,20 +45,6 @@ function sConsole(event) {
   console.log('Message : ', message.value);
 }  
 
-/* count */
-setTimeout(function() {
-var qtyIncs = document.querySelectorAll(".qty-inc");
-
-qtyIncs.forEach((el) => {
-  el.addEventListener("click",function(e){
-    e.target.previousElementSibling.value++;
-    //e.target.previousElementSibling.stepUp(1);
-  })
-})
-console.log('FB loaded after 2s');
-}, 2000);
-console.log('Started');
-
 
 /******** Gallery ********/
 
