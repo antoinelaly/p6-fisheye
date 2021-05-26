@@ -19,6 +19,9 @@ h1 {
   font-weight: 200 !important;
   color: #D3573C;
 }
+h1 a {
+  text-decoration: none;
+}
 h2 {
   margin: 10px;
   font-weight: 200;
@@ -39,7 +42,7 @@ main, footer {
   padding: 12px 35px;
 }
 @media (max-width: 767px) {
-  h2 {
+  h2, h1 {
     margin: 0;
   }
   main, footer {
@@ -709,7 +712,7 @@ label {
   border: 0;
 }
 
-form h2 {
+form h2, form h1 {
   font-weight: 400;
   font-size: 64px;
   Line-height: 80px;
@@ -742,7 +745,7 @@ form .btn {
       width: 280px;
       z-index: 110;
     }
-    form h2 {
+    form h2, form h1 {
       padding-top: 170px;
       font-weight: 400;
       font-size: 30px;
