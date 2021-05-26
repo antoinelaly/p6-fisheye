@@ -32,16 +32,17 @@ function creatFigure(el, valueFigure) {
   } else {
     img.src = `img/${el.portrait}`;
   }
+  img.setAttribute("alt", `${el.name}`);
   p.innerHTML = `${el.city} <br>${el.tagline} <br>${el.price}€/jour`;
   ul.setAttribute("aria-label", "Secondary navigation");
   for (let j = 0; j < el.tags.length; j++) {
     let liTags = createNode("li");
     (aTag = createNode("a"));
-    aTag.href = `tag.html?id=${el.tags[j]}`;
     liTags.className = "petitsb";
-    liTags.innerHTML = `#${el.tags[j]}`;
-    append(ul, aTag);
-    append(aTag, liTags);
+    aTag.href = `tag.html?id=${el.tags[j]}`;
+    aTag.innerHTML = `#${el.tags[j]}`;
+    append(ul, liTags);
+    append(liTags, aTag);
   }
   append(figure, aImg);
   append(aImg, img);
@@ -66,10 +67,13 @@ function creatFolio(el, lesphotos) {
     (aImg = createNode("a")),
     (aVid = createNode("a"));
   img.src = `img/${el.photographerId}/${el.image}`;
+  img.setAttribute("alt", `${el.image}`);
   if (videos.canPlayType("video/mp4")) {
     videos.setAttribute("src", `img/${el.photographerId}/${el.video}`);
+    videos.setAttribute("alt", `${el.videos}`);
   } else {
     videos.setAttribute("src", `img/${el.photographerId}/${el.video}`);
+    videos.setAttribute("alt", `${el.videos}`);
   }
   videos.setAttribute("width", "320");
   videos.setAttribute("height", "240");
@@ -84,6 +88,7 @@ function creatFolio(el, lesphotos) {
   pp.innerHTML = `${el.price} €`;
   input.setAttribute("type", "number");
   input.setAttribute("value", `${el.likes}`);
+  input.setAttribute("aria-label", "Likes");
   button.className = `qty-inc`;
   button.innerHTML = `&hearts;`;
   if (el.video == undefined) { append(figure, img); }
@@ -102,16 +107,26 @@ function creatNav(dataa, nav) {
   for (let j = 0; j < dataa.length; j++) {
     let liTags = createNode("li");
     (aTag = createNode("a"));
-    aTag.href = `tag.html?id=${dataa[j]}`;
     liTags.className = "petitsb";
-    liTags.innerHTML = `#${dataa[j]}`;
-    append(ul, aTag);
-    append(aTag, liTags);
+    aTag.href = `tag.html?id=${dataa[j]}`;
+    aTag.innerHTML = `#${dataa[j]}`;
+    append(ul, liTags);
+    append(liTags, aTag);
     append(nav, ul); // f
   }
 };
 
+/* count */
 
+setTimeout(function () {
+var qtyIncs = document.querySelectorAll(".qty-inc");
+qtyIncs.forEach((el) => {
+  el.addEventListener("click", function (e) {
+    e.target.previousElementSibling.value++;
+    console.log('value', value);
+  })
+})
+}, 2000);
 /************* selecteur  *************/
 var select = document.getElementById("my-select");
 
@@ -147,21 +162,6 @@ if (lesphotos) {
   }
 };
 
-/* count */
-function theCounter() {
-  setTimeout(function () {
-    var qtyIncs = document.querySelectorAll(".qty-inc");
-    qtyIncs.forEach((el) => {
-      el.addEventListener("click", function (e) {
-        e.target.previousElementSibling.value++;
-      })
-    })
-    //console.log('FB loaded after 2s');
-  }, 2000);
-  //console.log('Started');
-}
-/* count */
-
 function photographe(leuser) { // folio photographe
   leuser.map(el => {
     var valueFigure = presentation;
@@ -172,7 +172,6 @@ function photos(lefolio) { // folio photos
   lefolio.map(el => {
     creatFolio(el, lesphotos);
     datum.push(el);
-    theCounter();
   })
 };
 function graphes(lahome) { // la home

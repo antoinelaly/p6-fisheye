@@ -44,8 +44,20 @@ function sConsole(event) {
   var message = document.getElementById("message");
   console.log('Message : ', message.value);
 }
-
-
+/* counter select */
+function theCounter() {
+  setTimeout(function () {
+    var qtyIncs = document.querySelectorAll(".qty-inc");
+    qtyIncs.forEach((el) => {
+      el.addEventListener("click", function (e) {
+        e.target.previousElementSibling.value++;
+        console.log('value', value);
+      })
+    })
+    //console.log('FB loaded after 2s');
+  }, 2000);
+  //console.log('Started');
+}
 /******** Gallery ********/
 
 class AsyncGallery {

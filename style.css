@@ -38,6 +38,14 @@ main, footer {
   margin: 0 auto !important;
   padding: 12px 35px;
 }
+@media (max-width: 767px) {
+  h2 {
+    margin: 0;
+  }
+  main, footer {
+    padding: 12px;
+  }
+}
 
 /* header */
 header {
@@ -79,21 +87,19 @@ nav ul {
   margin:0;
   padding:0;
 }
-nav li{
+nav li, li {
   list-style:none;
 }
 nav a {
+  list-style:none;
   text-decoration:none;
   padding: 10px 1px;
 }
-li a {
+li a, a li {
   outline: none;
   text-decoration: none;
   list-style: none;
 }  
-a li {
-  list-style: none;
-}
 nav ul {
   display:flex;
 }
@@ -111,10 +117,44 @@ nav .petitsb {
   margin: 12px 2px;
   padding: 4px 8px;
 }
-nav a .petitsb  {
+nav a .petitsb, nav .petitsb a {
   color: #D3573C;
   font-size: 12px;
   font-weight: 800;
+}
+@media (max-width: 767px) {
+  header {
+    padding: 35px 2px;
+    max-width: 100%;
+  }
+  nav {
+    display: block;
+    width: 100%;
+    margin-left: 0;
+    padding-top: 5px;
+  }
+  section.top {
+    display: none;
+  }
+  .logo img, .photographes .logo img {
+    width: 140px;
+    padding-left: 15px;
+  }
+  nav ul {
+    display:flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  nav ul a,  nav ul li {
+    display:flex;
+    flex-wrap: wrap;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  nav .petitsb {
+    margin: 0 1px;
+  }
 }
 
 /* vvv photographes vvv */
@@ -156,7 +196,7 @@ nav a .petitsb  {
   margin: 2px;
   padding: 4px 8px;
 }
-.photographes a .petitsb  {
+.photographes .petitsb a  {
   color: #D3573C;
   font-size: 12px;
   font-weight: 800;
@@ -177,7 +217,24 @@ figcaption .price {
   line-height: 12px;
   color: #757575;
 }
-
+@media (max-width: 767px) {
+  .nophoto {
+    position: relative;
+    right: 0px;
+    top: -175px;
+  } 
+  .nophoto h1 {
+    font-size: 16px;
+    line-height: 27px;
+    padding-left: 154px;
+  } 
+  .photographes figure, .photographes {
+    display: block;
+  }
+  .photographes figure {
+    margin-bottom: 60px !important;
+  }
+}
 /* galeries */
 .presentation {
   display: flex;
@@ -329,7 +386,20 @@ padding-bottom: 3px;
 .arrow-top {
   transform: rotate(-45deg);
 }
-
+@media (max-width: 767px) {
+  .presentation figure img, .presentation figure video {
+    height: 100px;
+    width: 120px;
+  }
+  .trier {
+    padding: 10px 0;
+  }
+  .lesphotos figure, .lesphotos figure img {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+}
 
 
 /* popup */
@@ -510,29 +580,35 @@ padding-bottom: 3px;
     height: 20px;
     background-size: 20px;
   }
-
+  .asyncGallery__Next {
+    right: 15px;
+  }
+  .asyncGallery__Prev {
+    left: 15px;
+  }
   .asyncGallery__Item {
     width: 100%;
   }
 
   .asyncGallery__ItemImage img, .asyncGallery__ItemImage video {
-    max-height: none;
-    max-width: 100%;
+    max-height: 70%;
+    max-width: 70%;
+    padding: 58px;
   }
 
   .asyncGallery__ItemVideo video {
-    max-height: none;
-    max-width: 100%;
+    max-height: 70%;
+    max-width: 70%;
   }
 
   .asyncGallery__ItemDescription {
-    padding: 0 20px;
+    padding: 0 70px;
   }
 
-  .asyncGallery__Next,
+  /*.asyncGallery__Next,
   .asyncGallery__Prev {
     display: none;
-  }
+  }*/
 
   /* DEMO */
   .gallery {
@@ -654,7 +730,36 @@ form .btn {
   margin-left: 4px;
   }
 
+  @media (max-width: 767px) {
+    button.show-modal {
+      position: fixed;
+      top: 85%;
+      padding: 10px;
+      margin-left: 35%;
+      z-index: 100;
+    }
+    .modal {
+      width: 280px;
+      z-index: 110;
+    }
+    form h2 {
+      padding-top: 170px;
+      font-weight: 400;
+      font-size: 30px;
+      Line-height: 35px;
+      padding-top: 15px;
+    }
+    label {
+      font-size: 28px;
+    }
+    .lecontact, .close-modal {
+      padding-top: 100px;
+    }
+    .close-modal {
+      right: 0;
+    }
 
+  }
   /* count */
   input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -694,4 +799,7 @@ figcaption input {
   border-color: #fff;
   height: 10px;
   padding-top: 16px;
+}
+.qty-inc {
+  cursor: pointer;
 }
