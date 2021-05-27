@@ -19,9 +19,6 @@ h1 {
   font-weight: 200 !important;
   color: #D3573C;
 }
-h1 a {
-  text-decoration: none;
-}
 h2 {
   margin: 10px;
   font-weight: 200;
@@ -40,14 +37,6 @@ main, footer {
   max-width: 1800px;
   margin: 0 auto !important;
   padding: 12px 35px;
-}
-@media (max-width: 767px) {
-  h2, h1 {
-    margin: 0;
-  }
-  main, footer {
-    padding: 12px;
-  }
 }
 
 /* header */
@@ -90,19 +79,21 @@ nav ul {
   margin:0;
   padding:0;
 }
-nav li, li {
+nav li{
   list-style:none;
 }
 nav a {
-  list-style:none;
   text-decoration:none;
   padding: 10px 1px;
 }
-li a, a li {
+li a {
   outline: none;
   text-decoration: none;
   list-style: none;
 }  
+a li {
+  list-style: none;
+}
 nav ul {
   display:flex;
 }
@@ -120,44 +111,10 @@ nav .petitsb {
   margin: 12px 2px;
   padding: 4px 8px;
 }
-nav a .petitsb, nav .petitsb a {
+nav a .petitsb  {
   color: #D3573C;
   font-size: 12px;
   font-weight: 800;
-}
-@media (max-width: 767px) {
-  header {
-    padding: 35px 2px;
-    max-width: 100%;
-  }
-  nav {
-    display: block;
-    width: 100%;
-    margin-left: 0;
-    padding-top: 5px;
-  }
-  section.top {
-    display: none;
-  }
-  .logo img, .photographes .logo img {
-    width: 140px;
-    padding-left: 15px;
-  }
-  nav ul {
-    display:flex;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-  nav ul a,  nav ul li {
-    display:flex;
-    flex-wrap: wrap;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  nav .petitsb {
-    margin: 0 1px;
-  }
 }
 
 /* vvv photographes vvv */
@@ -199,7 +156,7 @@ nav a .petitsb, nav .petitsb a {
   margin: 2px;
   padding: 4px 8px;
 }
-.photographes .petitsb a  {
+.photographes a .petitsb  {
   color: #D3573C;
   font-size: 12px;
   font-weight: 800;
@@ -220,24 +177,7 @@ figcaption .price {
   line-height: 12px;
   color: #757575;
 }
-@media (max-width: 767px) {
-  .nophoto {
-    position: relative;
-    right: 0px;
-    top: -175px;
-  } 
-  .nophoto h1 {
-    font-size: 16px;
-    line-height: 27px;
-    padding-left: 154px;
-  } 
-  .photographes figure, .photographes {
-    display: block;
-  }
-  .photographes figure {
-    margin-bottom: 60px !important;
-  }
-}
+
 /* galeries */
 .presentation {
   display: flex;
@@ -246,7 +186,7 @@ figcaption .price {
 .presentation figure {
   display: flex;
   flex-direction: row;
-  /*-webkit-flex-direction: row-reverse;*/
+  -webkit-flex-direction: row-reverse;
   flex-direction: row-reverse;
 }
 .lespetitsb {
@@ -373,8 +313,6 @@ display: flex;
 text-align: left;
 border: 0;
 border-radius: 3px;
-padding-top: 3px;
-padding-bottom: 3px;
 }
 .arrow {
   display: inline-block;
@@ -389,20 +327,7 @@ padding-bottom: 3px;
 .arrow-top {
   transform: rotate(-45deg);
 }
-@media (max-width: 767px) {
-  .presentation figure img, .presentation figure video {
-    height: 100px;
-    width: 120px;
-  }
-  .trier {
-    padding: 10px 0;
-  }
-  .lesphotos figure, .lesphotos figure img {
-    display: block;
-    margin: 0;
-    padding: 0;
-  }
-}
+
 
 
 /* popup */
@@ -583,35 +508,29 @@ padding-bottom: 3px;
     height: 20px;
     background-size: 20px;
   }
-  .asyncGallery__Next {
-    right: 15px;
-  }
-  .asyncGallery__Prev {
-    left: 15px;
-  }
+
   .asyncGallery__Item {
     width: 100%;
   }
 
   .asyncGallery__ItemImage img, .asyncGallery__ItemImage video {
-    max-height: 70%;
-    max-width: 70%;
-    padding: 58px;
+    max-height: none;
+    max-width: 100%;
   }
 
   .asyncGallery__ItemVideo video {
-    max-height: 70%;
-    max-width: 70%;
+    max-height: none;
+    max-width: 100%;
   }
 
   .asyncGallery__ItemDescription {
-    padding: 0 70px;
+    padding: 0 20px;
   }
 
-  /*.asyncGallery__Next,
+  .asyncGallery__Next,
   .asyncGallery__Prev {
     display: none;
-  }*/
+  }
 
   /* DEMO */
   .gallery {
@@ -628,6 +547,7 @@ padding-bottom: 3px;
     min-width: 100%;
   }
 }
+
 
 
 /* CLASSES TO MAKE MODAL WORK */
@@ -654,9 +574,10 @@ button.show-modal {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 669px;
-  background-color: #DB8876;
-  padding: 1rem 4rem 3rem 2rem;
+  width: 70%;
+
+  background-color: white;
+  padding: 6rem;
   border-radius: 5px;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
   z-index: 10;
@@ -669,140 +590,14 @@ button.show-modal {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
-  /*backdrop-filter: blur(3px);*/
+  backdrop-filter: blur(3px);
   z-index: 5;
 }
 
-.close-modal {
-  position: absolute;
-  right: 50px;
-  top: 20px;
-  color: #fff;
-  font-weight: 200;
-  width: 100px;
-  font-size: 80px;
-  background-color: transparent;
-  border: 0;
+/*form div {
+  margin-bottom: 0.5em;
 }
-
-label {
-  font-size: 36px;
-  font-weight: normal;
-  display: inline-block;
-  margin-top: 11px;
-}
-
-.form-control {
-  margin: 5px 0 0 0;
-  padding: 8px;
-  width: 100%;
-  border-radius: 4px;
-  font-size: 20px;
-  height: 28px;
-  border: 0;
-}
-
-.form-message {
-  margin: 5px 0 0 0;
-  padding: 8px;
-  width: 100%;
-  border-radius: 4px;
-  font-size: 20px;
-  height: 100px;
-  border: 0;
-}
-
-form h2, form h1 {
-  font-weight: 400;
-  font-size: 64px;
-  Line-height: 80px;
-  color: #000;
-  margin: 10px 0
-}
-
-form .btn {
-  position: relative;
-  background-color: #911C1C;
-  color: #fff;
-  padding: 10px 20px;
-  display: flex;
-  text-align: left;
-  border: 0;
-  border-radius: 3px;
-  top: 10px;
-  margin-left: 4px;
-  }
-
-  @media (max-width: 767px) {
-    button.show-modal {
-      position: fixed;
-      top: 85%;
-      padding: 10px;
-      margin-left: 35%;
-      z-index: 100;
-    }
-    .modal {
-      width: 280px;
-      z-index: 110;
-    }
-    form h2, form h1 {
-      padding-top: 170px;
-      font-weight: 400;
-      font-size: 30px;
-      Line-height: 35px;
-      padding-top: 15px;
-    }
-    label {
-      font-size: 28px;
-    }
-    .lecontact, .close-modal {
-      padding-top: 100px;
-    }
-    .close-modal {
-      right: 0;
-    }
-
-  }
-  /* count */
-  input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  /* display: none; <- Crashes Chrome on hover */
-  -webkit-appearance: none;
-  margin: 0;
-  /* <-- Apparently some margin are still there even though it's hidden */
-}
-
-.qty-holder {
-  display: flex;
-}
-.qty-holder input {
-  outline: none;
-  width: 30px;
-  text-align: center;
-}
-figcaption button  {
-  padding: 1px 7px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #D3573C !important;
-  border-color: #fff;
-  background-color: #fff;
-  border-width: 0;
-  height: 10px;
-  padding-top: 7px;
-  margin-left: -30px;
-}
-
-figcaption input {
-  border-width: 0;
-  width: 28px;
-  margin-left: 120px;
-  color: #D3573C;
-  font-size: 16px;
-  border-color: #fff;
-  height: 10px;
-  padding-top: 16px;
-}
-.qty-inc {
-  cursor: pointer;
-}
+form div label, form div input {
+  display: block;
+  margin-bottom: 0.3em;
+}*/

@@ -3,61 +3,58 @@ const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.close-modal');
 const btnOpenModal = document.querySelectorAll('.show-modal');
 
-const openModal = function () {
-  modal.classList.remove('hidden');
-  overlay.classList.remove('hidden');
+const openModal = function() {
+    modal.classList.remove('hidden');
+    overlay.classList.remove('hidden');
 }
-const closeModal = function () {
-  modal.classList.add('hidden');
-  overlay.classList.add('hidden')
-}
-
-for (let i = 0; i < btnOpenModal.length; i++) {
-  btnOpenModal[i].addEventListener('click', function () {
-    openModal();
-  });
+const closeModal = function(){
+    modal.classList.add('hidden');
+    overlay.classList.add('hidden')
 }
 
-btnCloseModal.addEventListener('click', closeModal);
+for(let i = 0; i < btnOpenModal.length; i++) {
+    btnOpenModal[i].addEventListener('click', function(){
+        //console.log('button clicked');
+        openModal();
+    });
+}
+
+btnCloseModal.addEventListener('click',closeModal );
 overlay.addEventListener('click', closeModal);
 
-/************* modal / form  *************/
-const form = document.getElementById("form");
-form.addEventListener("submit", e => {
-  e.preventDefault(); // method useful when Clicking on a "Submit" button
-  functionValidation();
-});
+/************* selecteur  *************/
+var select = document.getElementById("my-select");
 
-function functionValidation() {
-  modal.classList.add('hidden');
-  overlay.classList.add('hidden');
-}
+select.onchange = function (data) {
+  lesphotos.innerHTML = '';
+  console.log(lesphotos);
+  var choice = select.value;
 
-function sConsole(event) {
-  event.preventDefault();
-  var first = document.getElementById("first");
-  console.log('Prénom : ', first.value);
-  var last = document.getElementById("last");
-  console.log('Nom : ', last.value);
-  var email = document.getElementById("email");
-  console.log('Email : ', email.value);
-  var message = document.getElementById("message");
-  console.log('Message : ', message.value);
-}
-/* counter select */
-function theCounter() {
-  setTimeout(function () {
-    var qtyIncs = document.querySelectorAll(".qty-inc");
-    qtyIncs.forEach((el) => {
-      el.addEventListener("click", function (e) {
-        e.target.previousElementSibling.value++;
-        console.log('value', value);
-      })
+  const lesort = {
+    'likes': false,
+    'date': false,
+    'price': true,
+  }
+  return lesort[sortResults(choice)] ?? "not found";
+
+  function sortResults(prop, asc) {
+
+    datum.sort(function (a, b) { 
+      if (asc) return ((a[prop] + "").toLowerCase() > (b[prop] + "").toLowerCase()) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
+      else return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
+    });
+    displayFolio();
+    new AsyncGallery();
+  }
+  
+  function displayFolio() {
+    datum.forEach(el => {
+      creatFolio(el, lesphotos);
     })
-    //console.log('FB loaded after 2s');
-  }, 2000);
-  //console.log('Started');
+  }
 }
+
+
 /******** Gallery ********/
 
 class AsyncGallery {
@@ -167,9 +164,9 @@ class AsyncGallery {
       let image = document.createElement("IMG");
       let video = document.createElement("VIDEO");
       if (video.canPlayType("video/mp4")) {
-        video.setAttribute("src", `${video.outerHTML}`);
+        video.setAttribute("src",`${video.outerHTML}`);
       } else {
-        video.setAttribute("src", `${video.outerHTML}`);
+        video.setAttribute("src",`${video.outerHTML}`);
       }
       video.setAttribute("width", "640");
       video.setAttribute("height", "480");
@@ -181,19 +178,19 @@ class AsyncGallery {
       if (this.loading) {
         this.loader.classList.add("is-visible");
       }
-
+      
       this.clearVisible();
 
       //let lobject = contentObj.src; 
       this.gallery.append(galleryItem);
       this.addedItems[i] = galleryItem;
 
-      if (contentObj.src.endsWith('mp4')) {
-
+      if  (contentObj.src.endsWith('mp4')) {
+        
         video.addEventListener("loadeddata", () => {
           console.log('mp4');
           this.addedItems[i].loaded = true;
-
+          
           if (!this.gallery.querySelector(".asyncGallery__Item.is-visible")) {
             this.addedItems[i].classList.add("is-visible");
           }
@@ -207,11 +204,11 @@ class AsyncGallery {
           ${video.outerHTML}
         </div>
         `;
-      } else if (contentObj.src.endsWith('jpg')) {
+      }  else if (contentObj.src.endsWith('jpg')) {
         image.addEventListener("load", () => {
           console.log('jpg');
           this.addedItems[i].loaded = true;
-
+          
           if (!this.gallery.querySelector(".asyncGallery__Item.is-visible")) {
             this.addedItems[i].classList.add("is-visible");
           }
@@ -225,11 +222,11 @@ class AsyncGallery {
           ${image.outerHTML}
         </div> 
         `;
-      }
+      } 
 
       image.alt = contentObj.description ? contentObj.description : "";
       video.alt = contentObj.description ? contentObj.description : "";
-
+      
       if (contentObj.description) {
         galleryItem.innerHTML += `
             <div class="asyncGallery__ItemDescription">
@@ -365,4 +362,5 @@ async function delayedGreeting() {
 }
 
 delayedGreeting();
+
 
