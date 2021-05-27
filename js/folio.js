@@ -108,7 +108,7 @@ class AsyncGallery {
   createElements() {
     this.gallery = document.createElement("DIV");
     this.gallery.classList.add("asyncGallery");
-    this.gallery.setAttribute("aria-hidden", "image closeup view");
+    //this.gallery.setAttribute("aria-hidden", "image closeup view");
 
     this.createSingleElement({
       element: "previous_image",
@@ -173,12 +173,17 @@ class AsyncGallery {
       let video = document.createElement("VIDEO");
       if (video.canPlayType("video/mp4")) {
         video.setAttribute("src", `${video.outerHTML}`);
+        //videos.setAttribute("alt", `${video.outerHTML}`);
       } else {
-        video.setAttribute("src", `${video.outerHTML}`);
+        image.setAttribute("src", `${image.outerHTML}`);
+        //image.setAttribute("alt", `${image.outerHTML}`);
       }
       video.setAttribute("width", "640");
       video.setAttribute("height", "480");
       video.setAttribute("controls", "controls");
+      //videos.setAttribute("alt", `${video.outerHTML}`);
+      //image.setAttribute("alt", `${image.outerHTML}`);
+      //console.log(image);
 
       let galleryItem = document.createElement("DIV");
       galleryItem.classList.add("asyncGallery__Item");
@@ -214,7 +219,7 @@ class AsyncGallery {
         `;
       } else if (contentObj.src.endsWith('jpg')) {
         image.addEventListener("load", () => {
-          console.log('jpg');
+          //console.log('jpg');
           this.addedItems[i].loaded = true;
 
           if (!this.gallery.querySelector(".asyncGallery__Item.is-visible")) {
@@ -225,6 +230,7 @@ class AsyncGallery {
           }
         });
         image.src = contentObj.src;
+        image.alt = contentObj.src;
         galleryItem.innerHTML = `
         <div class="asyncGallery__ItemImage">
           ${image.outerHTML}
