@@ -19,21 +19,25 @@
     </div>
   </header>
 
-  <main>
-    <div class="photos mimi-keel">
-      <div class="presentation"></div>
+  <main id="main-wrapper" aria-hidden="false">
+    <div class="photos ">
+      <div class="presentation">
+
+      </div>
 
       <button class="show-modal">Contactez-moi</button>
-      <div class="modal hidden">
+      <div id="lemodal" class="modal hidden" aria-hidden="true" role="dialog" aria-describedby="modalTitle">
         <button class="close-modal">&times;</button>
-        <form id="test" action="#" method="post">
-          <div class="form-group">
-            <label for="name">Prénom</label>
-            <input class="form-control" type="text" name="name" id="name" />
+        <form id="form" action="#" method="post"  onsubmit="sConsole(event)">
+          <h1 class="lecontact">Contactez-moi</h1>
+          <h1 class="lenom" id="modalTitle" class="modal-title"></h1>
+          <div class="form-group name">
+            <label for="first-name">Prénom</label>
+            <input class="form-control" type="text" name="First name" id="first" />
           </div>
           <div class="form-group">
             <label for="name">Nom</label>
-            <input class="form-control" type="text" name="name" id="name" />
+            <input class="form-control" type="text" name="Last name" id="last" />
           </div>
           <div class="form-group">
             <label for="email">Email</label>
@@ -41,15 +45,16 @@
           </div>
 
           <div class="form-group">
-            <label for="message">Leave a message</label>
-            <textarea class="form-control" name="message" rows="15" cols="30"></textarea>
+            <label for="message">Votre message</label>
+            <textarea class="form-message" name="Your message"  id="message" rows="10" cols="20"></textarea>
           </div>
           <p>
-            <input type="submit" value="Send" class="btn btn-primary btn-block" />
+            <input type="submit" value="Envoyer" class="btn btn-primary btn-block" />
           </p>
         </form>
       </div>
       <div class="overlay hidden"></div>
+      
 
       <div class="trier">
         <h4>Trier par </h4>
@@ -69,7 +74,7 @@
   </main>
 
   <script src="js/script.js"></script>
-  <script src="js/slider.js"></script>
+  <script src="js/folio.js"></script>
 </body>
 
 </html>
