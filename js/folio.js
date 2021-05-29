@@ -102,13 +102,12 @@ class AsyncGallery {
   clearUncomplete() {
     this.items = this.items.filter(item => {
       return item.dataset.large;
-    });
+    }); // array specific items
   }
 
   createElements() {
     this.gallery = document.createElement("DIV");
     this.gallery.classList.add("asyncGallery");
-    //this.gallery.setAttribute("aria-hidden", "image closeup view");
 
     this.createSingleElement({
       element: "previous_image",

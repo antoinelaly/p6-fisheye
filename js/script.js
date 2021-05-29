@@ -5,6 +5,7 @@ var nav = document.querySelector(".nav");
 var tagpage = document.querySelector(".tagpage");
 var lenom = document.querySelector(".lenom");
 
+// rationalisation du code
 function createNode(element) {
   return document.createElement(element);
 };
@@ -130,7 +131,7 @@ setTimeout(function () {
 /************* selecteur  *************/
 var select = document.getElementById("my-select");
 
-if (lesphotos) {
+if (lesphotos) { // lisibilite
   select.onchange = function(data) {
     lesphotos.innerHTML = '';
     var choice = select.value;
@@ -209,7 +210,7 @@ window.addEventListener('load', () => {
       let db_users = data.photographers;
       let bd_posts = data.media;
 
-      class DBUser {
+      class DBUser { // factory
         constructor(id) {
           this.id = id;
         }
@@ -274,7 +275,7 @@ window.addEventListener('load', () => {
       tagp(lestags);
       if (nav) {
         var tagsnav = DBUser.tagsNav(db_users); // page nav 
-        var dataa = [...new Set(tagsnav[0].concat(tagsnav[1], tagsnav[2], tagsnav[3], tagsnav[4], tagsnav[5]))]
+        var dataa = [...new Set(tagsnav[0].concat(tagsnav[1], tagsnav[2], tagsnav[3], tagsnav[4], tagsnav[5]))] // enfin 
         tagn(dataa);
       }
     });
