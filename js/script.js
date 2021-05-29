@@ -142,7 +142,7 @@ if (lesphotos) {
           sortResults('date', false);
           break;
         case 'price':
-          sortResults('price', true);
+          sortResults('price', false);
           break;
       }
     }
