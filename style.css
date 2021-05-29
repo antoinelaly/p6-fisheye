@@ -147,16 +147,18 @@ nav a .petitsb, nav .petitsb a {
     display:flex;
     flex-wrap: wrap;
     width: 100%;
+    justify-content: center;
   }
   nav ul a,  nav ul li {
     display:flex;
     flex-wrap: wrap;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+    justify-content: center;
   }
   nav .petitsb {
-    margin: 0 1px;
+    margin: 2px;
+  }
+  nav a {
+    padding: 4px 1px;
   }
 }
 
@@ -224,12 +226,12 @@ figcaption .price {
   .nophoto {
     position: relative;
     right: 0px;
-    top: -175px;
+    top: -162px;
   } 
   .nophoto h1 {
     font-size: 16px;
     line-height: 27px;
-    padding-left: 154px;
+    padding-left: 184px;
   } 
   .photographes figure, .photographes {
     display: block;
@@ -584,24 +586,24 @@ padding-bottom: 3px;
     background-size: 20px;
   }
   .asyncGallery__Next_image {
-    right: 15px;
+    right: 5px;
   }
   .asyncGallery__Previous_image {
-    left: 15px;
+    left: 5px;
   }
   .asyncGallery__Item {
     width: 100%;
   }
 
   .asyncGallery__ItemImage img, .asyncGallery__ItemImage video {
-    max-height: 70%;
-    max-width: 70%;
+    max-height: 68%;
+    max-width: 68%;
     padding: 58px;
   }
 
   .asyncGallery__ItemVideo video {
-    max-height: 70%;
-    max-width: 70%;
+    max-height: 68%;
+    max-width: 68%;
   }
 
   .asyncGallery__ItemDescription {
@@ -743,21 +745,23 @@ form .btn {
       z-index: 100;
     }
     .modal {
-      width: 280px;
+      width: 285px;
       z-index: 110;
+      position: fixed;
     }
     form h2, form h1 {
       padding-top: 170px;
       font-weight: 400;
       font-size: 30px;
       Line-height: 35px;
-      padding-top: 15px;
+      padding-top: 5px;
     }
     label {
-      font-size: 28px;
+      font-size: 18px;
+      margin-top: 4px;
     }
     .lecontact, .close-modal {
-      padding-top: 100px;
+      padding-top: 10px;
     }
     .close-modal {
       right: 0;
@@ -806,4 +810,13 @@ figcaption input {
 }
 .qty-inc {
   cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  figcaption input {
+    margin-left: 0;
+  }
+  .presentation figcaption {
+    width: 70%;
+  }
 }
