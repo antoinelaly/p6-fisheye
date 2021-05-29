@@ -80,7 +80,7 @@ function creatFolio(el, lesphotos) {
   videos.setAttribute("controls", "controls");
   img.className = `gallery__Image`;
   videos.className = `gallery__Image`;
-  img.setAttribute('data-description', `${el.date}  ${el.price} € ${el.likes} &hearts;`);
+  img.setAttribute('data-description', `${el.date}  ${el.price} € ${el.likes} &hearts; , closeup view`);
   img.setAttribute('data-large', `img/${el.photographerId}/${el.image}`);
   videos.setAttribute('data-description', `${el.date}`);
   videos.setAttribute('data-large', `img/${el.photographerId}/${el.video}`);
@@ -201,7 +201,7 @@ function tagn(dataa) { // nav tags
 };
 
 window.addEventListener('load', () => {
-  fetch('http://choisirsontheme.com/formation/ocr/p6-fisheye-tests/p6-v7/js/fisheyedatafr.json')
+  fetch('https://raw.githubusercontent.com/antoinelaly/p6-fisheye/main/js/fisheyedatafr.json')
     .then(response => {
       return response.json();
     }).then(data => {
