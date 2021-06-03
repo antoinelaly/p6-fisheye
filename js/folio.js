@@ -147,7 +147,7 @@ class AsyncGallery {
   }
 
   createSingleElement({ element, type, event = "click", func, text }) {
-    if (!this.settings.hiddenElements.includes(element)) {
+    if (!this.settings.hiddenElements.includes(element)) { // !this false value, s'il n'a pas été créé
       if (!this.settings[element]) {
         this[element] = document.createElement(type);
         this[element].classList.add(
@@ -200,10 +200,11 @@ class AsyncGallery {
       this.gallery.append(galleryItem);
       this.addedItems[i] = galleryItem;
 
-      if (contentObj.src.endsWith('mp4')) {
+      if (contentObj.src.endsWith('mp4')) { // La méthode renvoie un booléen indiquant si la chaine 
+        // de caractères se termine par la chaine de caractères fournie en argument.
 
         video.addEventListener("loadeddata", () => {
-          console.log('mp4');
+          //console.log('mp4');
           this.addedItems[i].loaded = true;
 
           if (!this.gallery.querySelector(".asyncGallery__Item.is-visible")) {
