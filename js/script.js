@@ -124,6 +124,8 @@ setTimeout(function () {
   qtyIncs.forEach((el) => {
     el.addEventListener("click", function (e) {
       e.target.previousElementSibling.value++;
+      // La propriété renvoie le nœud (node) précédant immédiatement le nœud courant 
+      // dans la liste de son parent
       console.log('value', value);
     })
   })
@@ -133,7 +135,7 @@ var select = document.getElementById("my-select");
 
 if (lesphotos) { // lisibilite
   select.onchange = function(data) {
-    lesphotos.innerHTML = '';
+    lesphotos.innerHTML = ''; // purger le contenu
     var choice = select.value;
       switch (choice) {
         case 'likes':
@@ -149,7 +151,7 @@ if (lesphotos) { // lisibilite
     }
   function sortResults(prop, asc) {
 
-    datum.sort(function (a, b) {
+    datum.sort(function (a, b) { // trie les éléments d'un tableau, dans ce même tableau, et renvoie le tableau
       if (asc) return ((a[prop] + "").toLowerCase() > (b[prop] + "").toLowerCase()) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
       else return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
     });
@@ -174,7 +176,8 @@ function photographe(leuser) { // folio photographe
 function photos(lefolio) { // folio photos
   lefolio.map(el => {
     creatFolio(el, lesphotos);
-    datum.push(el);
+    datum.push(el); 
+    // stocker les data pour être filtrée ultérieurement sans refaire de requête à la base
   })
 };
 function graphes(lahome) { // la home
@@ -211,13 +214,14 @@ window.addEventListener('load', () => {
       let bd_posts = data.media;
 
       class DBUser { // factory
-        constructor(id) {
-          this.id = id;
-        }
 
+        // static : méthode utilitaire sans instance, pas besoin de créer par new une instance de l'objet
         static getPosts(db, userUID) {
-          const map = new Map(Object.entries(db));
-          const values = map.values();
+          const map = new Map(Object.entries(db)); 
+          // new Map  : retourne un dictionnaire, autrement dit une carte de clés/valeurs
+          // Object.entries() : renvoie un tableau dont les éléments sont des paires
+          const values = map.values(); 
+          // map.values() : renvoie un tableau contenant les valeurs des propriétés
           let posts = [];
           for (let item of values) {
             if (item.photographerId === userUID) {
@@ -243,6 +247,7 @@ window.addEventListener('load', () => {
           let posts = [];
           for (let item of values) {
             if (item.tags.includes(userUID)) {
+              // includes() : permet de déterminer si un tableau contient une valeur et renvoie
               posts.push(item);
             }
           }
@@ -275,7 +280,8 @@ window.addEventListener('load', () => {
       tagp(lestags);
       if (nav) {
         var tagsnav = DBUser.tagsNav(db_users); // page nav 
-        var dataa = [...new Set(tagsnav[0].concat(tagsnav[1], tagsnav[2], tagsnav[3], tagsnav[4], tagsnav[5]))] // enfin 
+        var dataa = [...new Set(tagsnav[0].concat(tagsnav[1], tagsnav[2], tagsnav[3], tagsnav[4], tagsnav[5]))] 
+        // … pour  copier un tableau et l'objet Set permet de stocker des valeurs uniques
         tagn(dataa);
       }
     });

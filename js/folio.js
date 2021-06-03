@@ -55,6 +55,8 @@ function theCounter() {
     qtyIncs.forEach((el) => {
       el.addEventListener("click", function (e) {
         e.target.previousElementSibling.value++;
+        // La propriété renvoie le nœud (node) précédant immédiatement le nœud courant 
+        // dans la liste de son parent
         console.log('value', value);
       })
     })
@@ -81,8 +83,12 @@ class AsyncGallery {
     };
 
     Object.assign(this.settings, settings);
+    // La méthode Object.assign permet de copier les valeurs sur un autre objet cible
 
     this.items = [...document.querySelectorAll(this.settings.images)];
+    // L’index items du portfolio est constitué à partir du DOM 
+    // et en particulier de l’attribut de class image “gallery__Image”.
+
 
     this.addedItems = {};
 
@@ -94,7 +100,6 @@ class AsyncGallery {
   }
 
   init() {
-    //this.clearUncomplete();
     this.createElements();
     this.bindEvents();
   }
@@ -102,12 +107,14 @@ class AsyncGallery {
   clearUncomplete() {
     this.items = this.items.filter(item => {
       return item.dataset.large;
-    }); // array specific items
-  }
+      // dataset fournit un accès à l’attributs large en mode lecture et écriture 
+    });
+  } 
 
   createElements() {
     this.gallery = document.createElement("DIV");
     this.gallery.classList.add("asyncGallery");
+    // environnement global et associés aux éléments de navigation
 
     this.createSingleElement({
       element: "previous_image",
@@ -165,24 +172,21 @@ class AsyncGallery {
       contentObj = {};
       contentObj.src = this.items[i].dataset.large;
       contentObj.description = this.items[i].dataset.description;
+      // dataset fournit un accès en mode lecture et écriture, 
+      // à tous les attributs de données sur mesure (data- large)
     }
 
-    if (!this.addedItems.hasOwnProperty(i)) {
+    if (!this.addedItems.hasOwnProperty(i)) { // s'il n'est pas déjà créé
       let image = document.createElement("IMG");
       let video = document.createElement("VIDEO");
       if (video.canPlayType("video/mp4")) {
         video.setAttribute("src", `${video.outerHTML}`);
-        //videos.setAttribute("alt", `${video.outerHTML}`);
-      } else {
+      } else { 
         image.setAttribute("src", `${image.outerHTML}`);
-        //image.setAttribute("alt", `${image.outerHTML}`);
       }
       video.setAttribute("width", "640");
       video.setAttribute("height", "480");
       video.setAttribute("controls", "controls");
-      //videos.setAttribute("alt", `${video.outerHTML}`);
-      //image.setAttribute("alt", `${image.outerHTML}`);
-      //console.log(image);
 
       let galleryItem = document.createElement("DIV");
       galleryItem.classList.add("asyncGallery__Item");
@@ -193,7 +197,6 @@ class AsyncGallery {
 
       this.clearVisible();
 
-      //let lobject = contentObj.src; 
       this.gallery.append(galleryItem);
       this.addedItems[i] = galleryItem;
 
@@ -216,9 +219,8 @@ class AsyncGallery {
           ${video.outerHTML}
         </div>
         `;
-      } else if (contentObj.src.endsWith('jpg')) {
+      } else if (contentObj.src.endsWith('jpg')) { 
         image.addEventListener("load", () => {
-          //console.log('jpg');
           this.addedItems[i].loaded = true;
 
           if (!this.gallery.querySelector(".asyncGallery__Item.is-visible")) {
@@ -344,6 +346,8 @@ class AsyncGallery {
       }
     });
 
+  // Le slider est tactile et sensible aux touches du clavier flèches, enter, space et excape
+
     this.gallery.addEventListener(
       "touchstart",
       e => {
@@ -362,6 +366,9 @@ class AsyncGallery {
     );
   }
 }
+
+// étant donnée que le script travail à partir du DOM 
+// il est nécessaire de faire patienter l’activation du script
 
 function sleep(ms) {
   return new Promise(
