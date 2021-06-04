@@ -100,7 +100,7 @@ class AsyncGallery {
   }
 
   init() {
-    this.createElements();
+    this.createElements(); //  initi dom
     this.bindEvents();
   }
 
@@ -111,7 +111,7 @@ class AsyncGallery {
     });
   } 
 
-  createElements() {
+  createElements() { // creat in dom
     this.gallery = document.createElement("DIV");
     this.gallery.classList.add("asyncGallery");
     // environnement global et associés aux éléments de navigation
@@ -146,7 +146,7 @@ class AsyncGallery {
     window.document.body.append(this.gallery);
   }
 
-  createSingleElement({ element, type, event = "click", func, text }) {
+  createSingleElement({ element, type, event = "click", func, text }) { // 1
     if (!this.settings.hiddenElements.includes(element)) { // !this false value, s'il n'a pas été créé
       if (!this.settings[element]) {
         this[element] = document.createElement(type);
@@ -166,7 +166,7 @@ class AsyncGallery {
     }
   }
 
-  getItem(i, content = null) {
+  getItem(i, content = null) { 
     let contentObj = content;
     if (contentObj === null) {
       contentObj = {};
@@ -181,10 +181,12 @@ class AsyncGallery {
       let video = document.createElement("VIDEO");
       if (video.canPlayType("video/mp4")) {
         video.setAttribute("src", `${video.outerHTML}`);
+        // innerHTML as default. This replaces only the content inside the current element referred to. 
+        // If you are using outerHTML, then the element referred to will also be replaced.
       } else { 
         image.setAttribute("src", `${image.outerHTML}`);
       }
-      video.setAttribute("width", "640");
+      video.setAttribute("width", "640"); // specific attr for video
       video.setAttribute("height", "480");
       video.setAttribute("controls", "controls");
 
@@ -325,12 +327,12 @@ class AsyncGallery {
     }
   }
 
-  bindEvents() {
-    this.items.forEach((item, i) => {
-      item.addEventListener("click", e => {
+  bindEvents() { 
+    this.items.forEach((item, i) => { // items index allready completed
+      item.addEventListener("click", e => { // 1 start here 
         this.gallery.classList.add("is-visible");
         this.index = i;
-        this.getItem(i, {
+        this.getItem(i, { // getItem
           src: e.target.dataset.large,
           description: e.target.dataset.description
         });
