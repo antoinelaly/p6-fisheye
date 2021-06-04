@@ -84,6 +84,7 @@ class AsyncGallery {
 
     Object.assign(this.settings, settings);
     // La méthode Object.assign permet de copier les valeurs sur un autre objet cible
+    // The JavaScript this keyword refers to the object it belongs to.
 
     this.items = [...document.querySelectorAll(this.settings.images)];
     // L’index items du portfolio est constitué à partir du DOM 
