@@ -15,15 +15,20 @@ function append(parent, el) {
 
 function creatFigure(el, valueFigure) {
   let ul = createNode("ul"),
-    figure = createNode("figure"),
-    figcaption = createNode("figcaption");
-  (img = createNode("img")),
-    (h2 = createNode("h2")),
-    (p = createNode("p"));
-  address = createNode("address");
-  a = createNode("a");
+  figure = createNode("figure"),
+  figcaption = createNode("figcaption");
+  img = createNode("img"),
+  h1 = createNode("h1"),
+  h2 = createNode("h2"),
+  p = createNode("p"),
+  address = createNode("address"),
+  a = createNode("a"),
   aImg = createNode("a");
-  h2.innerHTML = `${el.name}`;
+  if (home) {
+    h2.innerHTML = `${el.name}`;
+  } else {
+    h1.innerHTML = `${el.name}`;
+  }
   if (lesphotos) {
     lenom.innerHTML = `${el.name}`;
   }
@@ -48,7 +53,11 @@ function creatFigure(el, valueFigure) {
   append(figure, aImg);
   append(aImg, img);
   append(figure, figcaption);
-  append(figcaption, h2);
+  if (home) {
+    append(figcaption, h2);
+  } else {
+    append(figcaption, h1);
+  }
   append(figcaption, p);
   append(figcaption, ul);
   append(valueFigure, figure);
@@ -58,23 +67,25 @@ var datum = [];
 
 function creatFolio(el, lesphotos) {
   let figure = createNode("figure"),
-    figcaption = createNode("figcaption");
-  (img = createNode("img")),
-    (videos = createNode("video")),
-    (p = createNode("p")),
-    (pp = createNode("p")),
-    (input = createNode("input")),
-    (button = createNode("button")),
-    (aImg = createNode("a")),
-    (aVid = createNode("a"));
+    figcaption = createNode("figcaption"),
+    img = createNode("img"),
+    videos = createNode("video"),
+    p = createNode("p"),
+    pp = createNode("p"),
+    input = createNode("input"),
+    button = createNode("button"),
+    aImg = createNode("a"),
+    aVid = createNode("a"),
+    source = createNode("source"),
+    track = createNode("track");
   img.src = `img/${el.photographerId}/${el.image}`;
   img.setAttribute("alt", `${el.image}`);
   if (videos.canPlayType("video/mp4")) {
-    videos.setAttribute("src", `img/${el.photographerId}/${el.video}`);
-    videos.setAttribute("alt", `${el.videos}`);
+    source.setAttribute("src", `img/${el.photographerId}/${el.video}`);
+    source.setAttribute("type", "video/mp4");
   } else {
-    videos.setAttribute("src", `img/${el.photographerId}/${el.video}`);
-    videos.setAttribute("alt", `${el.videos}`);
+    source.setAttribute("src", `img/${el.photographerId}/${el.video}`);
+    source.setAttribute("type", "video/mp4");
   }
   videos.setAttribute("width", "320");
   videos.setAttribute("height", "240");
@@ -84,7 +95,10 @@ function creatFolio(el, lesphotos) {
   img.setAttribute('data-description', `${el.date}  ${el.price} € ${el.likes} &hearts;`);
   img.setAttribute('data-large', `img/${el.photographerId}/${el.image}`);
   videos.setAttribute('data-description', `${el.date}`);
+  videos.setAttribute('track', `kind="subtitles" src="soustitres_de.vtt`);
   videos.setAttribute('data-large', `img/${el.photographerId}/${el.video}`);
+  track.setAttribute("kind", "captions");
+  track.setAttribute('src', `js/captions.vtt`);
   p.innerHTML = `${el.date}`;
   pp.innerHTML = `${el.price} €`;
   input.setAttribute("type", "number");
@@ -93,7 +107,7 @@ function creatFolio(el, lesphotos) {
   button.className = `qty-inc`;
   button.innerHTML = `&hearts;`;
   if (el.video == undefined) { append(figure, img); }
-  else if (el.image == undefined) { append(figure, videos); };
+  else if (el.image == undefined) { append(figure, videos);append(videos, source);append(videos, track); };
   append(figure, figcaption);
   append(figcaption, p);
   append(figcaption, pp);

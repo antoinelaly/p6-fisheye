@@ -84,7 +84,6 @@ class AsyncGallery {
 
     Object.assign(this.settings, settings);
     // La méthode Object.assign permet de copier les valeurs sur un autre objet cible
-    // The JavaScript this keyword refers to the object it belongs to.
 
     this.items = [...document.querySelectorAll(this.settings.images)];
     // L’index items du portfolio est constitué à partir du DOM 
@@ -147,23 +146,23 @@ class AsyncGallery {
     window.document.body.append(this.gallery);
   }
 
-  createSingleElement({ element, type, event = "click", func, text }) { 
+  createSingleElement({ element, type, event = "click", func, text }) { // 1
     if (!this.settings.hiddenElements.includes(element)) { // !this false value, s'il n'a pas été créé
-      if (!this.settings[element]) { // this[] keyword to retrive a value from a class instant
-        this[element] = document.createElement(type); // next_image, BUTTON
-        this[element].classList.add( 
-          `asyncGallery__${this.capitalizeFirstLetter(element)}` // asyncGallery__Next_image
+      if (!this.settings[element]) {
+        this[element] = document.createElement(type);
+        this[element].classList.add(
+          `asyncGallery__${this.capitalizeFirstLetter(element)}`
         );
         this[element].innerHTML = text !== undefined ? text : element;
-        this.gallery.append(this[element]); 
+        this.gallery.append(this[element]);
       } else {
-        this[element] = document.querySelector(this.settings[element]); // s'il existe le retrouver
+        this[element] = document.querySelector(this.settings[element]);
         this.gallery.append(this[element]);
       }
 
       if (func) {
         this[element].addEventListener(event, func.bind(this));
-      } // La méthode bind() crée une nouvelle fonction qui, lorsqu'elle est appelée, a pour contexte this la valeur passée // en paramètre et éventuellement une suite d'arguments qui précéderont ceux fournis à l'appel de la fonction créée.
+      }
     }
   }
 
@@ -201,7 +200,7 @@ class AsyncGallery {
       this.clearVisible();
 
       this.gallery.append(galleryItem);
-      this.addedItems[i] = galleryItem; // !
+      this.addedItems[i] = galleryItem;
 
       if (contentObj.src.endsWith('mp4')) { // La méthode renvoie un booléen indiquant si la chaine 
         // de caractères se termine par la chaine de caractères fournie en argument.
